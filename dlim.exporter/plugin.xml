@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+   <extension
+         id="dlim.exporters"
+         name="Exporters"
+         point="dlim.generator.dlim_generator_exporters">
+      <Exporter
+            class="dlim.exporter.DlimArrivalRateExporter"
+            label="Simple Arrival Rate File">
+      </Exporter>
+      <Exporter
+            class="dlim.exporter.DlimEqualDistanceRequestStampExporter"
+            label="Request Time Stamps via Equal Distance Sampling">
+      </Exporter>
+      <Exporter
+            class="dlim.exporter.DlimUniformRequestStampExporter"
+            label="Request Time Stamps via Uniform Random Sampling">
+      </Exporter>
+   </extension>
+
+
+</plugin>

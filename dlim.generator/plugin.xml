@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+   <extension-point id="dlim_generator_exporters" name="Exporters" schema="schema/dlim_generator_exporters.exsd"/>
+   <extension-point id="dlim_generator_extractors" name="Extractors" schema="schema/dlim_generator_extractors.exsd"/>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated dlim -->
+      <package
+            uri="http://sdq.ipd.uka.de/dlimm/0.1"
+            class="dlim.DlimPackage"
+            genModel="src/dlim/model/dlim.genmodel"/>
+   </extension>
+
+</plugin>

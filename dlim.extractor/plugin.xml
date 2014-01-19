@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+   <extension
+         id="dlim.extractors"
+         name="Extractors"
+         point="dlim.generator.dlim_generator_extractors">
+      <Extractor
+            extractor_class="dlim.extractor.SimpleProcessExtractor"
+            label="Simple Process Extractor"
+            reader_class="dlim.reader.DefaultArrivalRateReader">
+      </Extractor>
+      <Extractor
+            extractor_class="dlim.extractor.PeriodicProcessExtractor"
+            label="Periodic Process Extractor"
+            reader_class="dlim.reader.DefaultArrivalRateReader">
+      </Extractor>
+   </extension>
+
+
+</plugin>
