@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dlim:Sequence xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dlim="http://sdq.ipd.uka.de/dlimm/0.1" name="sin" terminateAfterLoops="2">
+  <referenceClock name="rootClock"/>
+  <sequenceFunctionContainers name="sinHeadElement" duration="40.0" pointOfReferenceClockType="ELEMCLOCK">
+    <function xsi:type="dlim:AbsoluteSin" min="0.0" max="20.0" period="40.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="elem2" duration="40.0" pointOfReferenceClockObject="//@referenceClock" pointOfReferenceClockType="SEQCLOCK">
+    <function xsi:type="dlim:Sequence" name="childseq" terminateAfterLoops="1">
+      <combine>
+        <function xsi:type="dlim:AbsoluteValueFunction">
+          <function xsi:type="dlim:LinearTrend" functionOutputAtStart="-20.0" functionOutputAtEnd="20.0"/>
+        </function>
+      </combine>
+      <sequenceFunctionContainers name="childSeqHead" duration="40.0">
+        <function xsi:type="dlim:NormalNoise" mean="4.0" standardDeviation="1.5"/>
+      </sequenceFunctionContainers>
+    </function>
+  </sequenceFunctionContainers>
+</dlim:Sequence>
