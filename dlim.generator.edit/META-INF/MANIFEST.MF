@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: dlim.generator.edit;singleton:=true
+Bundle-Version: 0.14.01.1518
+Bundle-ClassPath: .
+Bundle-Activator: dlim.provider.DlimEditPlugin$Implementation
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: dlim.provider
+Require-Bundle: org.eclipse.core.runtime,
+ dlim.generator;visibility:=reexport,
+ org.eclipse.emf.edit;visibility:=reexport
+Bundle-ActivationPolicy: lazy
