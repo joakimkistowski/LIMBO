@@ -75,11 +75,15 @@ public class ArrivalRateReader {
 			line = line.substring(0, line.length() -1);
 			String[] numbers = line.split(",");
 			if (numbers.length >= 2) {
-				double timeStamp = Double.parseDouble(numbers[0].trim());
-				double readArrivalRate = Double.parseDouble(numbers[1].trim());
-				timeStamp = timeStamp - offset;
-				if (timeStamp > 0) {
-					arrRates.add(new ArrivalRateTuple(timeStamp,readArrivalRate));
+				try {
+					double timeStamp = Double.parseDouble(numbers[0].trim());
+					double readArrivalRate = Double.parseDouble(numbers[1].trim());
+					timeStamp = timeStamp - offset;
+					if (timeStamp > 0) {
+						arrRates.add(new ArrivalRateTuple(timeStamp,readArrivalRate));
+					}
+				} catch (NumberFormatException e) {
+					
 				}
 			}
 		}

@@ -16,6 +16,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 
 import com.dtw.FastDTW;
+import com.ibm.icu.math.BigDecimal;
 import com.timeseries.TimeSeries;
 import com.timeseries.TimeSeriesPoint;
 import com.util.EuclideanDistance;
@@ -146,9 +147,10 @@ public class DiffAnalyzer {
 			statisticalValues.add(relativeDiffSum/relativeDiffList.size());
 			statisticalValues.add(relativeDiffList.get(relativeDiffList.size()/2));
 			
-			System.out.println(evaluator.getName() + " & " +mean + " & " + statisticalValues.get(3)*100
-					+ " & " + median  + " & " + statisticalValues.get(4)*100
-					+ " & " + dtwDist + " \\\\");
+			printToConsole(evaluator.getName(), statisticalValues);
+			//System.out.println(evaluator.getName() + " & " +mean + " & " + statisticalValues.get(3)*100
+			//		+ " & " + median  + " & " + statisticalValues.get(4)*100
+			//		+ " & " + dtwDist + " \\\\");
 			
 			return statisticalValues;
 			
@@ -158,5 +160,40 @@ public class DiffAnalyzer {
 			e.printStackTrace();
 		}
 		return new LinkedList<Double>();
+	}
+	
+	private static void printToConsole(String name, List<Double> stats) {
+		String firstCol = "";
+		if (name.contains("HLDLIM")) {
+			firstCol += "HLDLIM\\\\ ";
+		} else if (name.contains("_simple_")) {
+			firstCol += "DLIM Simple\\\\ ";
+		} else {
+			firstCol = "DLIM Periodic\\\\ ";
+		}
+		if (name.contains("_Trendlength1_")) {
+			firstCol += "Trend length 1\\\\ ";
+		} else if (name.contains("_Trendlength2_")) {
+			firstCol += "Trend length 2\\\\ ";
+		} else if (name.contains("_Trendlength3_")) {
+			firstCol += "Trend length 3\\\\ ";
+		}
+		if (name.contains("_NoiseEliminated")) {
+			firstCol += "noise eliminated ";
+		} else if (name.contains("_Noise")) {
+			firstCol += "noise extracted ";
+		} else {
+			firstCol += "noise ignored ";
+		}
+		
+		System.out.println(firstCol + " & " + roundTo(stats.get(0),3) + " & " + roundTo(stats.get(3)*100,3)
+				+ " & " + roundTo(stats.get(1),3)  + " & " + roundTo(stats.get(4)*100,3)
+				+ " & " + roundTo(stats.get(2),6) + " \\\\");
+		System.out.println("\\hline");
+	}
+	private static double roundTo(double val, int places) {
+		BigDecimal bd = new BigDecimal(val);
+		bd = bd.setScale(places, BigDecimal.ROUND_HALF_UP);
+		return bd.doubleValue();
 	}
 }
