@@ -52,6 +52,31 @@ public class TimeStampWriter {
 	 */
 	public static void generateTimeStampsFromArrivalRates(ModelEvaluator evaluator, String projectPath, List<ArrivalRateTuple> arrRates, String samplingMode,
 			int decimalPlaces, double stretch, double arDevisor) {
+		generateTimeStampsFromArrivalRates(evaluator, projectPath, arrRates, samplingMode, decimalPlaces, stretch, arDevisor, ";", "txt");
+	}
+	
+	
+	/**
+	 * Generate a time-stamp file.
+	 * @param evaluator The ModelEvaluator for the current Descartes Load Intensity Model.
+	 * 						Needed to access Model meta-information.
+	 * @param projectPath The path of the model's Eclipse project.
+	 * 						All output will be produced relative to this path.
+	 * @param arrRates The list of arrival rates as provided by the ArrivalRateGenerator.
+	 * @param samplingMode The mode, with which the time-stamps are to be sampled within each interval.
+	 * 						This is either IGeneratorConstants.EQUALDISTANCESAMPLING or
+	 * 						IGeneratorConstants.UNIFORMDISTRIBUTIONSAMPLING.
+	 * @param decimalPlaces The amount of decimal places a time-stamp is allowed to have.
+	 * @param stretch The factor by which to stretch the times of the arrival rate tuples.
+	 * 					Using a value < 1 compresses the time.
+	 * @param arDevisor Divide the arrival rates from the arrival rate tuples by this to produce less time-stamps.
+	 * 					Using a value < 1 produces more time stamps
+	 * @param endOfLineCharacter The character before the end of a line in the output file. Note: the "\n" is always
+	 * 					printed after this character. It does not have to be included here.
+	 * @param suffix The file Suffix ("txt","csv" ...)
+	 */
+	public static void generateTimeStampsFromArrivalRates(ModelEvaluator evaluator, String projectPath, List<ArrivalRateTuple> arrRates, String samplingMode,
+			int decimalPlaces, double stretch, double arDevisor, String endOfLineCharacter, String suffix) {
 		TimeStampWriter.evaluator = evaluator;
 		TimeStampWriter.projectPath = new Path(projectPath);
 		timeStampList.clear();
@@ -66,13 +91,13 @@ public class TimeStampWriter {
 			if (!timeStampFolder.exists()){
 				timeStampFolder.mkdir();
 			}
-			IPath timeStampTxtPath = timeStampFolderPath.append(evaluator.getName() + "TimeStamps.txt");
+			IPath timeStampTxtPath = timeStampFolderPath.append(evaluator.getName() + "TimeStamps." + suffix);
 			
 			PrintWriter timeStampWriter = new PrintWriter(timeStampTxtPath.toString(), "UTF-8");
 			
 			ArrivalRateTuple lastTupel = null;
 			for (ArrivalRateTuple tuple : arrRates) {
-				generateTimeStamps(tuple,tuple.getStep(lastTupel),timeStampWriter);
+				generateTimeStamps(tuple,tuple.getStep(lastTupel),timeStampWriter,endOfLineCharacter);
 				lastTupel = tuple;
 			}
 			timeStampWriter.close();
@@ -83,7 +108,7 @@ public class TimeStampWriter {
 	}
 	
 	//Generate the time stamps for one arrival rate tuple
-	private static void generateTimeStamps(ArrivalRateTuple tuple, double step, PrintWriter writer) {
+	private static void generateTimeStamps(ArrivalRateTuple tuple, double step, PrintWriter writer, String endOfLineCharacter) {
 		double arrRate = tuple.getArrivalRate()/arDevisor;
 		double time = tuple.getTimeStamp();
 		timeStampList.clear();
@@ -94,7 +119,7 @@ public class TimeStampWriter {
 			for (double j = 0; j < loops; j++) {
 				BigDecimal bd = new BigDecimal(tmpTime+ (j/loops)*tmpStep - tmpStep/2.0);
 				bd = bd.setScale(decimalplaces, BigDecimal.ROUND_HALF_UP);
-		    	writer.println(bd.doubleValue() + ";");
+		    	writer.println(bd.doubleValue() + endOfLineCharacter);
 			}
 		} else {
 			for (double j = 0; j < (int)(arrRate*tmpStep); j++) {

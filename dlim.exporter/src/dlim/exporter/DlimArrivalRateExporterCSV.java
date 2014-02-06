@@ -16,7 +16,7 @@ import dlim.exporter.utils.ArrivalRateGenerator;
  * @author Jóakim G. v. Kistowski
  *
  */
-public class DlimArrivalRateExporter implements IDlimExporter {
+public class DlimArrivalRateExporterCSV implements IDlimExporter {
 
 	/**
 	 * Exports a simple Arrival Rate file with time-stamps for the respective arrival rates.
@@ -33,7 +33,7 @@ public class DlimArrivalRateExporter implements IDlimExporter {
 			evaluator.setRandomSeed(paramDialog.getRndSeed());
 			
 			List<ArrivalRateTuple> arrRates = ArrivalRateGenerator.generateArrivalRates(evaluator, paramDialog.getStep());
-			ArrivalRateGenerator.writeArrivalRates(arrRates, projectPath, evaluator.getName(), ";", "txt");
+			ArrivalRateGenerator.writeArrivalRates(arrRates, projectPath, evaluator.getName(), "", "csv");
 		}
 	}
 

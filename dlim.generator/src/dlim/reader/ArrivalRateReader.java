@@ -44,8 +44,17 @@ public class ArrivalRateReader {
 			line = line.substring(0, line.length() -1);
 			String[] numbers = line.split(",");
 			if (numbers.length >= 2) {
-				upperTimeStamp = Double.parseDouble(numbers[0].trim());
-				upperArrivalRate = Double.parseDouble(numbers[1].trim());
+				try {
+					upperTimeStamp = Double.parseDouble(numbers[0].trim());
+				} catch (NumberFormatException e) {
+					upperTimeStamp = 0;
+				}
+				try {
+					upperArrivalRate = Double.parseDouble(numbers[1].trim());
+				} catch (NumberFormatException e) {
+					upperArrivalRate = 0;
+				}
+				
 			}
 		}
 		br.close();	

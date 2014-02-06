@@ -40,22 +40,25 @@ public class ArrivalRateGenerator {
 	/**
 	 * Run the ArrivalRateGenerator and write the results to a .txt file and an arrival rate plot.
 	 * @param step The width of the sampling interval.
+	 * @param endOfLineCharacter The character before the end of a line in the output file. Note: the "\n" is always
+	 * 					printed after this character. It does not have to be included here.
+	 * @param fileSuffix The file suffix ("txt","csv" ...)
 	 */
-	public static void writeArrivalRates(List<ArrivalRateTuple> arrRates, String projectPath, String modelName) {
+	public static void writeArrivalRates(List<ArrivalRateTuple> arrRates, String projectPath, String modelName, String endOfLineCharacter, String fileSuffix) {
 		try {
 			IPath arrivalRateFolderPath = new Path(projectPath).append("arrivalRates");
 			File arrivalRateFolder = arrivalRateFolderPath.toFile();
 			if (!arrivalRateFolder.exists()){
 				arrivalRateFolder.mkdir();
 			}
-			IPath arrivalRateTxtPath = arrivalRateFolderPath.append(modelName + "ArrivalRates.txt");
+			IPath arrivalRateTxtPath = arrivalRateFolderPath.append(modelName + "ArrivalRates." + fileSuffix);
 			PrintWriter arrRateWriter;
 			arrRateWriter = new PrintWriter(arrivalRateTxtPath.toString(), "UTF-8");
 			
 			for (ArrivalRateTuple tuple : arrRates) {
 				double arrRate = tuple.getArrivalRate();
 				double time = tuple.getTimeStamp();
-				arrRateWriter.println(time + "," + arrRate + ";");
+				arrRateWriter.println(time + "," + arrRate + endOfLineCharacter);
 			}
 			arrRateWriter.close();
 			

@@ -11,15 +11,27 @@
          point="dlim.generator.dlim_generator_exporters">
       <Exporter
             class="dlim.exporter.DlimArrivalRateExporter"
-            label="Simple Arrival Rate File">
+            label="Simple Arrival Rate File (.txt)">
       </Exporter>
       <Exporter
             class="dlim.exporter.DlimEqualDistanceRequestStampExporter"
-            label="Request Time Stamps via Equal Distance Sampling">
+            label="Request Time Stamps via Equal Distance Sampling (.txt)">
       </Exporter>
       <Exporter
             class="dlim.exporter.DlimUniformRequestStampExporter"
-            label="Request Time Stamps via Uniform Random Sampling">
+            label="Request Time Stamps via Uniform Random Sampling (.txt)">
+      </Exporter>
+      <Exporter
+            class="dlim.exporter.DlimEqualDistanceRequestStampExporterCSV"
+            label="Request Time Stamps via Equal Distance Sampling (.csv)">
+      </Exporter>
+      <Exporter
+            class="dlim.exporter.DlimUniformRequestStampExporterCSV"
+            label="Request Time Stamps via Uniform Random Sampling (.csv)">
+      </Exporter>
+      <Exporter
+            class="dlim.exporter.DlimArrivalRateExporterCSV"
+            label="Simple Arrival Rate File (.csv)">
       </Exporter>
    </extension>
 

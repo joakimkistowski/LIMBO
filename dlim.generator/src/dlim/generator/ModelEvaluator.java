@@ -72,7 +72,7 @@ public class ModelEvaluator {
 	 */
 	public double getArrivalRateAtTime(double rootTime) {
 		try {
-			return getFunctionNodeArrivalRate(rootSequence, rootTime, rootTime, rootTime);
+			return Math.max(0.0, getFunctionNodeArrivalRate(rootSequence, rootTime, rootTime, rootTime));
 		} catch(Exception e) {
 			return 0.0;
 		}
