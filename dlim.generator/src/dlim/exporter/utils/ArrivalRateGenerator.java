@@ -62,7 +62,10 @@ public class ArrivalRateGenerator {
 			}
 			arrRateWriter.close();
 			
-		} catch (FileNotFoundException | UnsupportedEncodingException e) {
+		} catch (FileNotFoundException e) {
+			System.out.println("IO error writing Arrival Rate file.");
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
 			System.out.println("IO error writing Arrival Rate file.");
 			e.printStackTrace();
 		}

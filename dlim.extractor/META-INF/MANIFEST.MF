@@ -2,10 +2,10 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Extractor
 Bundle-SymbolicName: dlim.extractor;singleton:=true
-Bundle-Version: 0.14.01.1518
+Bundle-Version: 0.14.02.0617
 Bundle-Activator: dlim.extractor.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  dlim.generator;bundle-version="0.13.12"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy

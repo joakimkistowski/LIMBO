@@ -101,7 +101,10 @@ public class TimeStampWriter {
 				lastTupel = tuple;
 			}
 			timeStampWriter.close();
-		} catch (FileNotFoundException | UnsupportedEncodingException e) {
+		} catch (FileNotFoundException e) {
+			System.out.println("Could not write time stamps.");
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
 			System.out.println("Could not write time stamps.");
 			e.printStackTrace();
 		}

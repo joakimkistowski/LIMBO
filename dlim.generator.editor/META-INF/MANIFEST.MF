@@ -2,12 +2,12 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: dlim.generator.editor;singleton:=true
-Bundle-Version: 0.14.01.1921
+Bundle-Version: 0.14.02.0617
 Bundle-ClassPath: .
 Bundle-Activator: dlim.presentation.DlimEditorPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: dlim.generator.editor.popup.actions,
  dlim.generator.editor.utils,
  dlim.presentation
