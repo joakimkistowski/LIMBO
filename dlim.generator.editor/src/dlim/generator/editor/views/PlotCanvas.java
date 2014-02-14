@@ -50,6 +50,8 @@ public class PlotCanvas extends Canvas {
 	private boolean drawAxes = false;
 	private boolean drawCombinatorImpact = false;
 	private boolean plottingFile = false;
+	private boolean drawLegend = true;
+
 
 	/**
 	 * Create a new plot canvas.
@@ -107,6 +109,23 @@ public class PlotCanvas extends Canvas {
 	 */
 	public void setArrivalRateFileList(List<ArrivalRateTuple> arrivalRateFileList) {
 		this.arrivalRateFileList = arrivalRateFileList;
+	}
+	
+	/**
+	 * Is true, if an explanation of the Combinator Impact visualization is to be drawn.
+	 * @return
+	 */
+	public boolean isDrawLegend() {
+		return drawLegend;
+	}
+
+
+	/**
+	 * Set to true, if an explanation of the Combinator Impact visualization is to be drawn.
+	 * @param drawLegend
+	 */
+	public void setDrawLegend(boolean drawLegend) {
+		this.drawLegend = drawLegend;
 	}
 	
 	/**
@@ -312,7 +331,7 @@ public class PlotCanvas extends Canvas {
 					gc.drawLine(width- XMARGIN - 124, height-YMARGIN-1, width- XMARGIN - 148, height-YMARGIN-1);
 				}
 				
-				if (drawCombinatorImpact) {
+				if (drawCombinatorImpact && drawLegend) {
 					int grayScale = 170+42;
 					gc.setForeground(display.getSystemColor(SWT.COLOR_BLACK));
 					gc.setBackground(display.getSystemColor(SWT.COLOR_WHITE));

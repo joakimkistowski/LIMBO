@@ -3,6 +3,7 @@ package dlim.extractor.dialogs;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 import org.eclipse.emf.common.CommonPlugin;
 import org.eclipse.emf.ecore.EClass;
@@ -24,6 +25,10 @@ import org.eclipse.swt.widgets.Text;
 
 import dlim.DlimPackage;
 import dlim.Operator;
+import dlim.Sequence;
+import dlim.assistant.CalibrationException;
+import dlim.extractor.ModelExtractor;
+import dlim.generator.ArrivalRateTuple;
 
 /**
  * This dialog takes the user parameters for the simple extraction process.
@@ -49,6 +54,9 @@ public class LaunchExtractionDialog extends TitleAreaDialog {
 	private boolean extractNoise = false;
 	private boolean canceled = false;
 
+	//For model extraction
+	private Sequence rootSequence;
+	private List<ArrivalRateTuple> readArrivalRates;
 	
 	/**
 	 * Creates a new dialog.
@@ -56,8 +64,10 @@ public class LaunchExtractionDialog extends TitleAreaDialog {
 	 * @param projectPath
 	 * @param parentShell
 	 */
-	public LaunchExtractionDialog(Shell parentShell) {
+	public LaunchExtractionDialog(Shell parentShell, Sequence rootSequence, List<ArrivalRateTuple> readArrivalRates) {
 		super(parentShell);
+		this.rootSequence = rootSequence;
+		this.readArrivalRates = readArrivalRates;
 	}
 	
 	/**
@@ -262,7 +272,18 @@ public class LaunchExtractionDialog extends TitleAreaDialog {
 		
 		
 		if (!error) {
-			super.okPressed();
+			
+			//Perform extraction
+			try {
+				ModelExtractor.extractArrivalRateFileIntoSequence(rootSequence,
+						readArrivalRates,getSeasonalPeriod(),
+						getSeasonalsPerTrend(),getSeasonalShape(),getTrendShape(),
+						getOperatorLiteral(), isExtractNoise());
+				super.okPressed();
+			} catch (CalibrationException e) {
+				setMessage("Model Extraction Error: " + e.getMessage(), IMessageProvider.ERROR);
+			}
+			
 		}
 	}
 	

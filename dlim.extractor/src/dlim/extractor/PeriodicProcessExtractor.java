@@ -22,15 +22,15 @@ public class PeriodicProcessExtractor implements IDlimExtractor {
 	public void extractIntoSequence(Sequence root,
 			List<ArrivalRateTuple> readArrivalRates) {
 		Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-		LaunchPeriodicExtractionDialog dialog = new LaunchPeriodicExtractionDialog(shell);
+		LaunchPeriodicExtractionDialog dialog = new LaunchPeriodicExtractionDialog(shell,root,readArrivalRates);
 		dialog.open();
 
-		if (!dialog.wasCanceled()) {
+		/*if (!dialog.wasCanceled()) {
 			ModelExtractor.extractSequenceFromArrivalRateFilePeriodic(root,
 					readArrivalRates,dialog.getSeasonalPeriod(),
 					dialog.getSeasonalsPerTrend(),dialog.getSeasonalShape(),dialog.getTrendShape(),
 					dialog.getOperatorLiteral(), dialog.isExtractNoise());
-		}
+		}*/
 	}
 
 }

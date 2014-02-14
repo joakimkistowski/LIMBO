@@ -30,6 +30,10 @@ import org.eclipse.swt.widgets.Text;
 
 import dlim.DlimPackage;
 import dlim.Operator;
+import dlim.Sequence;
+import dlim.assistant.CalibrationException;
+import dlim.extractor.ModelExtractor;
+import dlim.generator.ArrivalRateTuple;
 
 /**
  * This dialog takes the user parameters for the periodic extraction process.
@@ -60,6 +64,9 @@ public class LaunchPeriodicExtractionDialog extends TitleAreaDialog {
 	private String operatorLiteral = "MULT";
 	private boolean extractNoise = false;
 	private boolean canceled = false;
+	
+	private Sequence rootSequence;
+	private java.util.List<ArrivalRateTuple> readArrivalRates;
 
 	
 	/**
@@ -68,8 +75,11 @@ public class LaunchPeriodicExtractionDialog extends TitleAreaDialog {
 	 * @param projectPath
 	 * @param parentShell
 	 */
-	public LaunchPeriodicExtractionDialog(Shell parentShell) {
+	public LaunchPeriodicExtractionDialog(Shell parentShell,
+			Sequence rootSequence, java.util.List<ArrivalRateTuple> readArrivalRates) {
 		super(parentShell);
+		this.rootSequence = rootSequence;
+		this.readArrivalRates = readArrivalRates;
 	}
 	
 	
@@ -393,7 +403,15 @@ public class LaunchPeriodicExtractionDialog extends TitleAreaDialog {
 		
 		
 		if (!error) {
-			super.okPressed();
+			try {
+				ModelExtractor.extractSequenceFromArrivalRateFilePeriodic(rootSequence,
+						readArrivalRates,getSeasonalPeriod(),
+						getSeasonalsPerTrend(),getSeasonalShape(),getTrendShape(),
+						getOperatorLiteral(), isExtractNoise());
+				super.okPressed();
+			} catch (CalibrationException e) {
+				setMessage("Model Extraction Error: " + e.getMessage(), IMessageProvider.ERROR);
+			}
 		}
 	}
 	

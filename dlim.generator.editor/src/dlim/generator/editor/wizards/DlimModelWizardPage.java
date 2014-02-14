@@ -83,6 +83,7 @@ public abstract class DlimModelWizardPage extends WizardPage {
 		dlimPlotter = new PlotCanvas(plotterComposite, SWT.NONE, true);
 		dlimPlotter.setRootSequence(rootSequence);
 		dlimPlotter.setRightMargin(10);
+		dlimPlotter.setDrawLegend(false);
 		{
 			GridData data = new GridData();
 			data.horizontalAlignment = GridData.FILL;

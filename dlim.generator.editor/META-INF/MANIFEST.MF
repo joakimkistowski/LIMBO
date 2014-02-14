@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: dlim.generator.editor;singleton:=true
-Bundle-Version: 0.14.02.0617
+Bundle-Version: 0.14.02.1412
 Bundle-ClassPath: .
 Bundle-Activator: dlim.presentation.DlimEditorPlugin$Implementation
 Bundle-Vendor: %providerName

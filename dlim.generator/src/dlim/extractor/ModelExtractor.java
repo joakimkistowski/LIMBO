@@ -62,7 +62,7 @@ public class ModelExtractor {
 	 * @param extractNoise
 	 */
 	public static void extractArrivalRateFileIntoSequence(Sequence root, List<ArrivalRateTuple> arrList, double period, int seasonalsPerTrend,
-			String seasonalShape, String trendShape, String operatorLiteral, boolean extractNoise) {
+			String seasonalShape, String trendShape, String operatorLiteral, boolean extractNoise) throws CalibrationException {
 		setupArrivalRateLists(arrList);
 		reduceArrivalRateListNoise(period, extractNoise);
 		//ArrivalRateGenerator.writeArrivalRates(arrivalRateList, "C:/Programming/workspace/runtime-EclipseApplication/dlimModelingTest", "reducedNoise");
@@ -132,7 +132,7 @@ public class ModelExtractor {
 	 * @param extractNoise
 	 */
 	public static void extractSequenceFromArrivalRateFilePeriodic(Sequence root, List<ArrivalRateTuple> arrList, double period, List<int[]> seasonalsPerTrendList,
-			String seasonalShape, String trendShape, String operatorLiteral, boolean extractNoise) {
+			String seasonalShape, String trendShape, String operatorLiteral, boolean extractNoise) throws CalibrationException {
 		setupArrivalRateLists(arrList);
 		reduceArrivalRateListNoise(period, extractNoise);
 		performMinMaxSearch();
@@ -204,7 +204,7 @@ public class ModelExtractor {
 	 * @return
 	 */
 	public static HLDlimParameterContainer extractArrivalRateFileIntoParameters(String arrivalRateFilePath, double period, double offset, int seasonalsPerTrend,
-			String seasonalShape, String trendShape, String operatorLiteral, boolean extractNoise) {
+			String seasonalShape, String trendShape, String operatorLiteral, boolean extractNoise) throws CalibrationException {
 		HLDlimParameterContainer container = new HLDlimParameterContainer();
 		container.setSeasonalShape(seasonalShape);
 		container.setTrendShape(trendShape);
@@ -416,7 +416,7 @@ public class ModelExtractor {
 		return peakNums[(peakNums.length-1)/2];
 	}
 	
-	private static ArrivalRateTuple[] getPeaks(double period, double duration, int peakNum) {
+	private static ArrivalRateTuple[] getPeaks(double period, double duration, int peakNum) throws CalibrationException {
 		int seasonals = (int)(duration/period);
 		@SuppressWarnings("unchecked")
 		List<ArrivalRateTuple>[] peaksPerSeasonal = new ArrayList[seasonals];
@@ -456,7 +456,12 @@ public class ModelExtractor {
 				try {
 					arrivalRateTuplesPerPeak[i][j] = peaksPerSeasonal[j].get(i);
 				} catch (IndexOutOfBoundsException e) {
-					arrivalRateTuplesPerPeak[i][j] = new ArrivalRateTuple(0,0);
+					try {
+						arrivalRateTuplesPerPeak[i][j] = new ArrivalRateTuple(0,0);
+						} catch (IndexOutOfBoundsException e2) {
+							throw new CalibrationException("Seasonal Period is too small.");
+						}
+					
 				}
 			}
 		}

@@ -3,6 +3,7 @@ package dlim.extractor;
 import java.util.List;
 
 import dlim.Sequence;
+import dlim.assistant.CalibrationException;
 import dlim.generator.ArrivalRateTuple;
 
 /**
@@ -19,7 +20,12 @@ public class SimpleExtractor implements IDlimExtractor {
 	@Override
 	public void extractIntoSequence(Sequence root,
 			List<ArrivalRateTuple> readArrivalRates) {
-		ModelExtractor.extractArrivalRateFileIntoSequence(root, readArrivalRates, 24, 2, "SinTrend", "SinTrend", "MULT",false);
+		try {
+			ModelExtractor.extractArrivalRateFileIntoSequence(root, readArrivalRates, 24, 2, "SinTrend", "SinTrend", "MULT",false);
+		} catch (CalibrationException e){
+			System.out.println("Extration Parameter Exception: " + e.getMessage());
+		}
+		
 
 	}
 

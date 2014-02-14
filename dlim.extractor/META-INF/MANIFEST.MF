@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Extractor
 Bundle-SymbolicName: dlim.extractor;singleton:=true
-Bundle-Version: 0.14.02.0617
+Bundle-Version: 0.14.02.1412
 Bundle-Activator: dlim.extractor.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,

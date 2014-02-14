@@ -17,6 +17,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
 import dlim.Sequence;
+import dlim.assistant.CalibrationException;
 import dlim.extractor.HLDlimParameterContainer;
 import dlim.extractor.ModelExtractor;
 
@@ -244,12 +245,17 @@ public class DlimReadFileModelWizardPage extends DlimModelWizardPage {
 			/*ModelExtractor.extractArrivalRateFileIntoSequence(rootSequence, filePath, seasonalPeriod, offset, seasonalsPerTrend,
 					wizard.getSeasonalPage().getSeasonalShape(), wizard.getTrendPage().getTrendShape(),
 					wizard.getTrendPage().getOperatorLiteral());*/
-			HLDlimParameterContainer container = ModelExtractor.extractArrivalRateFileIntoParameters(filePath, seasonalPeriod, offset, seasonalsPerTrend,
-					wizard.getSeasonalPage().getSeasonalShape(), wizard.getTrendPage().getTrendShape(),
-					wizard.getTrendPage().getOperatorLiteral(),extractNoiseButton.getSelection());
-			wizard.getSeasonalPage().fillPageWithHLDlimParameters(container);
-			wizard.getTrendPage().fillPageWithHLDlimParameters(container);
-			wizard.getBurstPage().fillPageWithHLDlimParameters(container);
+			try {
+				HLDlimParameterContainer container = ModelExtractor.extractArrivalRateFileIntoParameters(filePath, seasonalPeriod, offset, seasonalsPerTrend,
+						wizard.getSeasonalPage().getSeasonalShape(), wizard.getTrendPage().getTrendShape(),
+						wizard.getTrendPage().getOperatorLiteral(),extractNoiseButton.getSelection());
+				wizard.getSeasonalPage().fillPageWithHLDlimParameters(container);
+				wizard.getTrendPage().fillPageWithHLDlimParameters(container);
+				wizard.getBurstPage().fillPageWithHLDlimParameters(container);
+			} catch (CalibrationException e) {
+				setMessage("Extraction Error: " + e.getMessage(), IMessageProvider.ERROR);
+			}
+			
 		} else {
 			//clear Model
 		}
