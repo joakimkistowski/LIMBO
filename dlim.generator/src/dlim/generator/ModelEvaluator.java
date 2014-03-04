@@ -148,7 +148,7 @@ public class ModelEvaluator {
 	 * correct seed.
 	 * @return
 	 */
-	protected JDKRandomGenerator getRndGenerator() {
+	public JDKRandomGenerator getRndGenerator() {
 		return rndGenerator;
 	}
 	

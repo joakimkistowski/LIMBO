@@ -29,10 +29,11 @@ public class DlimUniformRequestStampExporter extends DlimRequestStampExporter im
 		paramDialog.open();
 		
 		if (!paramDialog.wasCanceled()) {
+			evaluator.setRandomSeed(paramDialog.getRndSeed());
 			IPath timeStampFolderPath = perpareTimestampDir(projectPath);
 			File file = timeStampFolderPath.append(evaluator.getName() + "TimeStamps.txt").toFile();
 			List<ArrivalRateTuple> arrList = ArrivalRateGenerator.generateArrivalRates(evaluator, paramDialog.getStep());
-			UniformDistributionTimestampWriter writer = new UniformDistributionTimestampWriter(paramDialog.getRndSeed());
+			UniformDistributionTimestampWriter writer = new UniformDistributionTimestampWriter(evaluator.getRndGenerator());
 			writer.generateTimeStampsFromArrivalRates(file, arrList, paramDialog.getDecimalPlaces(), 
 					paramDialog.getStretch(), paramDialog.getArDevisor(), evaluator.getDuration());
 		}

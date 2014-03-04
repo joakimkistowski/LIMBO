@@ -23,15 +23,14 @@ public class UniformDistributionTimestampWriter extends TimeStampWriter {
 	private List<Double> timeStampList = new ArrayList<Double>();
 
 
-	public UniformDistributionTimestampWriter(int seed) {
+	public UniformDistributionTimestampWriter(JDKRandomGenerator rndGenerator) {
 		super();
-		rndGenerator = new JDKRandomGenerator();
-		rndGenerator.setSeed(seed);
+		this.rndGenerator = rndGenerator;
 	}
 
-	public UniformDistributionTimestampWriter(String endOfLineCharacter, double randomNumber) {
+	public UniformDistributionTimestampWriter(String endOfLineCharacter, JDKRandomGenerator rndGenerator) {
 		super(endOfLineCharacter);
-		rndGenerator = new JDKRandomGenerator();
+		this.rndGenerator = rndGenerator;
 	}
 	
 	
