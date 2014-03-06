@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: dlim.generator;singleton:=true
-Bundle-Version: 0.14.02.1412
+Bundle-Version: 0.14.03.0314
 Bundle-ClassPath: .,
  lib/commons-math3-3.2.jar
 Bundle-Vendor: %providerName
