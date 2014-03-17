@@ -119,7 +119,7 @@ public class SelectExporterDialog extends TitleAreaDialog {
 	
 	@Override
 	protected Point getInitialSize() {
-		return new Point(320,400);
+		return new Point(360,400);
 		//return super.getInitialSize();
 	}
 }

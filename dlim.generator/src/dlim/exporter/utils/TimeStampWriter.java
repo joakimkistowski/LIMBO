@@ -130,7 +130,7 @@ public class TimeStampWriter {
 				BigDecimal bd = new BigDecimal(tmpTime + randomNumber*(step*stretch));
 				addBDToList(bd);
 			}
-			printList(writer);
+			printList(writer, endOfLineCharacter);
 		}
 	}
 	
@@ -150,10 +150,10 @@ public class TimeStampWriter {
 	
 	//Print the time-stamp list to the .txt file
 	//Don't forget to sort first.
-	private static void printList(PrintWriter writer) {
+	private static void printList(PrintWriter writer, String endOfLineCharacter) {
 		Collections.sort(timeStampList);
 		for (Double timeStamp : timeStampList) {
-			writer.println(timeStamp + ";");
+			writer.println(timeStamp + endOfLineCharacter);
 		}
 	}
 }
