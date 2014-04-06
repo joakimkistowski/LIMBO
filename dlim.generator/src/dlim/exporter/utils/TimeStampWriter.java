@@ -10,7 +10,10 @@ import dlim.generator.ArrivalRateTuple;
 
 /**
  * Creates a time-stamp file from an arrival rate list.
- * @author Jóakim G. v. Kistowski
+ * Abstract class. Subclasses must implement the
+ * {@link #writeTimestampsForArrivalRate(PrintWriter writer, double step, double arrRate, double tmpStep, double tmpTime) writeTimestampsForArrivalRate} 
+ * method to define the exact sampling of timestamps
+ * @author Jóakim G. v. Kistowski, Andreas Weber
  *
  */
 public abstract class TimeStampWriter {

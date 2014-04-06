@@ -12,22 +12,40 @@ import com.ibm.icu.math.BigDecimal;
 
 import dlim.generator.ArrivalRateTuple;
 
+/**
+ * Creates a time-stamp file from an arrival rate list.
+ * Timestamps are sampled using a uniform distribution
+ * @author Jóakim G. v. Kistowski, Andreas Weber
+ *
+ */
 public class UniformDistributionTimestampWriter extends TimeStampWriter {
 
 	
 	//The random number generator
 	private JDKRandomGenerator rndGenerator;
+	
+	//Total duration of sequence
 	double duration;
 
 	//The list of time-stamps within each interval.
 	private List<Double> timeStampList = new ArrayList<Double>();
 
 
+	/**
+	 * 
+	 * @param rndGenerator Random generator used for sampling
+	 */
 	public UniformDistributionTimestampWriter(JDKRandomGenerator rndGenerator) {
 		super();
 		this.rndGenerator = rndGenerator;
 	}
 
+	/**
+	 * 
+	 * @param endOfLineCharacter The character before the end of a line in the output file. Note: the "\n" is always
+	 * printed after this character. It does not have to be included here.
+	 * @param rndGenerator Random generator used for sampling
+	 */
 	public UniformDistributionTimestampWriter(String endOfLineCharacter, JDKRandomGenerator rndGenerator) {
 		super(endOfLineCharacter);
 		this.rndGenerator = rndGenerator;

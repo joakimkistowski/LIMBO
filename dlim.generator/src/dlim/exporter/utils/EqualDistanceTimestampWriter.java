@@ -8,6 +8,12 @@ import com.ibm.icu.math.BigDecimal;
 
 import dlim.generator.ArrivalRateTuple;
 
+/**
+ * Creates a time-stamp file from an arrival rate list.
+ * Timestamps are sampled with equal distance.
+ * @author Jóakim G. v. Kistowski, Andreas Weber
+ *
+ */
 public class EqualDistanceTimestampWriter extends TimeStampWriter {
 
 	public EqualDistanceTimestampWriter() {
