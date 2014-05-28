@@ -65,7 +65,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="pointOfReferenceClockObject"
         eType="#//ReferenceClockObject"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="pointOfReferenceClockType"
-        eType="#//ClockType" defaultValueLiteral="ELEMCLOCK"/>
+        eType="#//ClockType" defaultValueLiteral="CONTAINERCLOCK"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Function" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EReference" name="combine" upperBound="-1"

@@ -269,7 +269,7 @@ public class ModelEvaluator {
 		double x = rootTime;
 		
 		//convert to relative time for function
-		if (e.getPointOfReferenceClockType().toString().contains("ELEMCLOCK")) {
+		if (e.getPointOfReferenceClockType().toString().contains("CONTAINERCLOCK")) {
 			x = guardTime - e.getFirstIterationStart();
 		} else if (e.getPointOfReferenceClockType().toString().contains("SEQCLOCK")) {
 			if (e.getPointOfReferenceClockObject() == null) {

@@ -2,6 +2,7 @@
  */
 package dlim.util;
 
+import dlim.*;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;

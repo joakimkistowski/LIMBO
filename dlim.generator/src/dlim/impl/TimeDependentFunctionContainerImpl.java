@@ -16,6 +16,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.ecore.util.EObjectValidator;
 import dlim.ClockType;
 import dlim.DlimPackage;
 import dlim.Function;
@@ -152,7 +154,7 @@ public class TimeDependentFunctionContainerImpl extends MinimalEObjectImpl.Conta
 	 * @generated
 	 * @ordered
 	 */
-	protected static final ClockType POINT_OF_REFERENCE_CLOCK_TYPE_EDEFAULT = ClockType.ELEMENT_CLOCK;
+	protected static final ClockType POINT_OF_REFERENCE_CLOCK_TYPE_EDEFAULT = ClockType.CONTAINER_CLOCK;
 
 	/**
 	 * The cached value of the '{@link #getPointOfReferenceClockType() <em>Point Of Reference Clock Type</em>}' attribute.

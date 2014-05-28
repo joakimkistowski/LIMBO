@@ -59,7 +59,7 @@ public class ModelEvaluatorUtil {
 	public static double getFunctionDuration(Function f) {
 		//return Parent Element Duration
 		if (getParentElement(f) != null) {
-			if (getParentElement(f).getPointOfReferenceClockType().getLiteral().contains("ELEMCLOCK")) {
+			if (getParentElement(f).getPointOfReferenceClockType().getLiteral().contains("CONTAINERCLOCK")) {
 				return getParentElement(f).getDuration();
 			} else if (getParentElement(f).getPointOfReferenceClockType().getLiteral().contains("SEQCLOCK")) {
 				if(getParentElement(f).getPointOfReferenceClockObject() == null) {
@@ -103,7 +103,7 @@ public class ModelEvaluatorUtil {
 		//get referenceClock
 		if (getParentElement(f) != null) {
 			TimeDependentFunctionContainer parentElement = getParentElement(f);
-			if (parentElement.getPointOfReferenceClockType().getLiteral().contains("ELEMCLOCK")) {
+			if (parentElement.getPointOfReferenceClockType().getLiteral().contains("CONTAINERCLOCK")) {
 				return parentElement.getFirstIterationStart();
 			} else if (parentElement.getPointOfReferenceClockType().getLiteral().contains("LOOPCLOCK")
 					|| parentElement.getPointOfReferenceClockType().getLiteral().contains("SEQCLOCK")) {

@@ -1226,7 +1226,7 @@ public class DlimPackageImpl extends EPackageImpl implements DlimPackage {
 		initEAttribute(getTimeDependentFunctionContainer_FirstIterationEnd(), ecorePackage.getEDouble(), "firstIterationEnd", null, 0, 1, TimeDependentFunctionContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getTimeDependentFunctionContainer_Function(), this.getFunction(), null, "function", null, 0, 1, TimeDependentFunctionContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTimeDependentFunctionContainer_PointOfReferenceClockObject(), this.getReferenceClockObject(), null, "pointOfReferenceClockObject", null, 0, 1, TimeDependentFunctionContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTimeDependentFunctionContainer_PointOfReferenceClockType(), this.getClockType(), "pointOfReferenceClockType", "ELEMCLOCK", 0, 1, TimeDependentFunctionContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTimeDependentFunctionContainer_PointOfReferenceClockType(), this.getClockType(), "pointOfReferenceClockType", "CONTAINERCLOCK", 0, 1, TimeDependentFunctionContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = initEOperation(getTimeDependentFunctionContainer__DurationGreaterZero__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "durationGreaterZero", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEDiagnosticChain(), "chain", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -1334,7 +1334,7 @@ public class DlimPackageImpl extends EPackageImpl implements DlimPackage {
 		// Initialize enums and add enum literals
 		initEEnum(clockTypeEEnum, ClockType.class, "ClockType");
 		addEEnumLiteral(clockTypeEEnum, ClockType.ROOT_CLOCK);
-		addEEnumLiteral(clockTypeEEnum, ClockType.ELEMENT_CLOCK);
+		addEEnumLiteral(clockTypeEEnum, ClockType.CONTAINER_CLOCK);
 		addEEnumLiteral(clockTypeEEnum, ClockType.SEQUENCE_CLOCK);
 		addEEnumLiteral(clockTypeEEnum, ClockType.LOOP_CLOCK);
 

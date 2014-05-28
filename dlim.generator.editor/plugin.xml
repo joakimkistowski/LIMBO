@@ -59,6 +59,7 @@
 
 
 
+
    <extension point="org.eclipse.ui.editors">
       <editor
             id="dlim.presentation.DlimEditorID"

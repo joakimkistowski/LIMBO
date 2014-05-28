@@ -29,16 +29,14 @@ public enum ClockType implements Enumerator {
 	ROOT_CLOCK(0, "RootClock", "ROOTCLOCK"),
 
 	/**
-	 * The '<em><b>Element Clock</b></em>' literal object.
+	 * The '<em><b>Container Clock</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #ELEMENT_CLOCK_VALUE
+	 * @see #CONTAINER_CLOCK_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	ELEMENT_CLOCK(1, "ElementClock", "ELEMCLOCK"),
-
-	/**
+	CONTAINER_CLOCK(1, "ContainerClock", "CONTAINERCLOCK"), /**
 	 * The '<em><b>Sequence Clock</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -74,19 +72,19 @@ public enum ClockType implements Enumerator {
 	public static final int ROOT_CLOCK_VALUE = 0;
 
 	/**
-	 * The '<em><b>Element Clock</b></em>' literal value.
+	 * The '<em><b>Container Clock</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Element Clock</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Container Clock</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #ELEMENT_CLOCK
-	 * @model name="ElementClock" literal="ELEMCLOCK"
+	 * @see #CONTAINER_CLOCK
+	 * @model name="ContainerClock" literal="CONTAINERCLOCK"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int ELEMENT_CLOCK_VALUE = 1;
+	public static final int CONTAINER_CLOCK_VALUE = 1;
 
 	/**
 	 * The '<em><b>Sequence Clock</b></em>' literal value.
@@ -127,7 +125,7 @@ public enum ClockType implements Enumerator {
 	private static final ClockType[] VALUES_ARRAY =
 		new ClockType[] {
 			ROOT_CLOCK,
-			ELEMENT_CLOCK,
+			CONTAINER_CLOCK,
 			SEQUENCE_CLOCK,
 			LOOP_CLOCK,
 		};
@@ -181,7 +179,7 @@ public enum ClockType implements Enumerator {
 	public static ClockType get(int value) {
 		switch (value) {
 			case ROOT_CLOCK_VALUE: return ROOT_CLOCK;
-			case ELEMENT_CLOCK_VALUE: return ELEMENT_CLOCK;
+			case CONTAINER_CLOCK_VALUE: return CONTAINER_CLOCK;
 			case SEQUENCE_CLOCK_VALUE: return SEQUENCE_CLOCK;
 			case LOOP_CLOCK_VALUE: return LOOP_CLOCK;
 		}

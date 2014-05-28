@@ -1155,7 +1155,7 @@ public class ModelExtractor {
 		int index = 0;
 		double sum = 0.0;
 		for (ArrivalRateTuple t : arrivalRateList) {
-			noiseDiffs[index] = t.getArrivalRate() - noisyArrivalRateList.get(index).getArrivalRate();
+			noiseDiffs[index] = - t.getArrivalRate() + noisyArrivalRateList.get(index).getArrivalRate();
 			sum += noiseDiffs[index];
 			index++;
 		}
@@ -1185,7 +1185,7 @@ public class ModelExtractor {
 		double[] noiseDiffs = new double[arrivalRateList.size()];
 		int index = 0;
 		for (ArrivalRateTuple t : arrivalRateList) {
-			noiseDiffs[index] = t.getArrivalRate() - noisyArrivalRateList.get(index).getArrivalRate();
+			noiseDiffs[index] = - t.getArrivalRate() + noisyArrivalRateList.get(index).getArrivalRate();
 			index++;
 		}
 		Arrays.sort(noiseDiffs);

@@ -189,7 +189,7 @@ public interface TimeDependentFunctionContainer extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Point Of Reference Clock Type</b></em>' attribute.
-	 * The default value is <code>"ELEMCLOCK"</code>.
+	 * The default value is <code>"CONTAINERCLOCK"</code>.
 	 * The literals are from the enumeration {@link dlim.ClockType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -201,7 +201,7 @@ public interface TimeDependentFunctionContainer extends EObject {
 	 * @see dlim.ClockType
 	 * @see #setPointOfReferenceClockType(ClockType)
 	 * @see dlim.DlimPackage#getTimeDependentFunctionContainer_PointOfReferenceClockType()
-	 * @model default="ELEMCLOCK"
+	 * @model default="CONTAINERCLOCK"
 	 * @generated
 	 */
 	ClockType getPointOfReferenceClockType();
