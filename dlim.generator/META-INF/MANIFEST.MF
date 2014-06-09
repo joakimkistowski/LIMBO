@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: dlim.generator;singleton:=true
-Bundle-Version: 0.14.03.0314
+Bundle-Version: 0.14.05.2717
 Bundle-ClassPath: .,
  lib/commons-math3-3.2.jar
 Bundle-Vendor: %providerName
@@ -16,12 +16,13 @@ Require-Bundle: com.ibm.icu;bundle-version="4.0.1",
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: dlim,
+ dlim.impl,
  dlim.assistant,
  dlim.exporter,
  dlim.exporter.utils,
- dlim.exporterHandler;x-friends:="dlim.generator.editor",
+ dlim.exporterHandler;x-friends:=dlim.generator.editor,
  dlim.extractor,
- dlim.extractorHandler;x-friends:="dlim.generator.editor",
+ dlim.extractorHandler;x-friends:=dlim.generator.editor,
  dlim.generator,
  dlim.reader,
  dlim.util
