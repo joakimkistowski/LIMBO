@@ -45,7 +45,7 @@ public abstract class TimeStampWriter {
 	 * @param arDevisor Divide the arrival rates from the arrival rate tuples by this to produce less time-stamps.
 	 * 					Using a value < 1 produces more time stamps
 	 */
-	protected void generateTimeStampsFromArrivalRates(File file, List<ArrivalRateTuple> arrRates,
+	public void generateTimeStampsFromArrivalRates(File file, List<ArrivalRateTuple> arrRates,
 			int decimalPlaces, double stretch, double arDevisor) {
 		this.stretch = stretch;
 		this.decimalplaces = decimalPlaces;
