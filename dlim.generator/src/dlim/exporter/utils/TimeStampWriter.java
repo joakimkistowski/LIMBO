@@ -75,7 +75,4 @@ public abstract class TimeStampWriter {
 	protected abstract void writeTimestampsForArrivalRate(PrintWriter writer, double step,
 			double arrRate, double tmpStep, double tmpTime);
 
-
-
-
 }

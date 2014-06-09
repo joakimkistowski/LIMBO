@@ -8,7 +8,7 @@
   <genPackages prefix="Dlim" disposableProviderFactory="true" ecorePackage="dlim.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="dlim.ecore#//ClockType">
       <genEnumLiterals ecoreEnumLiteral="dlim.ecore#//ClockType/RootClock"/>
-      <genEnumLiterals ecoreEnumLiteral="dlim.ecore#//ClockType/ElementClock"/>
+      <genEnumLiterals ecoreEnumLiteral="dlim.ecore#//ClockType/ContainerClock"/>
       <genEnumLiterals ecoreEnumLiteral="dlim.ecore#//ClockType/SequenceClock"/>
       <genEnumLiterals ecoreEnumLiteral="dlim.ecore#//ClockType/LoopClock"/>
     </genEnums>
@@ -110,16 +110,13 @@
       <genOperations ecoreOperation="dlim.ecore#//ArrivalRatesFromFile/getArrivalRate">
         <genParameters ecoreParameter="dlim.ecore#//ArrivalRatesFromFile/getArrivalRate/x"/>
       </genOperations>
-      <genOperations ecoreOperation="dlim.ecore#//ArrivalRatesFromFile/readFile">
-        <genParameters ecoreParameter="dlim.ecore#//ArrivalRatesFromFile/readFile/projectPath"/>
-      </genOperations>
+      <genOperations ecoreOperation="dlim.ecore#//ArrivalRatesFromFile/readFile"/>
     </genClasses>
     <genClasses ecoreClass="dlim.ecore#//AbsoluteValueFunction"/>
     <genClasses image="false" ecoreClass="dlim.ecore#//UnivariateFunction">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dlim.ecore#//UnivariateFunction/function"/>
     </genClasses>
     <genClasses ecoreClass="dlim.ecore#//Polynomial">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//Polynomial/labelText"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dlim.ecore#//Polynomial/factors"/>
     </genClasses>
     <genClasses ecoreClass="dlim.ecore#//PolynomialFactor">
