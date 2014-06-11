@@ -1,23 +1,24 @@
 package dlim.exporter;
 
+import java.io.File;
 import java.util.List;
 
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 
-import dlim.generator.ArrivalRateTuple;
-import dlim.generator.IGeneratorConstants;
-import dlim.generator.ModelEvaluator;
 import dlim.exporter.dialogs.RequestTimeStampParametersDialog;
 import dlim.exporter.utils.ArrivalRateGenerator;
-import dlim.exporter.utils.TimeStampWriter;
+import dlim.exporter.utils.EqualDistanceTimestampWriter;
+import dlim.generator.ArrivalRateTuple;
+import dlim.generator.ModelEvaluator;
 
 /**
  * Exports request time-stamps with a equal distance within each sampled arrival rate interval.
  * @author Jóakim G. v. Kistowski
  *
  */
-public class DlimEqualDistanceRequestStampExporter implements IDlimExporter {
+public class DlimEqualDistanceRequestStampExporter extends DlimRequestStampExporter implements IDlimExporter {
 
 	/**
 	 * Exports request time-stamps with a equal distance within each sampled arrival rate interval.
@@ -31,10 +32,11 @@ public class DlimEqualDistanceRequestStampExporter implements IDlimExporter {
 		paramDialog.open();
 		
 		if (!paramDialog.wasCanceled()) {
-			evaluator.setRandomSeed(paramDialog.getRndSeed());
+			IPath timeStampFolderPath = perpareTimestampDir(projectPath);
+			File file = timeStampFolderPath.append(evaluator.getName() + "TimeStamps.txt").toFile();
 			List<ArrivalRateTuple> arrList = ArrivalRateGenerator.generateArrivalRates(evaluator, paramDialog.getStep());
-			TimeStampWriter.generateTimeStampsFromArrivalRates(evaluator, projectPath, arrList,
-					IGeneratorConstants.EQUALDISTANCESAMPLING, paramDialog.getDecimalPlaces(),
+			EqualDistanceTimestampWriter writer = new EqualDistanceTimestampWriter();
+			writer.generateTimeStampsFromArrivalRates(file, arrList, paramDialog.getDecimalPlaces(), 
 					paramDialog.getStretch(), paramDialog.getArDevisor());
 		}
 	}
