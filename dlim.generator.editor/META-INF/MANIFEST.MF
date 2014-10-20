@@ -1,20 +1,20 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: dlim.generator.editor;singleton:=true
-Bundle-Version: 0.14.05.2717
+Bundle-SymbolicName: tools.descartes.dlim.generator.editor;singleton:=true
+Bundle-Version: 0.14.10.2009
 Bundle-ClassPath: .
-Bundle-Activator: dlim.presentation.DlimEditorPlugin$Implementation
+Bundle-Activator: tools.descartes.dlim.presentation.DlimEditorPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: dlim.generator.editor.popup.actions,
- dlim.generator.editor.utils,
- dlim.presentation
+Export-Package: tools.descartes.dlim.generator.editor.popup.actions,
+ tools.descartes.dlim.generator.editor.utils,
+ tools.descartes.dlim.presentation
 Require-Bundle: org.eclipse.core.runtime,
- dlim.generator;visibility:=reexport,
+ tools.descartes.dlim.generator;visibility:=reexport,
  org.eclipse.core.resources;visibility:=reexport,
- dlim.generator.edit;visibility:=reexport,
+ tools.descartes.dlim.generator.edit;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.eclipse.emf.edit.ui;visibility:=reexport,
  org.eclipse.ui.ide;visibility:=reexport,

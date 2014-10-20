@@ -6,31 +6,29 @@
 
 <plugin>
    <extension
-         id="dlim.exporters"
-         name="Exporters"
-         point="dlim.generator.dlim_generator_exporters">
+         point="tools.descartes.dlim.generator.tools_descartes_dlim_generator_exporters">
       <Exporter
-            class="dlim.exporter.DlimArrivalRateExporter"
+            class="tools.descartes.dlim.exporter.DlimArrivalRateExporter"
             label="Simple Arrival Rate File (.txt)">
       </Exporter>
       <Exporter
-            class="dlim.exporter.DlimEqualDistanceRequestStampExporter"
+            class="tools.descartes.dlim.exporter.DlimEqualDistanceRequestStampExporter"
             label="Request Time Stamps via Equal Distance Sampling (.txt)">
       </Exporter>
       <Exporter
-            class="dlim.exporter.DlimUniformRequestStampExporter"
+            class="tools.descartes.dlim.exporter.DlimUniformRequestStampExporter"
             label="Request Time Stamps via Uniform Random Sampling (.txt)">
       </Exporter>
       <Exporter
-            class="dlim.exporter.DlimEqualDistanceRequestStampExporterCSV"
+            class="tools.descartes.dlim.exporter.DlimEqualDistanceRequestStampExporterCSV"
             label="Request Time Stamps via Equal Distance Sampling (.csv)">
       </Exporter>
       <Exporter
-            class="dlim.exporter.DlimUniformRequestStampExporterCSV"
+            class="tools.descartes.dlim.exporter.DlimUniformRequestStampExporterCSV"
             label="Request Time Stamps via Uniform Random Sampling (.csv)">
       </Exporter>
       <Exporter
-            class="dlim.exporter.DlimArrivalRateExporterCSV"
+            class="tools.descartes.dlim.exporter.DlimArrivalRateExporterCSV"
             label="Simple Arrival Rate File (.csv)">
       </Exporter>
    </extension>

@@ -8,13 +8,13 @@
 
    <extension point="org.eclipse.ui.newWizards">
       <category
-            id="de.uka.ipd.sdq.dlim.category"
+            id="tools.descartes.dlim.category"
             name="%_UI_Wizard_category"/>
       <wizard
-            id="dlim.presentation.DlimModelWizardID"
+            id="tools.descartes.dlim.presentation.DlimModelWizardID"
             name="%_UI_DlimModelWizard_label"
-            class="dlim.generator.editor.wizards.CustomDlimModelWizard"
-            category="de.uka.ipd.sdq.dlim.category"
+            class="tools.descartes.dlim.generator.editor.wizards.CustomDlimModelWizard"
+            category="tools.descartes.dlim.category"
             icon="icons/full/obj16/DlimModelFile.gif">
          <description>%_UI_DlimModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>
@@ -62,25 +62,25 @@
 
    <extension point="org.eclipse.ui.editors">
       <editor
-            id="dlim.presentation.DlimEditorID"
+            id="tools.descartes.dlim.presentation.DlimEditorID"
             name="%_UI_DlimEditor_label"
             icon="icons/full/obj16/DlimModelFile.gif"
             extensions="dlim"
-            class="dlim.presentation.custom.CustomDlimEditor"
-            contributorClass="dlim.presentation.DlimActionBarContributor">
+            class="tools.descartes.dlim.presentation.custom.CustomDlimEditor"
+            contributorClass="tools.descartes.dlim.presentation.DlimActionBarContributor">
       </editor>
    </extension>
    <extension
          point="org.eclipse.ui.popupMenus">
       <objectContribution
-            id="dlim.generator.editor.TimeStampGenerationContribution"
+            id="tools.descartes.dlim.generator.editor.TimeStampGenerationContribution"
             objectClass="org.eclipse.core.resources.IFile">
          <action
-               class="dlim.generator.editor.popup.actions.TimeStampGeneratorAction"
+               class="tools.descartes.dlim.generator.editor.popup.actions.TimeStampGeneratorAction"
                enablesFor="1"
-               id="dlim.generator.editor.functionCodeGeneratorAction"
+               id="tools.descartes.dlim.generator.editor.functionCodeGeneratorAction"
                label="Generate Time Stamps"
-               menubarPath="dlim.generator.editor.menu1">
+               menubarPath="tools.descartes.dlim.generator.editor.menu1">
          </action>
          <visibility>
             <objectState
@@ -90,14 +90,14 @@
          </visibility>
       </objectContribution>
       <objectContribution
-            id="dlim.generator.editor.ArrivalRateReaderContribution"
+            id="tools.descartes.dlim.generator.editor.ArrivalRateReaderContribution"
             objectClass="org.eclipse.core.resources.IFile">
          <action
-               class="dlim.generator.editor.popup.actions.TimeSeriesReaderAction"
+               class="tools.descartes.dlim.generator.editor.popup.actions.TimeSeriesReaderAction"
                enablesFor="1"
-               id="dlim.generator.editor.timeSeriesReaderAction"
+               id="tools.descartes.dlim.generator.editor.timeSeriesReaderAction"
                label="Generate Arrival Rates from Timestamps"
-               menubarPath="dlim.generator.editor.menu1">
+               menubarPath="tools.descartes.dlim.generator.editor.menu1">
          </action>
          <visibility>
             <or>
@@ -113,14 +113,14 @@
          </visibility>
       </objectContribution>
       <objectContribution
-            id="dlim.generator.editor.DiffCalculatorContribution"
+            id="tools.descartes.dlim.generator.editor.DiffCalculatorContribution"
             objectClass="org.eclipse.core.resources.IFile">
          <action
-               class="dlim.generator.editor.popup.actions.DiffRunnerAction"
+               class="tools.descartes.dlim.generator.editor.popup.actions.DiffRunnerAction"
                enablesFor="1"
-               id="dlim.generator.editor.diffRunnerAction"
+               id="tools.descartes.dlim.generator.editor.diffRunnerAction"
                label="Calculate Difference to Arrival Rate File"
-               menubarPath="dlim.generator.editor.menu1">
+               menubarPath="tools.descartes.dlim.generator.editor.menu1">
          </action>
          <visibility>
             <objectState
@@ -130,116 +130,116 @@
          </visibility>
       </objectContribution>
       <objectContribution
-            id="dlim.generator.editor.TrendCalibrationContribution"
-            objectClass="dlim.Trend">
+            id="tools.descartes.dlim.generator.editor.TrendCalibrationContribution"
+            objectClass="tools.descartes.dlim.Trend">
          <menu
-               id="dlim.generator.editor.TrendCalibrationContributionMenu"
+               id="tools.descartes.dlim.generator.editor.TrendCalibrationContributionMenu"
                label="Calibrate Trend Value"
-               path="dlim.generator.editor.menu1">
+               path="tools.descartes.dlim.generator.editor.menu1">
             <separator
                   name="group1">
             </separator>
          </menu>
          <action
-               class="dlim.generator.editor.popup.actions.CalibrateTrendEndValueAction"
+               class="tools.descartes.dlim.generator.editor.popup.actions.CalibrateTrendEndValueAction"
                enablesFor="1"
-               id="dlim.generator.editor.newAction"
+               id="tools.descartes.dlim.generator.editor.newAction"
                label="Calibrate End Value"
-               menubarPath="dlim.generator.editor.TrendCalibrationContributionMenu/group1">
+               menubarPath="tools.descartes.dlim.generator.editor.TrendCalibrationContributionMenu/group1">
          </action>
          <action
-               class="dlim.generator.editor.popup.actions.CalibrateTrendStartValueAction"
+               class="tools.descartes.dlim.generator.editor.popup.actions.CalibrateTrendStartValueAction"
                enablesFor="1"
-               id="dlim.generator.editor.newAction"
+               id="tools.descartes.dlim.generator.editor.newAction"
                label="Calibrate Start Value"
-               menubarPath="dlim.generator.editor.TrendCalibrationContributionMenu/group1">
+               menubarPath="tools.descartes.dlim.generator.editor.TrendCalibrationContributionMenu/group1">
          </action>
       </objectContribution>
       <objectContribution
-            id="dlim.generator.editor.BurstCalibrationContribution"
-            objectClass="dlim.Burst">
+            id="tools.descartes.dlim.generator.editor.BurstCalibrationContribution"
+            objectClass="tools.descartes.dlim.Burst">
          <action
-               class="dlim.generator.editor.popup.actions.CalibrateBurstPeakValueAction"
+               class="tools.descartes.dlim.generator.editor.popup.actions.CalibrateBurstPeakValueAction"
                enablesFor="1"
-               id="dlim.generator.editor.calibrateBurstPeakValueAction"
+               id="tools.descartes.dlim.generator.editor.calibrateBurstPeakValueAction"
                label="Calibrate Burst Peak Value"
-               menubarPath="dlim.generator.editor.menu1">
+               menubarPath="tools.descartes.dlim.generator.editor.menu1">
          </action>
       </objectContribution>
       <objectContribution
-            id="dlim.generator.editor.DecomposeInPlot"
-            objectClass="dlim.Sequence">
+            id="tools.descartes.dlim.generator.editor.DecomposeInPlot"
+            objectClass="tools.descartes.dlim.Sequence">
          <action
-               class="dlim.generator.editor.popup.actions.DecomposeInPlotViewAction"
+               class="tools.descartes.dlim.generator.editor.popup.actions.DecomposeInPlotViewAction"
                enablesFor="1"
-               id="dlim.generator.editor.showPlotViewAction"
+               id="tools.descartes.dlim.generator.editor.showPlotViewAction"
                label="Decompose In Plot View"
-               menubarPath="dlim.generator.editor.menu1">
+               menubarPath="tools.descartes.dlim.generator.editor.menu1">
          </action>
       </objectContribution>
       <viewerContribution
-            id="dlim.generator.editor.dlim.generator.editor.ShowPlotViewContribution"
-            targetID="dlim.presentation.DlimEditorID">
+            id="tools.descartes.dlim.generator.editor.dlim.generator.editor.ShowPlotViewContribution"
+            targetID="tools.descartes.dlim.presentation.DlimEditorID">
          <action
-               class="dlim.generator.editor.popup.actions.OpenPlotViewAction"
-               id="dlim.generator.editor.openPlotViewAction"
+               class="tools.descartes.dlim.generator.editor.popup.actions.OpenPlotViewAction"
+               id="tools.descartes.dlim.generator.editor.openPlotViewAction"
                label="Show Plot View"
-               menubarPath="dlim.generator.editor.menu1">
+               menubarPath="tools.descartes.dlim.generator.editor.menu1">
          </action>
       </viewerContribution>
       <viewerContribution
-            id="dlim.generator.editor.ToggleDecomposeInPlotContribution"
-            targetID="dlim.generator.editor.views.PlotView">
+            id="tools.descartes.dlim.generator.editor.ToggleDecomposeInPlotContribution"
+            targetID="tools.descartes.dlim.generator.editor.views.PlotView">
          <action
-               class="dlim.generator.editor.popup.actions.ToggleDecomposeInPlotViewAction"
-               id="dlim.generator.editor.openPlotViewAction"
+               class="tools.descartes.dlim.generator.editor.popup.actions.ToggleDecomposeInPlotViewAction"
+               id="tools.descartes.dlim.generator.editor.openPlotViewAction"
                label="Toggle Decomposition"
-               menubarPath="dlim.generator.editor.menu1">
+               menubarPath="tools.descartes.dlim.generator.editor.menu1">
          </action>
       </viewerContribution>
       <objectContribution
-            id="dlim.generator.editor.ExtractionContribution"
-            objectClass="dlim.Sequence">
+            id="tools.descartes.dlim.generator.editor.ExtractionContribution"
+            objectClass="tools.descartes.dlim.Sequence">
          <action
-               class="dlim.generator.editor.popup.actions.ExtractionAction"
+               class="tools.descartes.dlim.generator.editor.popup.actions.ExtractionAction"
                enablesFor="1"
-               id="dlim.generator.editor.extractionAction"
+               id="tools.descartes.dlim.generator.editor.extractionAction"
                label="Extract Sequence from Arrival Rate File"
-               menubarPath="dlim.generator.editor.menu1">
+               menubarPath="tools.descartes.dlim.generator.editor.menu1">
          </action>
       </objectContribution>
       <viewerContribution
-            id="dlim.generator.editor.PlotArrivalRateFileInPlotContribution"
-            targetID="dlim.generator.editor.views.PlotView">
+            id="tools.descartes.dlim.generator.editor.PlotArrivalRateFileInPlotContribution"
+            targetID="tools.descartes.dlim.generator.editor.views.PlotView">
          <action
-               class="dlim.generator.editor.popup.actions.PlotArrivalRateFileInPlotViewAction"
-               id="dlim.generator.editor.plotArrivalRateFileInPlotViewAction"
+               class="tools.descartes.dlim.generator.editor.popup.actions.PlotArrivalRateFileInPlotViewAction"
+               id="tools.descartes.dlim.generator.editor.plotArrivalRateFileInPlotViewAction"
                label="Toggle Arrival Rate File Plot"
-               menubarPath="dlim.generator.editor.menu1">
+               menubarPath="tools.descartes.dlim.generator.editor.menu1">
          </action>
       </viewerContribution>
       <viewerContribution
-            id="dlim.generator.editor.SaveGraphFromPlotInViewContribution"
-            targetID="dlim.generator.editor.views.PlotView">
+            id="tools.descartes.dlim.generator.editor.SaveGraphFromPlotInViewContribution"
+            targetID="tools.descartes.dlim.generator.editor.views.PlotView">
          <action
-               class="dlim.generator.editor.popup.actions.SaveGraphFromPlotViewAction"
-               id="dlim.generator.editor.saveGraphFromPlotInViewAction"
+               class="tools.descartes.dlim.generator.editor.popup.actions.SaveGraphFromPlotViewAction"
+               id="tools.descartes.dlim.generator.editor.saveGraphFromPlotInViewAction"
                label="Save Plot as Image"
-               menubarPath="dlim.generator.editor.menu1">
+               menubarPath="tools.descartes.dlim.generator.editor.menu1">
          </action>
       </viewerContribution>
    </extension>
    <extension
          point="org.eclipse.ui.views">
       <category
-            id="dlim.generator.plotview"
+            id="tools.descartes.dlim.generator.plotview"
             name="Descartes Load Intensity Model">
       </category>
       <view
-            category="dlim.generator.plotview"
-            class="dlim.generator.editor.views.PlotView"
+            category="tools.descartes.dlim.generator.plotview"
+            class="tools.descartes.dlim.generator.editor.views.PlotView"
             icon="icons/sample.gif"
-            id="dlim.generator.editor.views.PlotView"
+            id="tools.descartes.dlim.generator.editor.views.PlotView"
             name="Arrival Rate Plot">
       </view>
    </extension>

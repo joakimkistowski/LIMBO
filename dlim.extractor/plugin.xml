@@ -6,18 +6,16 @@
 
 <plugin>
    <extension
-         id="dlim.extractors"
-         name="Extractors"
-         point="dlim.generator.dlim_generator_extractors">
+         point="tools.descartes.dlim.generator.tools_descartes_dlim_generator_extractors">
       <Extractor
-            extractor_class="dlim.extractor.SimpleProcessExtractor"
+            extractor_class="tools.descartes.dlim.extractor.SimpleProcessExtractor"
             label="Simple Process Extractor"
-            reader_class="dlim.reader.DefaultArrivalRateReader">
+            reader_class="tools.descartes.dlim.reader.DefaultArrivalRateReader">
       </Extractor>
       <Extractor
-            extractor_class="dlim.extractor.PeriodicProcessExtractor"
+            extractor_class="tools.descartes.dlim.extractor.PeriodicProcessExtractor"
             label="Periodic Process Extractor"
-            reader_class="dlim.reader.DefaultArrivalRateReader">
+            reader_class="tools.descartes.dlim.reader.DefaultArrivalRateReader">
       </Extractor>
    </extension>
 

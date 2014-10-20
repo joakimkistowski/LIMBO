@@ -9,7 +9,7 @@
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
             uri="http://sdq.ipd.uka.de/dlimm/0.1"
-            class="dlim.provider.DlimItemProviderAdapterFactory"
+            class="tools.descartes.dlim.provider.DlimItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider
