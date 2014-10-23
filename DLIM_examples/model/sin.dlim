@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dlim:Sequence xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dlim="http://sdq.ipd.uka.de/dlimm/0.1" name="sin" terminateAfterLoops="2">
   <referenceClock name="rootClock"/>
-  <sequenceFunctionContainers name="sinHeadElement" duration="40.0" pointOfReferenceClockType="ELEMCLOCK">
+  <sequenceFunctionContainers name="sinHeadElement" duration="40.0" pointOfReferenceClockType="CONTAINERCLOCK">
     <function xsi:type="dlim:AbsoluteSin" min="0.0" max="20.0" period="40.0"/>
   </sequenceFunctionContainers>
   <sequenceFunctionContainers name="elem2" duration="40.0" pointOfReferenceClockObject="//@referenceClock" pointOfReferenceClockType="SEQCLOCK">

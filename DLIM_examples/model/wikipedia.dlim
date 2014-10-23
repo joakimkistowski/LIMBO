@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dlim:Sequence xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dlim="http://sdq.ipd.uka.de/dlimm/0.1" name="wikipedia" terminateAfterTime="1450.0" firstIterationEnd="1450.0" loopDuration="1702.0" finalDuration="1450.0">
-  <sequenceFunctionContainers name="offsetHeadElement" duration="6.0" firstIterationEnd="6.0" pointOfReferenceClockType="ELEMCLOCK">
+  <sequenceFunctionContainers name="offsetHeadElement" duration="6.0" firstIterationEnd="6.0" pointOfReferenceClockType="CONTAINERCLOCK">
     <function xsi:type="dlim:LinearTrend" functionOutputAtStart="807627.0" functionOutputAtEnd="283345.4999999999"/>
   </sequenceFunctionContainers>
-  <sequenceFunctionContainers name="offsetDaysElement" duration="96.0" firstIterationStart="6.0" firstIterationEnd="102.0" pointOfReferenceClockType="ELEMCLOCK">
+  <sequenceFunctionContainers name="offsetDaysElement" duration="96.0" firstIterationStart="6.0" firstIterationEnd="102.0" pointOfReferenceClockType="CONTAINERCLOCK">
     <function xsi:type="dlim:Sequence" name="offsetDays" terminateAfterLoops="4" firstIterationStart="6.0" firstIterationEnd="102.0" loopDuration="24.0" finalDuration="96.0">
       <combine operator="MULT">
         <function xsi:type="dlim:SinTrend" functionOutputAtStart="1.0" functionOutputAtEnd="0.8297449580106266"/>
       </combine>
-      <sequenceFunctionContainers name="beforeNoon1" duration="10.0" firstIterationStart="6.0" firstIterationEnd="16.0" pointOfReferenceClockType="ELEMCLOCK">
+      <sequenceFunctionContainers name="beforeNoon1" duration="10.0" firstIterationStart="6.0" firstIterationEnd="16.0" pointOfReferenceClockType="CONTAINERCLOCK">
         <function xsi:type="dlim:SinTrend" functionOutputAtStart="283345.5" functionOutputAtEnd="2352399.0"/>
       </sequenceFunctionContainers>
-      <sequenceFunctionContainers name="beforeNoon2" duration="2.0" firstIterationStart="16.0" firstIterationEnd="18.0" pointOfReferenceClockType="ELEMCLOCK">
+      <sequenceFunctionContainers name="beforeNoon2" duration="2.0" firstIterationStart="16.0" firstIterationEnd="18.0" pointOfReferenceClockType="CONTAINERCLOCK">
         <function xsi:type="dlim:SinTrend" functionOutputAtStart="2352399.0" functionOutputAtEnd="2210573.5"/>
       </sequenceFunctionContainers>
-      <sequenceFunctionContainers name="afterNoon1" duration="2.0" firstIterationStart="18.0" firstIterationEnd="20.0" pointOfReferenceClockType="ELEMCLOCK">
+      <sequenceFunctionContainers name="afterNoon1" duration="2.0" firstIterationStart="18.0" firstIterationEnd="20.0" pointOfReferenceClockType="CONTAINERCLOCK">
         <function xsi:type="dlim:SinTrend" functionOutputAtStart="2210573.5" functionOutputAtEnd="2190946.0"/>
       </sequenceFunctionContainers>
-      <sequenceFunctionContainers name="afterNoon2" duration="10.0" firstIterationStart="20.0" firstIterationEnd="30.0" pointOfReferenceClockType="ELEMCLOCK">
+      <sequenceFunctionContainers name="afterNoon2" duration="10.0" firstIterationStart="20.0" firstIterationEnd="30.0" pointOfReferenceClockType="CONTAINERCLOCK">
         <function xsi:type="dlim:SinTrend" functionOutputAtStart="2190946.0" functionOutputAtEnd="283345.5"/>
       </sequenceFunctionContainers>
     </function>
@@ -26,43 +26,43 @@
     <function xsi:type="dlim:Sequence" name="day" terminateAfterTime="16000.0" firstIterationStart="102.0" firstIterationEnd="16102.0" loopDuration="24.0" finalDuration="16000.0">
       <combine operator="MULT">
         <function xsi:type="dlim:Sequence" name="week" terminateAfterTime="1600.0" firstIterationStart="102.0" firstIterationEnd="1702.0" loopDuration="168.0" finalDuration="1600.0">
-          <sequenceFunctionContainers name="firstHalfWeek" duration="84.0" firstIterationStart="102.0" firstIterationEnd="186.0" pointOfReferenceClockType="ELEMCLOCK">
+          <sequenceFunctionContainers name="firstHalfWeek" duration="84.0" firstIterationStart="102.0" firstIterationEnd="186.0" pointOfReferenceClockType="CONTAINERCLOCK">
             <function xsi:type="dlim:SinTrend" functionOutputAtStart="0.8297449580106266" functionOutputAtEnd="0.9674084575789947"/>
           </sequenceFunctionContainers>
-          <sequenceFunctionContainers name="secondHalfWeek" duration="84.0" firstIterationStart="186.0" firstIterationEnd="270.0" pointOfReferenceClockType="ELEMCLOCK">
+          <sequenceFunctionContainers name="secondHalfWeek" duration="84.0" firstIterationStart="186.0" firstIterationEnd="270.0" pointOfReferenceClockType="CONTAINERCLOCK">
             <function xsi:type="dlim:SinTrend" functionOutputAtStart="0.9674084575789947" functionOutputAtEnd="0.8297449580106266"/>
           </sequenceFunctionContainers>
         </function>
       </combine>
       <combine operator="MULT">
         <function xsi:type="dlim:Sequence" name="macroTrend" terminateAfterTime="1600.0" firstIterationStart="102.0" firstIterationEnd="1702.0" loopDuration="1680.0" finalDuration="1600.0">
-          <sequenceFunctionContainers name="macro1" duration="336.0" firstIterationStart="102.0" firstIterationEnd="438.0" pointOfReferenceClockType="ELEMCLOCK">
+          <sequenceFunctionContainers name="macro1" duration="336.0" firstIterationStart="102.0" firstIterationEnd="438.0" pointOfReferenceClockType="CONTAINERCLOCK">
             <function xsi:type="dlim:SinTrend" functionOutputAtStart="1.0" functionOutputAtEnd="1.1307269746006563"/>
           </sequenceFunctionContainers>
-          <sequenceFunctionContainers name="macro2" duration="336.0" firstIterationStart="438.0" firstIterationEnd="774.0" pointOfReferenceClockType="ELEMCLOCK">
+          <sequenceFunctionContainers name="macro2" duration="336.0" firstIterationStart="438.0" firstIterationEnd="774.0" pointOfReferenceClockType="CONTAINERCLOCK">
             <function xsi:type="dlim:SinTrend" functionOutputAtStart="1.1307269746006563" functionOutputAtEnd="1.2338215559463983"/>
           </sequenceFunctionContainers>
-          <sequenceFunctionContainers name="macro3" duration="336.0" firstIterationStart="774.0" firstIterationEnd="1110.0" pointOfReferenceClockType="ELEMCLOCK">
+          <sequenceFunctionContainers name="macro3" duration="336.0" firstIterationStart="774.0" firstIterationEnd="1110.0" pointOfReferenceClockType="CONTAINERCLOCK">
             <function xsi:type="dlim:SinTrend" functionOutputAtStart="1.2338215559463983" functionOutputAtEnd="1.286683155788171"/>
           </sequenceFunctionContainers>
-          <sequenceFunctionContainers name="macro4" duration="336.0" firstIterationStart="1110.0" firstIterationEnd="1446.0" pointOfReferenceClockType="ELEMCLOCK">
+          <sequenceFunctionContainers name="macro4" duration="336.0" firstIterationStart="1110.0" firstIterationEnd="1446.0" pointOfReferenceClockType="CONTAINERCLOCK">
             <function xsi:type="dlim:SinTrend" functionOutputAtStart="1.2866831557881708" functionOutputAtEnd="1.0355076146989957"/>
           </sequenceFunctionContainers>
-          <sequenceFunctionContainers name="macro5" duration="50.0" firstIterationStart="1446.0" firstIterationEnd="1782.0" pointOfReferenceClockType="ELEMCLOCK">
+          <sequenceFunctionContainers name="macro5" duration="50.0" firstIterationStart="1446.0" firstIterationEnd="1782.0" pointOfReferenceClockType="CONTAINERCLOCK">
             <function xsi:type="dlim:Constant" constant="1.0355076146989957"/>
           </sequenceFunctionContainers>
         </function>
       </combine>
-      <sequenceFunctionContainers name="beforeNoon1" duration="10.0" firstIterationStart="102.0" firstIterationEnd="112.0" pointOfReferenceClockType="ELEMCLOCK">
+      <sequenceFunctionContainers name="beforeNoon1" duration="10.0" firstIterationStart="102.0" firstIterationEnd="112.0" pointOfReferenceClockType="CONTAINERCLOCK">
         <function xsi:type="dlim:SinTrend" functionOutputAtStart="283345.5" functionOutputAtEnd="2352399.0"/>
       </sequenceFunctionContainers>
-      <sequenceFunctionContainers name="beforeNoon2" duration="2.0" firstIterationStart="112.0" firstIterationEnd="114.0" pointOfReferenceClockType="ELEMCLOCK">
+      <sequenceFunctionContainers name="beforeNoon2" duration="2.0" firstIterationStart="112.0" firstIterationEnd="114.0" pointOfReferenceClockType="CONTAINERCLOCK">
         <function xsi:type="dlim:SinTrend" functionOutputAtStart="2352399.0" functionOutputAtEnd="2210573.5"/>
       </sequenceFunctionContainers>
-      <sequenceFunctionContainers name="afterNoon1" duration="2.0" firstIterationStart="114.0" firstIterationEnd="116.0" pointOfReferenceClockType="ELEMCLOCK">
+      <sequenceFunctionContainers name="afterNoon1" duration="2.0" firstIterationStart="114.0" firstIterationEnd="116.0" pointOfReferenceClockType="CONTAINERCLOCK">
         <function xsi:type="dlim:SinTrend" functionOutputAtStart="2210573.5" functionOutputAtEnd="2190946.0"/>
       </sequenceFunctionContainers>
-      <sequenceFunctionContainers name="afterNoon2" duration="10.0" firstIterationStart="116.0" firstIterationEnd="126.0" pointOfReferenceClockType="ELEMCLOCK">
+      <sequenceFunctionContainers name="afterNoon2" duration="10.0" firstIterationStart="116.0" firstIterationEnd="126.0" pointOfReferenceClockType="CONTAINERCLOCK">
         <function xsi:type="dlim:SinTrend" functionOutputAtStart="2190946.0" functionOutputAtEnd="283345.5"/>
       </sequenceFunctionContainers>
     </function>
