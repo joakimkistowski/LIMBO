@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dlim:Sequence xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dlim="http://sdq.ipd.uka.de/dlimm/0.1" name="week" terminateAfterLoops="2">
+<tools.descartes.dlim:Sequence xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tools.descartes.dlim="http://descartes.tools/dlim/0.1" name="week" terminateAfterLoops="2">
   <referenceClock name="weekClock"/>
   <sequenceFunctionContainers name="weekContainer" duration="168.0">
-    <function xsi:type="dlim:Sequence" name="day" terminateAfterLoops="7">
+    <function xsi:type="tools.descartes.dlim:Sequence" name="day" terminateAfterLoops="7">
       <sequenceFunctionContainers name="night" duration="12.0">
-        <function xsi:type="dlim:UniformNoise" min="20.0" max="100.0"/>
+        <function xsi:type="tools.descartes.dlim:UniformNoise" min="20.0" max="100.0"/>
       </sequenceFunctionContainers>
       <sequenceFunctionContainers name="day" duration="12.0" pointOfReferenceClockObject="//@referenceClock" pointOfReferenceClockType="LOOPCLOCK">
-        <function xsi:type="dlim:LinearTrend" functionOutputAtStart="600.0" functionOutputAtEnd="40.0"/>
+        <function xsi:type="tools.descartes.dlim:LinearTrend" functionOutputAtStart="600.0" functionOutputAtEnd="40.0"/>
       </sequenceFunctionContainers>
     </function>
   </sequenceFunctionContainers>
-</dlim:Sequence>
+</tools.descartes.dlim:Sequence>

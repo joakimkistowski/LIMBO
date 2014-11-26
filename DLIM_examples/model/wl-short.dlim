@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dlim:Sequence xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dlim="http://sdq.ipd.uka.de/dlimm/0.1" name="wl-short" terminateAfterLoops="4" firstIterationEnd="96.0" loopDuration="24.0" finalDuration="96.0">
+<tools.descartes.dlim:Sequence xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tools.descartes.dlim="http://descartes.tools/dlim/0.1" name="wl-short" terminateAfterLoops="4" firstIterationEnd="96.0" loopDuration="24.0" finalDuration="96.0">
   <combine operator="MULT">
-    <function xsi:type="dlim:LinearTrend" functionOutputAtStart="1.0" functionOutputAtEnd="0.8104371941870337"/>
+    <function xsi:type="tools.descartes.dlim:LinearTrend" functionOutputAtStart="1.0" functionOutputAtEnd="0.8104371941870337"/>
   </combine>
   <sequenceFunctionContainers name="1" duration="11.0" firstIterationEnd="11.0">
-    <function xsi:type="dlim:SinTrend" functionOutputAtStart="230634.0" functionOutputAtEnd="2352399.0"/>
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="230634.0" functionOutputAtEnd="2352399.0"/>
   </sequenceFunctionContainers>
   <sequenceFunctionContainers name="2" duration="3.0" firstIterationStart="11.0" firstIterationEnd="14.0">
-    <function xsi:type="dlim:SinTrend" functionOutputAtStart="2352399.0" functionOutputAtEnd="2136076.5"/>
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="2352399.0" functionOutputAtEnd="2136076.5"/>
   </sequenceFunctionContainers>
   <sequenceFunctionContainers name="3" duration="2.0" firstIterationStart="14.0" firstIterationEnd="16.0">
-    <function xsi:type="dlim:SinTrend" functionOutputAtStart="2136076.5" functionOutputAtEnd="2236582.0"/>
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="2136076.5" functionOutputAtEnd="2236582.0"/>
   </sequenceFunctionContainers>
   <sequenceFunctionContainers name="4" duration="8.0" firstIterationStart="16.0" firstIterationEnd="24.0">
-    <function xsi:type="dlim:SinTrend" functionOutputAtStart="2236582.0" functionOutputAtEnd="230634.0"/>
+    <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="2236582.0" functionOutputAtEnd="230634.0"/>
   </sequenceFunctionContainers>
-</dlim:Sequence>
+</tools.descartes.dlim:Sequence>
