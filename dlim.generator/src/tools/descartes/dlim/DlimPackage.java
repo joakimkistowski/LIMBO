@@ -40,7 +40,7 @@ public interface DlimPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://sdq.ipd.uka.de/dlimm/0.1";
+	String eNS_URI = "http://descartes.tools/dlim/0.1";
 
 	/**
 	 * The package namespace name.
@@ -48,7 +48,7 @@ public interface DlimPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_PREFIX = "dlim";
+	String eNS_PREFIX = "tools.descartes.dlim";
 
 	/**
 	 * The singleton instance of the package.

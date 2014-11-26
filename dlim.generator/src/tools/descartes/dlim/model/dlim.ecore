@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="dlim" nsURI="http://sdq.ipd.uka.de/dlimm/0.1" nsPrefix="dlim">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="dlim" nsURI="http://descartes.tools/dlim/0.1" nsPrefix="tools.descartes.dlim">
   <eClassifiers xsi:type="ecore:EClass" name="Sequence" eSuperTypes="#//Function">
     <eOperations name="durationDefined" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="chain" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>

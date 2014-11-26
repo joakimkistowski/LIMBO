@@ -4,7 +4,6 @@ package tools.descartes.dlim.presentation;
 
 import java.util.ArrayList;
 import java.util.Collection;
-
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
@@ -14,7 +13,6 @@ import org.eclipse.emf.edit.ui.action.CreateSiblingAction;
 import org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor;
 import org.eclipse.emf.edit.ui.action.LoadResourceAction;
 import org.eclipse.emf.edit.ui.action.ValidateAction;
-import org.eclipse.emf.edit.ui.provider.DiagnosticDecorator;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
@@ -148,7 +146,6 @@ public class DlimActionBarContributor
 		super(ADDITIONS_LAST_STYLE);
 		loadResourceAction = new LoadResourceAction();
 		validateAction = new ValidateAction();
-		liveValidationAction = new DiagnosticDecorator.LiveValidator.LiveValidationAction(DlimEditorPlugin.getPlugin().getDialogSettings());
 		controlAction = new ControlAction();
 	}
 
@@ -175,7 +172,7 @@ public class DlimActionBarContributor
 	public void contributeToMenu(IMenuManager menuManager) {
 		super.contributeToMenu(menuManager);
 
-		IMenuManager submenuManager = new MenuManager(DlimEditorPlugin.INSTANCE.getString("_UI_DlimEditor_menu"), "dlimMenuID");
+		IMenuManager submenuManager = new MenuManager(DlimEditorPlugin.INSTANCE.getString("_UI_DlimEditor_menu"), "tools.descartes.dlimMenuID");
 		menuManager.insertAfter("additions", submenuManager);
 		submenuManager.add(new Separator("settings"));
 		submenuManager.add(new Separator("actions"));

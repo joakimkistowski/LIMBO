@@ -35,7 +35,7 @@ public class DlimValidator extends EObjectValidator {
 	 * @see org.eclipse.emf.common.util.Diagnostic#getCode()
 	 * @generated
 	 */
-	public static final String DIAGNOSTIC_SOURCE = "dlim";
+	public static final String DIAGNOSTIC_SOURCE = "tools.descartes.dlim";
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Duration Defined' of 'Sequence'.

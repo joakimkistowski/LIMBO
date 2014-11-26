@@ -11,9 +11,9 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated dlim -->
       <package
-            uri="http://sdq.ipd.uka.de/dlimm/0.1"
+            uri="http://descartes.tools/dlim/0.1"
             class="tools.descartes.dlim.DlimPackage"
-            genModel="src/dlim/model/dlim.genmodel"/>
+            genModel="src/tools/descartes/dlim/model/dlim.genmodel"/>
    </extension>
 
 </plugin>
