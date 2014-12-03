@@ -21,12 +21,12 @@ public class ArrivalRateTuple implements Comparable<ArrivalRateTuple> {
 	private static boolean sortByTime = false;
 
 	/**
-	 * The time stamp.
+	 * The tuple's time stamp.
 	 */
 	private double timeStamp;
 
 	/**
-	 * The arrival rate.
+	 * The tuple's arrival rate.
 	 */
 	private double arrivalRate;
 
