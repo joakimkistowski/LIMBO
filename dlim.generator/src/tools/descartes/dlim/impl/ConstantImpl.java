@@ -10,13 +10,13 @@ import tools.descartes.dlim.Constant;
 import tools.descartes.dlim.DlimPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Constant</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Constant</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link tools.descartes.dlim.impl.ConstantImpl#getConstant <em>Constant</em>}</li>
+ * <li>{@link tools.descartes.dlim.impl.ConstantImpl#getConstant <em>Constant
+ * </em>}</li>
  * </ul>
  * </p>
  *
@@ -24,9 +24,9 @@ import tools.descartes.dlim.DlimPackage;
  */
 public class ConstantImpl extends SeasonalImpl implements Constant {
 	/**
-	 * The default value of the '{@link #getConstant() <em>Constant</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getConstant() <em>Constant</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getConstant()
 	 * @generated
 	 * @ordered
@@ -34,9 +34,9 @@ public class ConstantImpl extends SeasonalImpl implements Constant {
 	protected static final double CONSTANT_EDEFAULT = 0.0;
 
 	/**
-	 * The cached value of the '{@link #getConstant() <em>Constant</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getConstant() <em>Constant</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getConstant()
 	 * @generated
 	 * @ordered
@@ -44,8 +44,8 @@ public class ConstantImpl extends SeasonalImpl implements Constant {
 	protected double constant = CONSTANT_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ConstantImpl() {
@@ -53,8 +53,8 @@ public class ConstantImpl extends SeasonalImpl implements Constant {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -63,8 +63,8 @@ public class ConstantImpl extends SeasonalImpl implements Constant {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public double getConstant() {
@@ -72,83 +72,85 @@ public class ConstantImpl extends SeasonalImpl implements Constant {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setConstant(double newConstant) {
 		double oldConstant = constant;
 		constant = newConstant;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DlimPackage.CONSTANT__CONSTANT, oldConstant, constant));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					DlimPackage.CONSTANT__CONSTANT, oldConstant, constant));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case DlimPackage.CONSTANT__CONSTANT:
-				return getConstant();
+		case DlimPackage.CONSTANT__CONSTANT:
+			return getConstant();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case DlimPackage.CONSTANT__CONSTANT:
-				setConstant((Double)newValue);
-				return;
+		case DlimPackage.CONSTANT__CONSTANT:
+			setConstant((Double) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case DlimPackage.CONSTANT__CONSTANT:
-				setConstant(CONSTANT_EDEFAULT);
-				return;
+		case DlimPackage.CONSTANT__CONSTANT:
+			setConstant(CONSTANT_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case DlimPackage.CONSTANT__CONSTANT:
-				return constant != CONSTANT_EDEFAULT;
+		case DlimPackage.CONSTANT__CONSTANT:
+			return constant != CONSTANT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (constant: ");
@@ -157,4 +159,4 @@ public class ConstantImpl extends SeasonalImpl implements Constant {
 		return result.toString();
 	}
 
-} //ConstantImpl
+} // ConstantImpl

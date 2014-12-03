@@ -2,16 +2,14 @@
  */
 package tools.descartes.dlim;
 
-
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Constant</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Constant</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link tools.descartes.dlim.Constant#getConstant <em>Constant</em>}</li>
+ * <li>{@link tools.descartes.dlim.Constant#getConstant <em>Constant</em>}</li>
  * </ul>
  * </p>
  *
@@ -21,13 +19,14 @@ package tools.descartes.dlim;
  */
 public interface Constant extends Seasonal {
 	/**
-	 * Returns the value of the '<em><b>Constant</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Constant</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Value</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Value</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Constant</em>' attribute.
 	 * @see #setConstant(double)
 	 * @see tools.descartes.dlim.DlimPackage#getConstant_Constant()
@@ -37,10 +36,12 @@ public interface Constant extends Seasonal {
 	double getConstant();
 
 	/**
-	 * Sets the value of the '{@link tools.descartes.dlim.Constant#getConstant <em>Constant</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Constant</em>' attribute.
+	 * Sets the value of the '{@link tools.descartes.dlim.Constant#getConstant
+	 * <em>Constant</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Constant</em>' attribute.
 	 * @see #getConstant()
 	 * @generated
 	 */

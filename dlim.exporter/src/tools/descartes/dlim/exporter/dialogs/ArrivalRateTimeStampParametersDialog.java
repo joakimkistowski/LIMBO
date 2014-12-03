@@ -1,3 +1,10 @@
+/*******************************************************************************
+* Copyright (c) 2014 Jóakim v. Kistowski
+* All rights reserved. This program and the accompanying materials
+* are made available under the terms of the Eclipse Public License v1.0
+* which accompanies this distribution, and is available at
+* http://www.eclipse.org/legal/epl-v10.html
+*******************************************************************************/
 package tools.descartes.dlim.exporter.dialogs;
 
 import org.eclipse.jface.dialogs.IMessageProvider;
@@ -14,40 +21,45 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
 /**
- * This dialog promts for user parameters for time-stamp and arrival rate series generation.
- * @author J�akim G. v. Kistowski
+ * This dialog promts for user parameters for time-stamp and arrival rate series
+ * generation.
+ *
+ * @author Jóakim v. Kistowski
  *
  */
 public class ArrivalRateTimeStampParametersDialog extends TitleAreaDialog {
 
 	private Text stepText;
 	private Text rndSeedText;
-	
+
 	private int rndSeed = 5;
 	private double step = 1.0;
 	private boolean canceled = false;
-	
+
 	private String fileString;
-	
+
 	/**
 	 * Create a new Dialog.
-	 * @param fileString The path of the model file.
-	 * @param parentShell
+	 *
+	 * @param fileString            The path of the model file.
+	 * @param parentShell the parent shell
 	 */
-	public ArrivalRateTimeStampParametersDialog(String fileString, Shell parentShell) {
+	public ArrivalRateTimeStampParametersDialog(String fileString,
+			Shell parentShell) {
 		super(parentShell);
 		this.fileString = fileString;
 	}
-	
+
 	private void setDefaultValues() {
 		rndSeed = 5;
 		step = 1.0;
 		canceled = false;
 	}
-	
+
 	/**
 	 * Sets titles.
 	 */
+	@Override
 	public void create() {
 		super.create();
 		setTitle("Arrival Rate Time Stamp Generation Parameters");
@@ -56,6 +68,9 @@ public class ArrivalRateTimeStampParametersDialog extends TitleAreaDialog {
 
 	/**
 	 * Creates the GUI elements.
+	 *
+	 * @param parent the parent
+	 * @return the control
 	 */
 	@Override
 	protected Control createDialogArea(Composite parent) {
@@ -67,10 +82,10 @@ public class ArrivalRateTimeStampParametersDialog extends TitleAreaDialog {
 
 		return dialogContainer;
 	}
-	
+
 	private void createRndSeedParameterField(Composite container) {
 		Composite gridContainer = new Composite(container, SWT.NONE);
-		GridLayout layout = new GridLayout(2,false);
+		GridLayout layout = new GridLayout(2, false);
 		gridContainer.setLayout(layout);
 		Label parameterFieldLabel = new Label(gridContainer, SWT.NONE);
 		parameterFieldLabel.setText("Random Generator Seed: ");
@@ -82,10 +97,10 @@ public class ArrivalRateTimeStampParametersDialog extends TitleAreaDialog {
 		rndSeedText.setText("5");
 		rndSeedText.setLayoutData(parameterFieldData);
 	}
-	
+
 	private void createStepParameterField(Composite container) {
 		Composite gridContainer = new Composite(container, SWT.NONE);
-		GridLayout layout = new GridLayout(2,false);
+		GridLayout layout = new GridLayout(2, false);
 		gridContainer.setLayout(layout);
 		Label parameterFieldLabel = new Label(gridContainer, SWT.NONE);
 		parameterFieldLabel.setText("Sampling Interval Width: ");
@@ -97,16 +112,18 @@ public class ArrivalRateTimeStampParametersDialog extends TitleAreaDialog {
 		stepText.setText("1.0");
 		stepText.setLayoutData(parameterFieldData);
 	}
-	
+
 	/**
 	 * Dialog window label.
+	 *
+	 * @param newShell the new shell
 	 */
 	@Override
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 		newShell.setText("Arrival Rate Time Stamp Generation Parameters");
 	}
-	
+
 	/**
 	 * Cancel button was pressed.
 	 */
@@ -116,65 +133,73 @@ public class ArrivalRateTimeStampParametersDialog extends TitleAreaDialog {
 		canceled = true;
 		super.cancelPressed();
 	}
-	
+
 	/**
 	 * Returns true if user canceled the dialog.
-	 * @return
+	 *
+	 * @return true, if successful
 	 */
 	public boolean wasCanceled() {
 		return canceled;
 	}
-	
+
 	/**
-	 * Ok Button was pressed.
-	 * Parses parameters from the UI. Displays errors to the user.
+	 * Ok Button was pressed. Parses parameters from the UI. Displays errors to
+	 * the user.
 	 */
 	@Override
 	protected void okPressed() {
 		boolean error = false;
 		try {
 			step = Double.parseDouble(stepText.getText().trim());
-			
+
 		} catch (NumberFormatException e) {
-			setMessage("Sampling Interval Width must be a number.", IMessageProvider.ERROR);
+			setMessage("Sampling Interval Width must be a number.",
+					IMessageProvider.ERROR);
 			error = true;
 		}
 		try {
 			rndSeed = Integer.parseInt(rndSeedText.getText().trim());
 		} catch (NumberFormatException e) {
-			setMessage("Random Seed must be an Integer.", IMessageProvider.ERROR);
+			setMessage("Random Seed must be an Integer.",
+					IMessageProvider.ERROR);
 			error = true;
 		}
 		if (step <= 0) {
 			error = true;
-			setMessage("Sampling Interval Width must greater than 0.", IMessageProvider.ERROR);
+			setMessage("Sampling Interval Width must greater than 0.",
+					IMessageProvider.ERROR);
 		}
-		
-		
+
 		if (!error) {
 			super.okPressed();
 		}
 	}
-	
+
 	/**
 	 * Get the random number generator seed.
-	 * @return
+	 *
+	 * @return the rnd seed
 	 */
 	public int getRndSeed() {
 		return rndSeed;
 	}
-	
+
 	/**
 	 * Get the sampling interval width.
-	 * @return
+	 *
+	 * @return the step
 	 */
 	public double getStep() {
 		return step;
 	}
-	
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.jface.dialogs.TitleAreaDialog#getInitialSize()
+	 */
 	@Override
 	protected Point getInitialSize() {
-		//return new Point(340,600);
+		// return new Point(340,600);
 		return super.getInitialSize();
 	}
 }

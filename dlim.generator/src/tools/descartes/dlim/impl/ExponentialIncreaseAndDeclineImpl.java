@@ -8,18 +8,18 @@ import tools.descartes.dlim.DlimPackage;
 import tools.descartes.dlim.ExponentialIncreaseAndDecline;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Exponential Increase And Decline</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Exponential Increase And Decline</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class ExponentialIncreaseAndDeclineImpl extends BurstImpl implements ExponentialIncreaseAndDecline {
+public class ExponentialIncreaseAndDeclineImpl extends BurstImpl implements
+		ExponentialIncreaseAndDecline {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ExponentialIncreaseAndDeclineImpl() {
@@ -27,8 +27,8 @@ public class ExponentialIncreaseAndDeclineImpl extends BurstImpl implements Expo
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -36,4 +36,4 @@ public class ExponentialIncreaseAndDeclineImpl extends BurstImpl implements Expo
 		return DlimPackage.Literals.EXPONENTIAL_INCREASE_AND_DECLINE;
 	}
 
-} //ExponentialIncreaseAndDeclineImpl
+} // ExponentialIncreaseAndDeclineImpl

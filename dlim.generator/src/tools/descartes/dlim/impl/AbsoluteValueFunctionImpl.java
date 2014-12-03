@@ -8,18 +8,18 @@ import tools.descartes.dlim.AbsoluteValueFunction;
 import tools.descartes.dlim.DlimPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Absolute Value Function</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Absolute Value Function</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class AbsoluteValueFunctionImpl extends UnivariateFunctionImpl implements AbsoluteValueFunction {
+public class AbsoluteValueFunctionImpl extends UnivariateFunctionImpl implements
+		AbsoluteValueFunction {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected AbsoluteValueFunctionImpl() {
@@ -27,8 +27,8 @@ public class AbsoluteValueFunctionImpl extends UnivariateFunctionImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -36,4 +36,4 @@ public class AbsoluteValueFunctionImpl extends UnivariateFunctionImpl implements
 		return DlimPackage.Literals.ABSOLUTE_VALUE_FUNCTION;
 	}
 
-} //AbsoluteValueFunctionImpl
+} // AbsoluteValueFunctionImpl

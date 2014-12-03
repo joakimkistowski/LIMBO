@@ -8,9 +8,8 @@ import tools.descartes.dlim.DlimPackage;
 import tools.descartes.dlim.Noise;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Noise</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Noise</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
  *
@@ -18,8 +17,8 @@ import tools.descartes.dlim.Noise;
  */
 public abstract class NoiseImpl extends FunctionImpl implements Noise {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected NoiseImpl() {
@@ -27,8 +26,8 @@ public abstract class NoiseImpl extends FunctionImpl implements Noise {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -36,4 +35,4 @@ public abstract class NoiseImpl extends FunctionImpl implements Noise {
 		return DlimPackage.Literals.NOISE;
 	}
 
-} //NoiseImpl
+} // NoiseImpl

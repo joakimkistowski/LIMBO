@@ -10,13 +10,13 @@ import tools.descartes.dlim.DlimPackage;
 import tools.descartes.dlim.LogarithmicTrend;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Logarithmic Trend</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Logarithmic Trend</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link tools.descartes.dlim.impl.LogarithmicTrendImpl#getOrder <em>Order</em>}</li>
+ * <li>{@link tools.descartes.dlim.impl.LogarithmicTrendImpl#getOrder <em>Order
+ * </em>}</li>
  * </ul>
  * </p>
  *
@@ -25,8 +25,8 @@ import tools.descartes.dlim.LogarithmicTrend;
 public class LogarithmicTrendImpl extends TrendImpl implements LogarithmicTrend {
 	/**
 	 * The default value of the '{@link #getOrder() <em>Order</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getOrder()
 	 * @generated
 	 * @ordered
@@ -35,8 +35,8 @@ public class LogarithmicTrendImpl extends TrendImpl implements LogarithmicTrend 
 
 	/**
 	 * The cached value of the '{@link #getOrder() <em>Order</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getOrder()
 	 * @generated
 	 * @ordered
@@ -44,8 +44,8 @@ public class LogarithmicTrendImpl extends TrendImpl implements LogarithmicTrend 
 	protected double order = ORDER_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected LogarithmicTrendImpl() {
@@ -53,8 +53,8 @@ public class LogarithmicTrendImpl extends TrendImpl implements LogarithmicTrend 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -63,8 +63,8 @@ public class LogarithmicTrendImpl extends TrendImpl implements LogarithmicTrend 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public double getOrder() {
@@ -72,83 +72,85 @@ public class LogarithmicTrendImpl extends TrendImpl implements LogarithmicTrend 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setOrder(double newOrder) {
 		double oldOrder = order;
 		order = newOrder;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DlimPackage.LOGARITHMIC_TREND__ORDER, oldOrder, order));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					DlimPackage.LOGARITHMIC_TREND__ORDER, oldOrder, order));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case DlimPackage.LOGARITHMIC_TREND__ORDER:
-				return getOrder();
+		case DlimPackage.LOGARITHMIC_TREND__ORDER:
+			return getOrder();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case DlimPackage.LOGARITHMIC_TREND__ORDER:
-				setOrder((Double)newValue);
-				return;
+		case DlimPackage.LOGARITHMIC_TREND__ORDER:
+			setOrder((Double) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case DlimPackage.LOGARITHMIC_TREND__ORDER:
-				setOrder(ORDER_EDEFAULT);
-				return;
+		case DlimPackage.LOGARITHMIC_TREND__ORDER:
+			setOrder(ORDER_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case DlimPackage.LOGARITHMIC_TREND__ORDER:
-				return order != ORDER_EDEFAULT;
+		case DlimPackage.LOGARITHMIC_TREND__ORDER:
+			return order != ORDER_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (order: ");
@@ -157,4 +159,4 @@ public class LogarithmicTrendImpl extends TrendImpl implements LogarithmicTrend 
 		return result.toString();
 	}
 
-} //LogarithmicTrendImpl
+} // LogarithmicTrendImpl

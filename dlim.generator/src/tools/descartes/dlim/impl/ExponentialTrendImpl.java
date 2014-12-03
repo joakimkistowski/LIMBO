@@ -8,9 +8,8 @@ import tools.descartes.dlim.DlimPackage;
 import tools.descartes.dlim.ExponentialTrend;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Exponential Trend</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Exponential Trend</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
  *
@@ -18,8 +17,8 @@ import tools.descartes.dlim.ExponentialTrend;
  */
 public class ExponentialTrendImpl extends TrendImpl implements ExponentialTrend {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ExponentialTrendImpl() {
@@ -27,8 +26,8 @@ public class ExponentialTrendImpl extends TrendImpl implements ExponentialTrend 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -36,4 +35,4 @@ public class ExponentialTrendImpl extends TrendImpl implements ExponentialTrend 
 		return DlimPackage.Literals.EXPONENTIAL_TREND;
 	}
 
-} //ExponentialTrendImpl
+} // ExponentialTrendImpl

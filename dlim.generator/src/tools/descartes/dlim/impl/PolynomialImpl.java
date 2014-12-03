@@ -16,13 +16,13 @@ import tools.descartes.dlim.Polynomial;
 import tools.descartes.dlim.PolynomialFactor;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Polynomial</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Polynomial</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link tools.descartes.dlim.impl.PolynomialImpl#getFactors <em>Factors</em>}</li>
+ * <li>{@link tools.descartes.dlim.impl.PolynomialImpl#getFactors <em>Factors
+ * </em>}</li>
  * </ul>
  * </p>
  *
@@ -30,9 +30,9 @@ import tools.descartes.dlim.PolynomialFactor;
  */
 public class PolynomialImpl extends FunctionImpl implements Polynomial {
 	/**
-	 * The cached value of the '{@link #getFactors() <em>Factors</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getFactors() <em>Factors</em>}'
+	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getFactors()
 	 * @generated
 	 * @ordered
@@ -40,8 +40,8 @@ public class PolynomialImpl extends FunctionImpl implements Polynomial {
 	protected EList<PolynomialFactor> factors;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected PolynomialImpl() {
@@ -49,8 +49,8 @@ public class PolynomialImpl extends FunctionImpl implements Polynomial {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -59,89 +59,94 @@ public class PolynomialImpl extends FunctionImpl implements Polynomial {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<PolynomialFactor> getFactors() {
 		if (factors == null) {
-			factors = new EObjectContainmentEList<PolynomialFactor>(PolynomialFactor.class, this, DlimPackage.POLYNOMIAL__FACTORS);
+			factors = new EObjectContainmentEList<PolynomialFactor>(
+					PolynomialFactor.class, this,
+					DlimPackage.POLYNOMIAL__FACTORS);
 		}
 		return factors;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case DlimPackage.POLYNOMIAL__FACTORS:
-				return ((InternalEList<?>)getFactors()).basicRemove(otherEnd, msgs);
+		case DlimPackage.POLYNOMIAL__FACTORS:
+			return ((InternalEList<?>) getFactors())
+					.basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case DlimPackage.POLYNOMIAL__FACTORS:
-				return getFactors();
+		case DlimPackage.POLYNOMIAL__FACTORS:
+			return getFactors();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case DlimPackage.POLYNOMIAL__FACTORS:
-				getFactors().clear();
-				getFactors().addAll((Collection<? extends PolynomialFactor>)newValue);
-				return;
+		case DlimPackage.POLYNOMIAL__FACTORS:
+			getFactors().clear();
+			getFactors().addAll(
+					(Collection<? extends PolynomialFactor>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case DlimPackage.POLYNOMIAL__FACTORS:
-				getFactors().clear();
-				return;
+		case DlimPackage.POLYNOMIAL__FACTORS:
+			getFactors().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case DlimPackage.POLYNOMIAL__FACTORS:
-				return factors != null && !factors.isEmpty();
+		case DlimPackage.POLYNOMIAL__FACTORS:
+			return factors != null && !factors.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //PolynomialImpl
+} // PolynomialImpl

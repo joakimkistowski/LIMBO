@@ -9,19 +9,19 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Operator</b></em>',
- * and utility methods for working with them.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration '
+ * <em><b>Operator</b></em>', and utility methods for working with them. <!--
+ * end-user-doc -->
+ * 
  * @see tools.descartes.dlim.DlimPackage#getOperator()
  * @model
  * @generated
  */
 public enum Operator implements Enumerator {
 	/**
-	 * The '<em><b>Add</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Add</b></em>' literal object. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #ADD_VALUE
 	 * @generated
 	 * @ordered
@@ -29,9 +29,9 @@ public enum Operator implements Enumerator {
 	ADD(0, "add", "ADD"),
 
 	/**
-	 * The '<em><b>Subtract</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Subtract</b></em>' literal object. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #SUBTRACT_VALUE
 	 * @generated
 	 * @ordered
@@ -39,9 +39,9 @@ public enum Operator implements Enumerator {
 	SUBTRACT(1, "subtract", "SUB"),
 
 	/**
-	 * The '<em><b>Mult</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Mult</b></em>' literal object. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #MULT_VALUE
 	 * @generated
 	 * @ordered
@@ -49,13 +49,13 @@ public enum Operator implements Enumerator {
 	MULT(2, "mult", "MULT");
 
 	/**
-	 * The '<em><b>Add</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Add</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Add</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Add</b></em>' literal object isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #ADD
 	 * @model name="add" literal="ADD"
 	 * @generated
@@ -64,13 +64,13 @@ public enum Operator implements Enumerator {
 	public static final int ADD_VALUE = 0;
 
 	/**
-	 * The '<em><b>Subtract</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Subtract</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Subtract</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #SUBTRACT
 	 * @model name="subtract" literal="SUB"
 	 * @generated
@@ -79,13 +79,13 @@ public enum Operator implements Enumerator {
 	public static final int SUBTRACT_VALUE = 1;
 
 	/**
-	 * The '<em><b>Mult</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Mult</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Mult</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #MULT
 	 * @model name="mult" literal="MULT"
 	 * @generated
@@ -94,30 +94,27 @@ public enum Operator implements Enumerator {
 	public static final int MULT_VALUE = 2;
 
 	/**
-	 * An array of all the '<em><b>Operator</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * An array of all the '<em><b>Operator</b></em>' enumerators. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	private static final Operator[] VALUES_ARRAY =
-		new Operator[] {
-			ADD,
-			SUBTRACT,
-			MULT,
-		};
+	private static final Operator[] VALUES_ARRAY = new Operator[] { ADD,
+			SUBTRACT, MULT, };
 
 	/**
-	 * A public read-only list of all the '<em><b>Operator</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * A public read-only list of all the '<em><b>Operator</b></em>'
+	 * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public static final List<Operator> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<Operator> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Operator</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Operator</b></em>' literal with the specified literal
+	 * value. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static Operator get(String literal) {
@@ -132,8 +129,8 @@ public enum Operator implements Enumerator {
 
 	/**
 	 * Returns the '<em><b>Operator</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static Operator getByName(String name) {
@@ -147,45 +144,48 @@ public enum Operator implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Operator</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Operator</b></em>' literal with the specified integer
+	 * value. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static Operator get(int value) {
 		switch (value) {
-			case ADD_VALUE: return ADD;
-			case SUBTRACT_VALUE: return SUBTRACT;
-			case MULT_VALUE: return MULT;
+		case ADD_VALUE:
+			return ADD;
+		case SUBTRACT_VALUE:
+			return SUBTRACT;
+		case MULT_VALUE:
+			return MULT;
 		}
 		return null;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Only this class can construct instances. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private Operator(int value, String name, String literal) {
@@ -195,41 +195,41 @@ public enum Operator implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the literal value of the enumerator, which is its string
+	 * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
 		return literal;
 	}
-	
-} //Operator
+
+} // Operator

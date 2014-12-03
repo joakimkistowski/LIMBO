@@ -2,16 +2,17 @@
  */
 package tools.descartes.dlim;
 
-
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Exponential Increase Logarithmic Decline</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Exponential Increase Logarithmic Decline</b></em>'. <!-- end-user-doc
+ * -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link tools.descartes.dlim.ExponentialIncreaseLogarithmicDecline#getLogarithmicOrder <em>Logarithmic Order</em>}</li>
+ * <li>
+ * {@link tools.descartes.dlim.ExponentialIncreaseLogarithmicDecline#getLogarithmicOrder
+ * <em>Logarithmic Order</em>}</li>
  * </ul>
  * </p>
  *
@@ -22,13 +23,13 @@ package tools.descartes.dlim;
 public interface ExponentialIncreaseLogarithmicDecline extends Burst {
 	/**
 	 * Returns the value of the '<em><b>Logarithmic Order</b></em>' attribute.
-	 * The default value is <code>"4.0"</code>.
-	 * <!-- begin-user-doc -->
+	 * The default value is <code>"4.0"</code>. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Logarithmic Order</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Logarithmic Order</em>' attribute.
 	 * @see #setLogarithmicOrder(double)
 	 * @see tools.descartes.dlim.DlimPackage#getExponentialIncreaseLogarithmicDecline_LogarithmicOrder()
@@ -38,10 +39,13 @@ public interface ExponentialIncreaseLogarithmicDecline extends Burst {
 	double getLogarithmicOrder();
 
 	/**
-	 * Sets the value of the '{@link tools.descartes.dlim.ExponentialIncreaseLogarithmicDecline#getLogarithmicOrder <em>Logarithmic Order</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Logarithmic Order</em>' attribute.
+	 * Sets the value of the '
+	 * {@link tools.descartes.dlim.ExponentialIncreaseLogarithmicDecline#getLogarithmicOrder
+	 * <em>Logarithmic Order</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Logarithmic Order</em>' attribute.
 	 * @see #getLogarithmicOrder()
 	 * @generated
 	 */

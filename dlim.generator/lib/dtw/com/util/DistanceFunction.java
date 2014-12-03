@@ -7,8 +7,6 @@
 
 package com.util;
 
-
-public interface DistanceFunction
-{
-   public double calcDistance(double[] vector1, double[] vector2);
+public interface DistanceFunction {
+	public double calcDistance(double[] vector1, double[] vector2);
 }

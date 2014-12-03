@@ -15,24 +15,26 @@ import tools.descartes.dlim.Function;
 import tools.descartes.dlim.Operator;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Combinator</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Combinator</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link tools.descartes.dlim.impl.CombinatorImpl#getOperator <em>Operator</em>}</li>
- *   <li>{@link tools.descartes.dlim.impl.CombinatorImpl#getFunction <em>Function</em>}</li>
+ * <li>{@link tools.descartes.dlim.impl.CombinatorImpl#getOperator <em>Operator
+ * </em>}</li>
+ * <li>{@link tools.descartes.dlim.impl.CombinatorImpl#getFunction <em>Function
+ * </em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class CombinatorImpl extends MinimalEObjectImpl.Container implements Combinator {
+public class CombinatorImpl extends MinimalEObjectImpl.Container implements
+		Combinator {
 	/**
-	 * The default value of the '{@link #getOperator() <em>Operator</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getOperator() <em>Operator</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getOperator()
 	 * @generated
 	 * @ordered
@@ -40,9 +42,9 @@ public class CombinatorImpl extends MinimalEObjectImpl.Container implements Comb
 	protected static final Operator OPERATOR_EDEFAULT = Operator.ADD;
 
 	/**
-	 * The cached value of the '{@link #getOperator() <em>Operator</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getOperator() <em>Operator</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getOperator()
 	 * @generated
 	 * @ordered
@@ -50,9 +52,9 @@ public class CombinatorImpl extends MinimalEObjectImpl.Container implements Comb
 	protected Operator operator = OPERATOR_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getFunction() <em>Function</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getFunction() <em>Function</em>}'
+	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getFunction()
 	 * @generated
 	 * @ordered
@@ -60,8 +62,8 @@ public class CombinatorImpl extends MinimalEObjectImpl.Container implements Comb
 	protected Function function;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected CombinatorImpl() {
@@ -69,8 +71,8 @@ public class CombinatorImpl extends MinimalEObjectImpl.Container implements Comb
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -79,8 +81,8 @@ public class CombinatorImpl extends MinimalEObjectImpl.Container implements Comb
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Operator getOperator() {
@@ -88,20 +90,21 @@ public class CombinatorImpl extends MinimalEObjectImpl.Container implements Comb
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setOperator(Operator newOperator) {
 		Operator oldOperator = operator;
 		operator = newOperator == null ? OPERATOR_EDEFAULT : newOperator;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DlimPackage.COMBINATOR__OPERATOR, oldOperator, operator));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					DlimPackage.COMBINATOR__OPERATOR, oldOperator, operator));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Function getFunction() {
@@ -109,129 +112,142 @@ public class CombinatorImpl extends MinimalEObjectImpl.Container implements Comb
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetFunction(Function newFunction, NotificationChain msgs) {
+	public NotificationChain basicSetFunction(Function newFunction,
+			NotificationChain msgs) {
 		Function oldFunction = function;
 		function = newFunction;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DlimPackage.COMBINATOR__FUNCTION, oldFunction, newFunction);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET, DlimPackage.COMBINATOR__FUNCTION,
+					oldFunction, newFunction);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setFunction(Function newFunction) {
 		if (newFunction != function) {
 			NotificationChain msgs = null;
 			if (function != null)
-				msgs = ((InternalEObject)function).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DlimPackage.COMBINATOR__FUNCTION, null, msgs);
+				msgs = ((InternalEObject) function).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE
+								- DlimPackage.COMBINATOR__FUNCTION, null, msgs);
 			if (newFunction != null)
-				msgs = ((InternalEObject)newFunction).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DlimPackage.COMBINATOR__FUNCTION, null, msgs);
+				msgs = ((InternalEObject) newFunction).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+								- DlimPackage.COMBINATOR__FUNCTION, null, msgs);
 			msgs = basicSetFunction(newFunction, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DlimPackage.COMBINATOR__FUNCTION, newFunction, newFunction));
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					DlimPackage.COMBINATOR__FUNCTION, newFunction, newFunction));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case DlimPackage.COMBINATOR__FUNCTION:
-				return basicSetFunction(null, msgs);
+		case DlimPackage.COMBINATOR__FUNCTION:
+			return basicSetFunction(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case DlimPackage.COMBINATOR__OPERATOR:
-				return getOperator();
-			case DlimPackage.COMBINATOR__FUNCTION:
-				return getFunction();
+		case DlimPackage.COMBINATOR__OPERATOR:
+			return getOperator();
+		case DlimPackage.COMBINATOR__FUNCTION:
+			return getFunction();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case DlimPackage.COMBINATOR__OPERATOR:
-				setOperator((Operator)newValue);
-				return;
-			case DlimPackage.COMBINATOR__FUNCTION:
-				setFunction((Function)newValue);
-				return;
+		case DlimPackage.COMBINATOR__OPERATOR:
+			setOperator((Operator) newValue);
+			return;
+		case DlimPackage.COMBINATOR__FUNCTION:
+			setFunction((Function) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case DlimPackage.COMBINATOR__OPERATOR:
-				setOperator(OPERATOR_EDEFAULT);
-				return;
-			case DlimPackage.COMBINATOR__FUNCTION:
-				setFunction((Function)null);
-				return;
+		case DlimPackage.COMBINATOR__OPERATOR:
+			setOperator(OPERATOR_EDEFAULT);
+			return;
+		case DlimPackage.COMBINATOR__FUNCTION:
+			setFunction((Function) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case DlimPackage.COMBINATOR__OPERATOR:
-				return operator != OPERATOR_EDEFAULT;
-			case DlimPackage.COMBINATOR__FUNCTION:
-				return function != null;
+		case DlimPackage.COMBINATOR__OPERATOR:
+			return operator != OPERATOR_EDEFAULT;
+		case DlimPackage.COMBINATOR__FUNCTION:
+			return function != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (operator: ");
@@ -240,4 +256,4 @@ public class CombinatorImpl extends MinimalEObjectImpl.Container implements Comb
 		return result.toString();
 	}
 
-} //CombinatorImpl
+} // CombinatorImpl

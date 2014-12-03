@@ -6,16 +6,15 @@ import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 
-
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Custom Function</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Custom Function</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link tools.descartes.dlim.CustomFunction#getFunction <em>Function</em>}</li>
+ * <li>{@link tools.descartes.dlim.CustomFunction#getFunction <em>Function</em>}
+ * </li>
  * </ul>
  * </p>
  *
@@ -25,13 +24,14 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  */
 public interface CustomFunction extends Function {
 	/**
-	 * Returns the value of the '<em><b>Function</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Function</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Function</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Function</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Function</em>' attribute.
 	 * @see #setFunction(String)
 	 * @see tools.descartes.dlim.DlimPackage#getCustomFunction_Function()
@@ -41,18 +41,20 @@ public interface CustomFunction extends Function {
 	String getFunction();
 
 	/**
-	 * Sets the value of the '{@link tools.descartes.dlim.CustomFunction#getFunction <em>Function</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Function</em>' attribute.
+	 * Sets the value of the '
+	 * {@link tools.descartes.dlim.CustomFunction#getFunction <em>Function</em>}
+	 * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Function</em>' attribute.
 	 * @see #getFunction()
 	 * @generated
 	 */
 	void setFunction(String value);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model
 	 * @generated
 	 */

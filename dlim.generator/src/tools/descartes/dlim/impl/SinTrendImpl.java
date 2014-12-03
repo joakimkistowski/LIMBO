@@ -8,9 +8,8 @@ import tools.descartes.dlim.DlimPackage;
 import tools.descartes.dlim.SinTrend;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Sin Trend</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Sin Trend</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
  *
@@ -18,8 +17,8 @@ import tools.descartes.dlim.SinTrend;
  */
 public class SinTrendImpl extends TrendImpl implements SinTrend {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected SinTrendImpl() {
@@ -27,8 +26,8 @@ public class SinTrendImpl extends TrendImpl implements SinTrend {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -36,4 +35,4 @@ public class SinTrendImpl extends TrendImpl implements SinTrend {
 		return DlimPackage.Literals.SIN_TREND;
 	}
 
-} //SinTrendImpl
+} // SinTrendImpl

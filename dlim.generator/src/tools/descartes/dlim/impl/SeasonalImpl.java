@@ -8,9 +8,8 @@ import tools.descartes.dlim.DlimPackage;
 import tools.descartes.dlim.Seasonal;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Seasonal</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Seasonal</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
  *
@@ -18,8 +17,8 @@ import tools.descartes.dlim.Seasonal;
  */
 public abstract class SeasonalImpl extends FunctionImpl implements Seasonal {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected SeasonalImpl() {
@@ -27,8 +26,8 @@ public abstract class SeasonalImpl extends FunctionImpl implements Seasonal {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -36,4 +35,4 @@ public abstract class SeasonalImpl extends FunctionImpl implements Seasonal {
 		return DlimPackage.Literals.SEASONAL;
 	}
 
-} //SeasonalImpl
+} // SeasonalImpl

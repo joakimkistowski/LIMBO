@@ -1,3 +1,10 @@
+/*******************************************************************************
+ * Copyright (c) 2014 Jóakim v. Kistowski
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
 package tools.descartes.dlim.extractorHandler;
 
 import java.util.ArrayList;
@@ -16,18 +23,31 @@ import tools.descartes.dlim.reader.IDlimArrivalRateReader;
 
 /**
  * Handles all registered implementations of the Extractor extension point.
- * @author J�akim G. v. Kistowski
+ *
+ * @author Jóakim v. Kistowski
  */
-public class ExtractorHandler {
-	
-	public static final String IEXTRACTOR_ID = "tools.descartes.dlim.generator.tools_descartes_dlim_generator_extractors";
+public final class ExtractorHandler {
+
+	/**
+	 * ID of the Extractor Extension Point.
+	 */
+	public static final String IEXTRACTOR_ID =
+			"tools.descartes.dlim.generator.tools_descartes_dlim_generator_extractors";
+
+	/**
+	 * List of all Extractor Extension Point Implementations.
+	 */
 	private ArrayList<ExtractorContainer> extractors = new ArrayList<ExtractorContainer>();
-	
+
+	/**
+	 * The Singleton of this class.
+	 */
 	private static ExtractorHandler handlerSingleton;
-	
+
 	/**
 	 * Get the handler Singleton.
-	 * @return
+	 *
+	 * @return Returns the singleton.
 	 */
 	public static ExtractorHandler getHandlerSingleton() {
 		if (handlerSingleton == null) {
@@ -35,41 +55,44 @@ public class ExtractorHandler {
 		}
 		return handlerSingleton;
 	}
-	
+
 	private ExtractorHandler() {
 		if (handlerSingleton == null) {
 			handlerSingleton = this;
 			execute(Platform.getExtensionRegistry());
 		}
 	}
-	
+
 	@Execute
 	private void execute(IExtensionRegistry registry) {
 		evaluate(registry);
 	}
-	
+
 	private void evaluate(IExtensionRegistry registry) {
-	    IConfigurationElement[] config =
-	        registry.getConfigurationElementsFor(IEXTRACTOR_ID);
-	    try {
-	      for (IConfigurationElement e : config) {
-	        final Object extr =
-	            e.createExecutableExtension("extractor_class");
-	        final Object read =
-		            e.createExecutableExtension("reader_class");
-	        String label = e.getAttribute("label");
-	        if (extr instanceof IDlimExtractor && read instanceof IDlimArrivalRateReader) {
-	        	extractors.add(new ExtractorContainer(label,(IDlimExtractor)extr, (IDlimArrivalRateReader)read));
-	        }
-	      }
-	    } catch (CoreException ex) {
-	      System.out.println(ex.getMessage());
-	    }
-	  }
+		IConfigurationElement[] config = registry
+				.getConfigurationElementsFor(IEXTRACTOR_ID);
+		try {
+			for (IConfigurationElement e : config) {
+				final Object extr = e
+						.createExecutableExtension("extractor_class");
+				final Object read = e.createExecutableExtension("reader_class");
+				String label = e.getAttribute("label");
+				if (extr instanceof IDlimExtractor
+						&& read instanceof IDlimArrivalRateReader) {
+					extractors.add(new ExtractorContainer(label,
+							(IDlimExtractor) extr,
+							(IDlimArrivalRateReader) read));
+				}
+			}
+		} catch (CoreException ex) {
+			System.out.println(ex.getMessage());
+		}
+	}
 
 	/**
 	 * Get the ordered List of Extractor labels.
-	 * @return
+	 *
+	 * @return the extractor labels
 	 */
 	public String[] getExtractorLabels() {
 		String[] labels = new String[extractors.size()];
@@ -80,29 +103,39 @@ public class ExtractorHandler {
 		}
 		return labels;
 	}
-	
+
 	/**
-	 * Execute an extractor at the given index within the list of registered Extractors.
-	 * The index corresponds to its label index within the ordered label list.
-	 * @param extractorIndex
-	 * @param arrivalRateFilePath Path of the arrival rate trace.
-	 * @param rootObject the Sequence into which the trace is to be extracted.
-	 * @param offset the offset within the arrival rate trace at which to start reading it.
+	 * Execute an extractor at the given index within the list of registered
+	 * Extractors. The index corresponds to its label index within the ordered
+	 * label list.
+	 *
+	 * @param extractorIndex Index of Extension point implementation in list of extractors
+	 * @param arrivalRateFilePath
+	 *            Path of the arrival rate trace.
+	 * @param rootObject
+	 *            the Sequence into which the trace is to be extracted.
+	 * @param offset
+	 *            the offset within the arrival rate trace at which to start
+	 *            reading it.
 	 */
 	public void executeExtension(final int extractorIndex,
-			final String arrivalRateFilePath, final Sequence rootObject, final double offset) {
+			final String arrivalRateFilePath, final Sequence rootObject,
+			final double offset) {
 		ISafeRunnable runnable = new ISafeRunnable() {
-			
+
 			@Override
 			public void handleException(Throwable e) {
 				System.out.println("Exception in client");
 			}
-			
+
 			@Override
 			public void run() throws Exception {
-				IDlimExtractor extractor = extractors.get(extractorIndex).getExtractor();
-				IDlimArrivalRateReader reader = extractors.get(extractorIndex).getReader();
-				extractor.extractIntoSequence(rootObject, reader.readFileToList(arrivalRateFilePath, offset));
+				IDlimExtractor extractor = extractors.get(extractorIndex)
+						.getExtractor();
+				IDlimArrivalRateReader reader = extractors.get(extractorIndex)
+						.getReader();
+				extractor.extractIntoSequence(rootObject,
+						reader.readFileToList(arrivalRateFilePath, offset));
 			}
 		};
 		SafeRunner.run(runnable);

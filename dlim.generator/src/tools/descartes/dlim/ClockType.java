@@ -9,19 +9,19 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Clock Type</b></em>',
- * and utility methods for working with them.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the literals of the enumeration '
+ * <em><b>Clock Type</b></em>', and utility methods for working with them. <!--
+ * end-user-doc -->
+ * 
  * @see tools.descartes.dlim.DlimPackage#getClockType()
  * @model
  * @generated
  */
 public enum ClockType implements Enumerator {
 	/**
-	 * The '<em><b>Root Clock</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Root Clock</b></em>' literal object. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #ROOT_CLOCK_VALUE
 	 * @generated
 	 * @ordered
@@ -29,17 +29,18 @@ public enum ClockType implements Enumerator {
 	ROOT_CLOCK(0, "RootClock", "ROOTCLOCK"),
 
 	/**
-	 * The '<em><b>Container Clock</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The '<em><b>Container Clock</b></em>' literal object. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #CONTAINER_CLOCK_VALUE
 	 * @generated
 	 * @ordered
 	 */
 	CONTAINER_CLOCK(1, "ContainerClock", "CONTAINERCLOCK"), /**
-	 * The '<em><b>Sequence Clock</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+	 * The '
+	 * <em><b>Sequence Clock</b></em>' literal object. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #SEQUENCE_CLOCK_VALUE
 	 * @generated
 	 * @ordered
@@ -47,9 +48,9 @@ public enum ClockType implements Enumerator {
 	SEQUENCE_CLOCK(2, "SequenceClock", "SEQCLOCK"),
 
 	/**
-	 * The '<em><b>Loop Clock</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Loop Clock</b></em>' literal object. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #LOOP_CLOCK_VALUE
 	 * @generated
 	 * @ordered
@@ -57,13 +58,13 @@ public enum ClockType implements Enumerator {
 	LOOP_CLOCK(3, "LoopClock", "LOOPCLOCK");
 
 	/**
-	 * The '<em><b>Root Clock</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Root Clock</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Root Clock</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Root Clock</b></em>' literal object isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #ROOT_CLOCK
 	 * @model name="RootClock" literal="ROOTCLOCK"
 	 * @generated
@@ -72,13 +73,14 @@ public enum ClockType implements Enumerator {
 	public static final int ROOT_CLOCK_VALUE = 0;
 
 	/**
-	 * The '<em><b>Container Clock</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Container Clock</b></em>' literal value. <!-- begin-user-doc
+	 * -->
 	 * <p>
-	 * If the meaning of '<em><b>Container Clock</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Container Clock</b></em>' literal object isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #CONTAINER_CLOCK
 	 * @model name="ContainerClock" literal="CONTAINERCLOCK"
 	 * @generated
@@ -87,13 +89,14 @@ public enum ClockType implements Enumerator {
 	public static final int CONTAINER_CLOCK_VALUE = 1;
 
 	/**
-	 * The '<em><b>Sequence Clock</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Sequence Clock</b></em>' literal value. <!-- begin-user-doc
+	 * -->
 	 * <p>
-	 * If the meaning of '<em><b>Sequence Clock</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Sequence Clock</b></em>' literal object isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #SEQUENCE_CLOCK
 	 * @model name="SequenceClock" literal="SEQCLOCK"
 	 * @generated
@@ -102,13 +105,13 @@ public enum ClockType implements Enumerator {
 	public static final int SEQUENCE_CLOCK_VALUE = 2;
 
 	/**
-	 * The '<em><b>Loop Clock</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Loop Clock</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Loop Clock</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of '<em><b>Loop Clock</b></em>' literal object isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #LOOP_CLOCK
 	 * @model name="LoopClock" literal="LOOPCLOCK"
 	 * @generated
@@ -117,31 +120,27 @@ public enum ClockType implements Enumerator {
 	public static final int LOOP_CLOCK_VALUE = 3;
 
 	/**
-	 * An array of all the '<em><b>Clock Type</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * An array of all the '<em><b>Clock Type</b></em>' enumerators. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	private static final ClockType[] VALUES_ARRAY =
-		new ClockType[] {
-			ROOT_CLOCK,
-			CONTAINER_CLOCK,
-			SEQUENCE_CLOCK,
-			LOOP_CLOCK,
-		};
+	private static final ClockType[] VALUES_ARRAY = new ClockType[] {
+			ROOT_CLOCK, CONTAINER_CLOCK, SEQUENCE_CLOCK, LOOP_CLOCK, };
 
 	/**
-	 * A public read-only list of all the '<em><b>Clock Type</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * A public read-only list of all the '<em><b>Clock Type</b></em>'
+	 * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public static final List<ClockType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<ClockType> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Clock Type</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Clock Type</b></em>' literal with the specified
+	 * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static ClockType get(String literal) {
@@ -156,8 +155,8 @@ public enum ClockType implements Enumerator {
 
 	/**
 	 * Returns the '<em><b>Clock Type</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static ClockType getByName(String name) {
@@ -171,46 +170,50 @@ public enum ClockType implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Clock Type</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the '<em><b>Clock Type</b></em>' literal with the specified
+	 * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static ClockType get(int value) {
 		switch (value) {
-			case ROOT_CLOCK_VALUE: return ROOT_CLOCK;
-			case CONTAINER_CLOCK_VALUE: return CONTAINER_CLOCK;
-			case SEQUENCE_CLOCK_VALUE: return SEQUENCE_CLOCK;
-			case LOOP_CLOCK_VALUE: return LOOP_CLOCK;
+		case ROOT_CLOCK_VALUE:
+			return ROOT_CLOCK;
+		case CONTAINER_CLOCK_VALUE:
+			return CONTAINER_CLOCK;
+		case SEQUENCE_CLOCK_VALUE:
+			return SEQUENCE_CLOCK;
+		case LOOP_CLOCK_VALUE:
+			return LOOP_CLOCK;
 		}
 		return null;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Only this class can construct instances. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private ClockType(int value, String name, String literal) {
@@ -220,41 +223,41 @@ public enum ClockType implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the literal value of the enumerator, which is its string
+	 * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
 		return literal;
 	}
-	
-} //ClockType
+
+} // ClockType

@@ -1,3 +1,10 @@
+/*******************************************************************************
+* Copyright (c) 2014 Jóakim v. Kistowski
+* All rights reserved. This program and the accompanying materials
+* are made available under the terms of the Eclipse Public License v1.0
+* which accompanies this distribution, and is available at
+* http://www.eclipse.org/legal/epl-v10.html
+*******************************************************************************/
 package tools.descartes.dlim.generator.editor.popup.actions;
 
 import org.eclipse.jface.action.IAction;
@@ -13,27 +20,30 @@ import tools.descartes.dlim.generator.editor.views.PlotView;
 
 /**
  * This Action toggles the display of an arrival rate trace in the PlotView.
- * @author J�akim G. v. Kistowski
+ * 
+ * @author Jóakim v. Kistowski
  */
 public class PlotArrivalRateFileInPlotViewAction implements IViewActionDelegate {
-	
+
 	private static final String PLOTVIEWID = "tools.descartes.dlim.generator.editor.views.PlotView";
-	
+
 	private Shell shell;
-	
+
 	@Override
 	public void run(IAction action) {
 		//
-		//get plot view
-		IViewReference[] references = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getViewReferences();
+		// get plot view
+		IViewReference[] references = PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow().getActivePage().getViewReferences();
 		for (int i = 0; i < references.length; i++) {
 			if (references[i].getId().equals(PLOTVIEWID)) {
-				PlotView view = (PlotView)(references[i].getView(true));
+				PlotView view = (PlotView) (references[i].getView(true));
 				if (view.isPlottingFile()) {
 					view.setPlottingFile(false);
 				} else {
-					//show dialog
-					PlotArrivalRateFileDialog dialog = new PlotArrivalRateFileDialog(shell);
+					// show dialog
+					PlotArrivalRateFileDialog dialog = new PlotArrivalRateFileDialog(
+							shell);
 					dialog.open();
 					if (!dialog.wasCanceled()) {
 						view.setPlottingFile(true);
@@ -43,20 +53,18 @@ public class PlotArrivalRateFileInPlotViewAction implements IViewActionDelegate 
 				view.updatePlot();
 			}
 		}
-		
+
 	}
 
 	@Override
 	public void selectionChanged(IAction action, ISelection selection) {
-		
+
 	}
 
 	@Override
 	public void init(IViewPart view) {
 		shell = view.getSite().getShell();
-		
-	}
 
-	
+	}
 
 }

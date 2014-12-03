@@ -17,23 +17,24 @@ import tools.descartes.dlim.DlimPackage;
 import tools.descartes.dlim.Function;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Function</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Function</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link tools.descartes.dlim.impl.FunctionImpl#getCombine <em>Combine</em>}</li>
+ * <li>{@link tools.descartes.dlim.impl.FunctionImpl#getCombine <em>Combine
+ * </em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public abstract class FunctionImpl extends MinimalEObjectImpl.Container implements Function {
+public abstract class FunctionImpl extends MinimalEObjectImpl.Container
+		implements Function {
 	/**
-	 * The cached value of the '{@link #getCombine() <em>Combine</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getCombine() <em>Combine</em>}'
+	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getCombine()
 	 * @generated
 	 * @ordered
@@ -41,8 +42,8 @@ public abstract class FunctionImpl extends MinimalEObjectImpl.Container implemen
 	protected EList<Combinator> combine;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected FunctionImpl() {
@@ -50,8 +51,8 @@ public abstract class FunctionImpl extends MinimalEObjectImpl.Container implemen
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -60,89 +61,92 @@ public abstract class FunctionImpl extends MinimalEObjectImpl.Container implemen
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<Combinator> getCombine() {
 		if (combine == null) {
-			combine = new EObjectContainmentEList<Combinator>(Combinator.class, this, DlimPackage.FUNCTION__COMBINE);
+			combine = new EObjectContainmentEList<Combinator>(Combinator.class,
+					this, DlimPackage.FUNCTION__COMBINE);
 		}
 		return combine;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case DlimPackage.FUNCTION__COMBINE:
-				return ((InternalEList<?>)getCombine()).basicRemove(otherEnd, msgs);
+		case DlimPackage.FUNCTION__COMBINE:
+			return ((InternalEList<?>) getCombine())
+					.basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case DlimPackage.FUNCTION__COMBINE:
-				return getCombine();
+		case DlimPackage.FUNCTION__COMBINE:
+			return getCombine();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case DlimPackage.FUNCTION__COMBINE:
-				getCombine().clear();
-				getCombine().addAll((Collection<? extends Combinator>)newValue);
-				return;
+		case DlimPackage.FUNCTION__COMBINE:
+			getCombine().clear();
+			getCombine().addAll((Collection<? extends Combinator>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case DlimPackage.FUNCTION__COMBINE:
-				getCombine().clear();
-				return;
+		case DlimPackage.FUNCTION__COMBINE:
+			getCombine().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case DlimPackage.FUNCTION__COMBINE:
-				return combine != null && !combine.isEmpty();
+		case DlimPackage.FUNCTION__COMBINE:
+			return combine != null && !combine.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //FunctionImpl
+} // FunctionImpl

@@ -8,18 +8,18 @@ import tools.descartes.dlim.DlimPackage;
 import tools.descartes.dlim.LinearIncreaseAndDecline;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Linear Increase And Decline</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Linear Increase And Decline</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class LinearIncreaseAndDeclineImpl extends BurstImpl implements LinearIncreaseAndDecline {
+public class LinearIncreaseAndDeclineImpl extends BurstImpl implements
+		LinearIncreaseAndDecline {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected LinearIncreaseAndDeclineImpl() {
@@ -27,8 +27,8 @@ public class LinearIncreaseAndDeclineImpl extends BurstImpl implements LinearInc
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -36,4 +36,4 @@ public class LinearIncreaseAndDeclineImpl extends BurstImpl implements LinearInc
 		return DlimPackage.Literals.LINEAR_INCREASE_AND_DECLINE;
 	}
 
-} //LinearIncreaseAndDeclineImpl
+} // LinearIncreaseAndDeclineImpl

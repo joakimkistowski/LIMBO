@@ -7,38 +7,27 @@
 
 package com.dtw;
 
+public class TimeWarpInfo {
+	// PRIVATE DATA
+	private final double distance;
+	private final WarpPath path;
 
-public class TimeWarpInfo
-{
-   // PRIVATE DATA
-   private final double distance;
-   private final WarpPath path;
+	// CONSTRUCTOR
+	TimeWarpInfo(double dist, WarpPath wp) {
+		distance = dist;
+		path = wp;
+	}
 
+	public double getDistance() {
+		return distance;
+	}
 
+	public WarpPath getPath() {
+		return path;
+	}
 
-   // CONSTRUCTOR
-   TimeWarpInfo(double dist, WarpPath wp)
-   {
-      distance = dist;
-      path = wp;
-   }
+	public String toString() {
+		return "(Warp Distance=" + distance + ", Warp Path=" + path + ")";
+	}
 
-
-   public double getDistance()
-   {
-      return distance;
-   }
-
-
-   public WarpPath getPath()
-   {
-      return path;
-   }
-
-
-   public String toString()
-   {
-      return "(Warp Distance=" + distance + ", Warp Path=" + path + ")";
-   }
-
-}  // end class TimeWarpInfo
+} // end class TimeWarpInfo

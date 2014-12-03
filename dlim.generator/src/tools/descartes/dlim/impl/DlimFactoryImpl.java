@@ -12,35 +12,35 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import tools.descartes.dlim.*;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
+ * end-user-doc -->
+ * 
  * @generated
  */
 public class DlimFactoryImpl extends EFactoryImpl implements DlimFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates the default factory implementation. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static DlimFactory init() {
 		try {
-			DlimFactory theDlimFactory = (DlimFactory)EPackage.Registry.INSTANCE.getEFactory(DlimPackage.eNS_URI);
+			DlimFactory theDlimFactory = (DlimFactory) EPackage.Registry.INSTANCE
+					.getEFactory(DlimPackage.eNS_URI);
 			if (theDlimFactory != null) {
 				return theDlimFactory;
 			}
-		}
-		catch (Exception exception) {
+		} catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new DlimFactoryImpl();
 	}
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates an instance of the factory. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DlimFactoryImpl() {
@@ -48,75 +48,98 @@ public class DlimFactoryImpl extends EFactoryImpl implements DlimFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case DlimPackage.SEQUENCE: return createSequence();
-			case DlimPackage.COMBINATOR: return createCombinator();
-			case DlimPackage.TIME_DEPENDENT_FUNCTION_CONTAINER: return createTimeDependentFunctionContainer();
-			case DlimPackage.UNIFORM_NOISE: return createUniformNoise();
-			case DlimPackage.NORMAL_NOISE: return createNormalNoise();
-			case DlimPackage.CONSTANT: return createConstant();
-			case DlimPackage.SIN: return createSin();
-			case DlimPackage.EXPONENTIAL_INCREASE_AND_DECLINE: return createExponentialIncreaseAndDecline();
-			case DlimPackage.EXPONENTIAL_INCREASE_LOGARITHMIC_DECLINE: return createExponentialIncreaseLogarithmicDecline();
-			case DlimPackage.LINEAR_INCREASE_AND_DECLINE: return createLinearIncreaseAndDecline();
-			case DlimPackage.ABSOLUTE_SIN: return createAbsoluteSin();
-			case DlimPackage.LINEAR_TREND: return createLinearTrend();
-			case DlimPackage.EXPONENTIAL_TREND: return createExponentialTrend();
-			case DlimPackage.LOGARITHMIC_TREND: return createLogarithmicTrend();
-			case DlimPackage.SIN_TREND: return createSinTrend();
-			case DlimPackage.REFERENCE_CLOCK_OBJECT: return createReferenceClockObject();
-			case DlimPackage.ARRIVAL_RATES_FROM_FILE: return createArrivalRatesFromFile();
-			case DlimPackage.ABSOLUTE_VALUE_FUNCTION: return createAbsoluteValueFunction();
-			case DlimPackage.POLYNOMIAL: return createPolynomial();
-			case DlimPackage.POLYNOMIAL_FACTOR: return createPolynomialFactor();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		case DlimPackage.SEQUENCE:
+			return createSequence();
+		case DlimPackage.COMBINATOR:
+			return createCombinator();
+		case DlimPackage.TIME_DEPENDENT_FUNCTION_CONTAINER:
+			return createTimeDependentFunctionContainer();
+		case DlimPackage.UNIFORM_NOISE:
+			return createUniformNoise();
+		case DlimPackage.NORMAL_NOISE:
+			return createNormalNoise();
+		case DlimPackage.CONSTANT:
+			return createConstant();
+		case DlimPackage.SIN:
+			return createSin();
+		case DlimPackage.EXPONENTIAL_INCREASE_AND_DECLINE:
+			return createExponentialIncreaseAndDecline();
+		case DlimPackage.EXPONENTIAL_INCREASE_LOGARITHMIC_DECLINE:
+			return createExponentialIncreaseLogarithmicDecline();
+		case DlimPackage.LINEAR_INCREASE_AND_DECLINE:
+			return createLinearIncreaseAndDecline();
+		case DlimPackage.ABSOLUTE_SIN:
+			return createAbsoluteSin();
+		case DlimPackage.LINEAR_TREND:
+			return createLinearTrend();
+		case DlimPackage.EXPONENTIAL_TREND:
+			return createExponentialTrend();
+		case DlimPackage.LOGARITHMIC_TREND:
+			return createLogarithmicTrend();
+		case DlimPackage.SIN_TREND:
+			return createSinTrend();
+		case DlimPackage.REFERENCE_CLOCK_OBJECT:
+			return createReferenceClockObject();
+		case DlimPackage.ARRIVAL_RATES_FROM_FILE:
+			return createArrivalRatesFromFile();
+		case DlimPackage.ABSOLUTE_VALUE_FUNCTION:
+			return createAbsoluteValueFunction();
+		case DlimPackage.POLYNOMIAL:
+			return createPolynomial();
+		case DlimPackage.POLYNOMIAL_FACTOR:
+			return createPolynomialFactor();
+		default:
+			throw new IllegalArgumentException("The class '" + eClass.getName()
+					+ "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case DlimPackage.CLOCK_TYPE:
-				return createClockTypeFromString(eDataType, initialValue);
-			case DlimPackage.OPERATOR:
-				return createOperatorFromString(eDataType, initialValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		case DlimPackage.CLOCK_TYPE:
+			return createClockTypeFromString(eDataType, initialValue);
+		case DlimPackage.OPERATOR:
+			return createOperatorFromString(eDataType, initialValue);
+		default:
+			throw new IllegalArgumentException("The datatype '"
+					+ eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case DlimPackage.CLOCK_TYPE:
-				return convertClockTypeToString(eDataType, instanceValue);
-			case DlimPackage.OPERATOR:
-				return convertOperatorToString(eDataType, instanceValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		case DlimPackage.CLOCK_TYPE:
+			return convertClockTypeToString(eDataType, instanceValue);
+		case DlimPackage.OPERATOR:
+			return convertOperatorToString(eDataType, instanceValue);
+		default:
+			throw new IllegalArgumentException("The datatype '"
+					+ eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Sequence createSequence() {
@@ -125,8 +148,8 @@ public class DlimFactoryImpl extends EFactoryImpl implements DlimFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Combinator createCombinator() {
@@ -135,8 +158,8 @@ public class DlimFactoryImpl extends EFactoryImpl implements DlimFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public TimeDependentFunctionContainer createTimeDependentFunctionContainer() {
@@ -145,8 +168,8 @@ public class DlimFactoryImpl extends EFactoryImpl implements DlimFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public UniformNoise createUniformNoise() {
@@ -155,8 +178,8 @@ public class DlimFactoryImpl extends EFactoryImpl implements DlimFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NormalNoise createNormalNoise() {
@@ -165,8 +188,8 @@ public class DlimFactoryImpl extends EFactoryImpl implements DlimFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Constant createConstant() {
@@ -175,8 +198,8 @@ public class DlimFactoryImpl extends EFactoryImpl implements DlimFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Sin createSin() {
@@ -185,8 +208,8 @@ public class DlimFactoryImpl extends EFactoryImpl implements DlimFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ExponentialIncreaseAndDecline createExponentialIncreaseAndDecline() {
@@ -195,8 +218,8 @@ public class DlimFactoryImpl extends EFactoryImpl implements DlimFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ExponentialIncreaseLogarithmicDecline createExponentialIncreaseLogarithmicDecline() {
@@ -205,8 +228,8 @@ public class DlimFactoryImpl extends EFactoryImpl implements DlimFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public LinearIncreaseAndDecline createLinearIncreaseAndDecline() {
@@ -215,8 +238,8 @@ public class DlimFactoryImpl extends EFactoryImpl implements DlimFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AbsoluteSin createAbsoluteSin() {
@@ -225,8 +248,8 @@ public class DlimFactoryImpl extends EFactoryImpl implements DlimFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public LinearTrend createLinearTrend() {
@@ -235,8 +258,8 @@ public class DlimFactoryImpl extends EFactoryImpl implements DlimFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ExponentialTrend createExponentialTrend() {
@@ -245,8 +268,8 @@ public class DlimFactoryImpl extends EFactoryImpl implements DlimFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public LogarithmicTrend createLogarithmicTrend() {
@@ -255,8 +278,8 @@ public class DlimFactoryImpl extends EFactoryImpl implements DlimFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public SinTrend createSinTrend() {
@@ -265,8 +288,8 @@ public class DlimFactoryImpl extends EFactoryImpl implements DlimFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ReferenceClockObject createReferenceClockObject() {
@@ -275,8 +298,8 @@ public class DlimFactoryImpl extends EFactoryImpl implements DlimFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ArrivalRatesFromFile createArrivalRatesFromFile() {
@@ -285,8 +308,8 @@ public class DlimFactoryImpl extends EFactoryImpl implements DlimFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AbsoluteValueFunction createAbsoluteValueFunction() {
@@ -295,8 +318,8 @@ public class DlimFactoryImpl extends EFactoryImpl implements DlimFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Polynomial createPolynomial() {
@@ -305,8 +328,8 @@ public class DlimFactoryImpl extends EFactoryImpl implements DlimFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public PolynomialFactor createPolynomialFactor() {
@@ -315,57 +338,67 @@ public class DlimFactoryImpl extends EFactoryImpl implements DlimFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public ClockType createClockTypeFromString(EDataType eDataType, String initialValue) {
+	public ClockType createClockTypeFromString(EDataType eDataType,
+			String initialValue) {
 		ClockType result = ClockType.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + initialValue
+					+ "' is not a valid enumerator of '" + eDataType.getName()
+					+ "'");
 		return result;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public String convertClockTypeToString(EDataType eDataType, Object instanceValue) {
+	public String convertClockTypeToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public Operator createOperatorFromString(EDataType eDataType, String initialValue) {
+	public Operator createOperatorFromString(EDataType eDataType,
+			String initialValue) {
 		Operator result = Operator.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + initialValue
+					+ "' is not a valid enumerator of '" + eDataType.getName()
+					+ "'");
 		return result;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public String convertOperatorToString(EDataType eDataType, Object instanceValue) {
+	public String convertOperatorToString(EDataType eDataType,
+			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DlimPackage getDlimPackage() {
-		return (DlimPackage)getEPackage();
+		return (DlimPackage) getEPackage();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @deprecated
 	 * @generated
 	 */
@@ -374,4 +407,4 @@ public class DlimFactoryImpl extends EFactoryImpl implements DlimFactory {
 		return DlimPackage.eINSTANCE;
 	}
 
-} //DlimFactoryImpl
+} // DlimFactoryImpl

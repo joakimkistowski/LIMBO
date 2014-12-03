@@ -2,7 +2,6 @@
  */
 package tools.descartes.dlim.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -27,23 +26,19 @@ import tools.descartes.dlim.DlimPackage;
 import tools.descartes.dlim.Operator;
 
 /**
- * This is the item provider adapter for a {@link tools.descartes.dlim.Combinator} object.
- * <!-- begin-user-doc -->
- * <!-- end-user-doc -->
+ * This is the item provider adapter for a
+ * {@link tools.descartes.dlim.Combinator} object. <!-- begin-user-doc --> <!--
+ * end-user-doc -->
+ * 
  * @generated
  */
-public class CombinatorItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+public class CombinatorItemProvider extends ItemProviderAdapter implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This constructs an instance from a factory and a notifier. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CombinatorItemProvider(AdapterFactory adapterFactory) {
@@ -51,9 +46,9 @@ public class CombinatorItemProvider
 	}
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This returns the property descriptors for the adapted class. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -67,37 +62,37 @@ public class CombinatorItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Operator feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This adds a property descriptor for the Operator feature. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected void addOperatorPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Combinator_operator_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Combinator_operator_feature", "_UI_Combinator_type"),
-				 DlimPackage.Literals.COMBINATOR__OPERATOR,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Combinator_operator_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_Combinator_operator_feature",
+						"_UI_Combinator_type"),
+				DlimPackage.Literals.COMBINATOR__OPERATOR, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This specifies how to implement {@link #getChildren} and is used to
+	 * deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand},
+	 * {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in
+	 * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(
+			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(DlimPackage.Literals.COMBINATOR__FUNCTION);
@@ -106,49 +101,51 @@ public class CombinatorItemProvider
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
+		// Check the type of the specified child object and return the proper
+		// feature to use for
 		// adding (see {@link AddCommand}) it as a child.
 
 		return super.getChildFeature(object, child);
 	}
 
 	/**
-	 * This returns Combinator.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This returns Combinator.gif. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Combinator"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/Combinator"));
 	}
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This returns the label text for the adapted class. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		Operator labelValue = ((Combinator)object).getOperator();
+		Operator labelValue = ((Combinator) object).getOperator();
 		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Combinator_type") :
-			getString("_UI_Combinator_type") + " " + label;
+		return label == null || label.length() == 0 ? getString("_UI_Combinator_type")
+				: getString("_UI_Combinator_type") + " " + label;
 	}
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This handles model notifications by calling {@link #updateChildren} to
+	 * update any cached children and by creating a viewer notification, which
+	 * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -156,112 +153,100 @@ public class CombinatorItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Combinator.class)) {
-			case DlimPackage.COMBINATOR__OPERATOR:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case DlimPackage.COMBINATOR__FUNCTION:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
+		case DlimPackage.COMBINATOR__OPERATOR:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
+		case DlimPackage.COMBINATOR__FUNCTION:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
+	 * describing the children that can be created under this object. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-				(DlimPackage.Literals.COMBINATOR__FUNCTION,
-				 DlimFactory.eINSTANCE.createSequence()));
+		newChildDescriptors.add(createChildParameter(
+				DlimPackage.Literals.COMBINATOR__FUNCTION,
+				DlimFactory.eINSTANCE.createSequence()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(DlimPackage.Literals.COMBINATOR__FUNCTION,
-				 DlimFactory.eINSTANCE.createUniformNoise()));
+		newChildDescriptors.add(createChildParameter(
+				DlimPackage.Literals.COMBINATOR__FUNCTION,
+				DlimFactory.eINSTANCE.createUniformNoise()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(DlimPackage.Literals.COMBINATOR__FUNCTION,
-				 DlimFactory.eINSTANCE.createNormalNoise()));
+		newChildDescriptors.add(createChildParameter(
+				DlimPackage.Literals.COMBINATOR__FUNCTION,
+				DlimFactory.eINSTANCE.createNormalNoise()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(DlimPackage.Literals.COMBINATOR__FUNCTION,
-				 DlimFactory.eINSTANCE.createConstant()));
+		newChildDescriptors.add(createChildParameter(
+				DlimPackage.Literals.COMBINATOR__FUNCTION,
+				DlimFactory.eINSTANCE.createConstant()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(DlimPackage.Literals.COMBINATOR__FUNCTION,
-				 DlimFactory.eINSTANCE.createSin()));
+		newChildDescriptors.add(createChildParameter(
+				DlimPackage.Literals.COMBINATOR__FUNCTION,
+				DlimFactory.eINSTANCE.createSin()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(DlimPackage.Literals.COMBINATOR__FUNCTION,
-				 DlimFactory.eINSTANCE.createExponentialIncreaseAndDecline()));
+		newChildDescriptors.add(createChildParameter(
+				DlimPackage.Literals.COMBINATOR__FUNCTION,
+				DlimFactory.eINSTANCE.createExponentialIncreaseAndDecline()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(DlimPackage.Literals.COMBINATOR__FUNCTION,
-				 DlimFactory.eINSTANCE.createExponentialIncreaseLogarithmicDecline()));
+		newChildDescriptors.add(createChildParameter(
+				DlimPackage.Literals.COMBINATOR__FUNCTION,
+				DlimFactory.eINSTANCE
+						.createExponentialIncreaseLogarithmicDecline()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(DlimPackage.Literals.COMBINATOR__FUNCTION,
-				 DlimFactory.eINSTANCE.createLinearIncreaseAndDecline()));
+		newChildDescriptors.add(createChildParameter(
+				DlimPackage.Literals.COMBINATOR__FUNCTION,
+				DlimFactory.eINSTANCE.createLinearIncreaseAndDecline()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(DlimPackage.Literals.COMBINATOR__FUNCTION,
-				 DlimFactory.eINSTANCE.createAbsoluteSin()));
+		newChildDescriptors.add(createChildParameter(
+				DlimPackage.Literals.COMBINATOR__FUNCTION,
+				DlimFactory.eINSTANCE.createAbsoluteSin()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(DlimPackage.Literals.COMBINATOR__FUNCTION,
-				 DlimFactory.eINSTANCE.createLinearTrend()));
+		newChildDescriptors.add(createChildParameter(
+				DlimPackage.Literals.COMBINATOR__FUNCTION,
+				DlimFactory.eINSTANCE.createLinearTrend()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(DlimPackage.Literals.COMBINATOR__FUNCTION,
-				 DlimFactory.eINSTANCE.createExponentialTrend()));
+		newChildDescriptors.add(createChildParameter(
+				DlimPackage.Literals.COMBINATOR__FUNCTION,
+				DlimFactory.eINSTANCE.createExponentialTrend()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(DlimPackage.Literals.COMBINATOR__FUNCTION,
-				 DlimFactory.eINSTANCE.createLogarithmicTrend()));
+		newChildDescriptors.add(createChildParameter(
+				DlimPackage.Literals.COMBINATOR__FUNCTION,
+				DlimFactory.eINSTANCE.createLogarithmicTrend()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(DlimPackage.Literals.COMBINATOR__FUNCTION,
-				 DlimFactory.eINSTANCE.createSinTrend()));
+		newChildDescriptors.add(createChildParameter(
+				DlimPackage.Literals.COMBINATOR__FUNCTION,
+				DlimFactory.eINSTANCE.createSinTrend()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(DlimPackage.Literals.COMBINATOR__FUNCTION,
-				 DlimFactory.eINSTANCE.createArrivalRatesFromFile()));
+		newChildDescriptors.add(createChildParameter(
+				DlimPackage.Literals.COMBINATOR__FUNCTION,
+				DlimFactory.eINSTANCE.createArrivalRatesFromFile()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(DlimPackage.Literals.COMBINATOR__FUNCTION,
-				 DlimFactory.eINSTANCE.createAbsoluteValueFunction()));
+		newChildDescriptors.add(createChildParameter(
+				DlimPackage.Literals.COMBINATOR__FUNCTION,
+				DlimFactory.eINSTANCE.createAbsoluteValueFunction()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(DlimPackage.Literals.COMBINATOR__FUNCTION,
-				 DlimFactory.eINSTANCE.createPolynomial()));
+		newChildDescriptors.add(createChildParameter(
+				DlimPackage.Literals.COMBINATOR__FUNCTION,
+				DlimFactory.eINSTANCE.createPolynomial()));
 	}
 
 	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Return the resource locator for this item provider's resources. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

@@ -5,15 +5,14 @@ package tools.descartes.dlim;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Combinator</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Combinator</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link tools.descartes.dlim.Combinator#getOperator <em>Operator</em>}</li>
- *   <li>{@link tools.descartes.dlim.Combinator#getFunction <em>Function</em>}</li>
+ * <li>{@link tools.descartes.dlim.Combinator#getOperator <em>Operator</em>}</li>
+ * <li>{@link tools.descartes.dlim.Combinator#getFunction <em>Function</em>}</li>
  * </ul>
  * </p>
  *
@@ -23,15 +22,16 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Combinator extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Operator</b></em>' attribute.
-	 * The default value is <code>"ADD"</code>.
-	 * The literals are from the enumeration {@link tools.descartes.dlim.Operator}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Operator</b></em>' attribute. The
+	 * default value is <code>"ADD"</code>. The literals are from the
+	 * enumeration {@link tools.descartes.dlim.Operator}. <!-- begin-user-doc
+	 * -->
 	 * <p>
-	 * If the meaning of the '<em>Operator</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Operator</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Operator</em>' attribute.
 	 * @see tools.descartes.dlim.Operator
 	 * @see #setOperator(Operator)
@@ -42,10 +42,12 @@ public interface Combinator extends EObject {
 	Operator getOperator();
 
 	/**
-	 * Sets the value of the '{@link tools.descartes.dlim.Combinator#getOperator <em>Operator</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Operator</em>' attribute.
+	 * Sets the value of the '
+	 * {@link tools.descartes.dlim.Combinator#getOperator <em>Operator</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Operator</em>' attribute.
 	 * @see tools.descartes.dlim.Operator
 	 * @see #getOperator()
 	 * @generated
@@ -53,13 +55,14 @@ public interface Combinator extends EObject {
 	void setOperator(Operator value);
 
 	/**
-	 * Returns the value of the '<em><b>Function</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Function</b></em>' containment
+	 * reference. <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Function</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Function</em>' containment reference isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Function</em>' containment reference.
 	 * @see #setFunction(Function)
 	 * @see tools.descartes.dlim.DlimPackage#getCombinator_Function()
@@ -69,10 +72,13 @@ public interface Combinator extends EObject {
 	Function getFunction();
 
 	/**
-	 * Sets the value of the '{@link tools.descartes.dlim.Combinator#getFunction <em>Function</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Function</em>' containment reference.
+	 * Sets the value of the '
+	 * {@link tools.descartes.dlim.Combinator#getFunction <em>Function</em>}'
+	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Function</em>' containment
+	 *            reference.
 	 * @see #getFunction()
 	 * @generated
 	 */

@@ -8,9 +8,8 @@ import tools.descartes.dlim.DlimPackage;
 import tools.descartes.dlim.LinearTrend;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Linear Trend</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Linear Trend</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
  *
@@ -18,8 +17,8 @@ import tools.descartes.dlim.LinearTrend;
  */
 public class LinearTrendImpl extends TrendImpl implements LinearTrend {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected LinearTrendImpl() {
@@ -27,8 +26,8 @@ public class LinearTrendImpl extends TrendImpl implements LinearTrend {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -36,4 +35,4 @@ public class LinearTrendImpl extends TrendImpl implements LinearTrend {
 		return DlimPackage.Literals.LINEAR_TREND;
 	}
 
-} //LinearTrendImpl
+} // LinearTrendImpl

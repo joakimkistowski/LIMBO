@@ -8,9 +8,8 @@ import tools.descartes.dlim.AbsoluteSin;
 import tools.descartes.dlim.DlimPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Absolute Sin</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Absolute Sin</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
  *
@@ -18,8 +17,8 @@ import tools.descartes.dlim.DlimPackage;
  */
 public class AbsoluteSinImpl extends SinImpl implements AbsoluteSin {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected AbsoluteSinImpl() {
@@ -27,8 +26,8 @@ public class AbsoluteSinImpl extends SinImpl implements AbsoluteSin {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -36,4 +35,4 @@ public class AbsoluteSinImpl extends SinImpl implements AbsoluteSin {
 		return DlimPackage.Literals.ABSOLUTE_SIN;
 	}
 
-} //AbsoluteSinImpl
+} // AbsoluteSinImpl

@@ -1,3 +1,10 @@
+/*******************************************************************************
+ * Copyright (c) 2014 Jóakim v. Kistowski
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
 package tools.descartes.dlim.generator.editor.dialogs;
 
 import java.io.IOException;
@@ -25,21 +32,27 @@ import tools.descartes.dlim.generator.ArrivalRateTuple;
 import tools.descartes.dlim.reader.ArrivalRateReader;
 
 /**
- * This dialog takes user parameters for the inclusion
- * of an arrival rate trace within the plotview.
- * @author J�akim G. v. Kistowski
+ * This dialog takes user parameters for the inclusion of an arrival rate trace
+ * within the plotview.
+ *
+ * @author Jóakim v. Kistowski
  *
  */
 public class PlotArrivalRateFileDialog extends TitleAreaDialog {
-	
+
+	/**
+	 * Instantiates a new plot arrival rate file dialog.
+	 *
+	 * @param parentShell the parent shell
+	 */
 	public PlotArrivalRateFileDialog(Shell parentShell) {
 		super(parentShell);
 	}
 
-	//parameter input fields
+	// parameter input fields
 	private Text txtFilePathText;
 	private Text offsetText;
-	
+
 	private double offset = 0.0;
 	private static String txtFilePath = "";
 	private boolean canceled = false;
@@ -48,6 +61,7 @@ public class PlotArrivalRateFileDialog extends TitleAreaDialog {
 	/**
 	 * Set dialog titles.
 	 */
+	@Override
 	public void create() {
 		super.create();
 		setTitle("Plot Arrival Rate File for comparison.");
@@ -55,6 +69,9 @@ public class PlotArrivalRateFileDialog extends TitleAreaDialog {
 
 	/**
 	 * Set up GUI elements.
+	 *
+	 * @param parent the parent
+	 * @return the control
 	 */
 	@Override
 	protected Control createDialogArea(Composite parent) {
@@ -66,73 +83,77 @@ public class PlotArrivalRateFileDialog extends TitleAreaDialog {
 
 		return dialogContainer;
 	}
-	
-	//offset of model start within the arrival rate file
-		private void createOffsetParameterField(Composite container) {
-			Composite gridContainer = new Composite(container, SWT.NONE);
-			GridLayout layout = new GridLayout(2,false);
-			gridContainer.setLayout(layout);
-			Label parameterFieldLabel = new Label(gridContainer, SWT.NONE);
-			parameterFieldLabel.setText("Model start offset within arrival rate file: ");
-			GridData parameterFieldData = new GridData();
-			parameterFieldData.grabExcessHorizontalSpace = false;
-			parameterFieldData.horizontalAlignment = SWT.BEGINNING;
-			parameterFieldData.widthHint = 40;
-			offsetText = new Text(gridContainer, SWT.BORDER);
-			offsetText.setText(String.valueOf(offset));
-			offsetText.setLayoutData(parameterFieldData);
-		}
-	
-	//file path UI
-		private void createTxtFilePathField(Composite container) {
-			Composite gridContainer = new Composite(container, SWT.NONE);
-			GridLayout layout = new GridLayout(3,false);
-			gridContainer.setLayout(layout);
-			Label parameterFieldLabel = new Label(gridContainer, SWT.NONE);
-			parameterFieldLabel.setText("Arrival Rate File: ");
-			GridData parameterFieldData = new GridData();
-			parameterFieldData.grabExcessHorizontalSpace = false;
-			parameterFieldData.horizontalAlignment = SWT.BEGINNING;
-			parameterFieldData.widthHint = 300;
-			txtFilePathText = new Text(gridContainer, SWT.BORDER);
-			txtFilePathText.setText(txtFilePath);
-			txtFilePathText.setLayoutData(parameterFieldData);
-			Button fileDialogButton = new Button(gridContainer,SWT.PUSH);
-			fileDialogButton.setText("Browse");
-			fileDialogButton.addSelectionListener(new SelectionListener() {
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-					handleSelection(e);
-				}
-				@Override
-				public void widgetDefaultSelected(SelectionEvent e) {
-					handleSelection(e);
-				}
-				private void handleSelection(SelectionEvent e) {
-					FileDialog dialog = new FileDialog(getParentShell(),SWT.OPEN);
-					String[] filterNames = {"Arrival Rate files","All Files"};
-					String[] filterExtensions = new String [] {"*.csv;*.txt", "*.*"};
-					dialog.setFilterNames(filterNames);
-					dialog.setFilterExtensions(filterExtensions);
-					dialog.setText("Select Arrival Rate File");
-					String newPath = dialog.open();
-					if (newPath != null && !newPath.isEmpty()) {
-						txtFilePathText.setText(newPath);
-					}
-				}
-			});
-		}
 
-	
+	// offset of model start within the arrival rate file
+	private void createOffsetParameterField(Composite container) {
+		Composite gridContainer = new Composite(container, SWT.NONE);
+		GridLayout layout = new GridLayout(2, false);
+		gridContainer.setLayout(layout);
+		Label parameterFieldLabel = new Label(gridContainer, SWT.NONE);
+		parameterFieldLabel
+		.setText("Model start offset within arrival rate file: ");
+		GridData parameterFieldData = new GridData();
+		parameterFieldData.grabExcessHorizontalSpace = false;
+		parameterFieldData.horizontalAlignment = SWT.BEGINNING;
+		parameterFieldData.widthHint = 40;
+		offsetText = new Text(gridContainer, SWT.BORDER);
+		offsetText.setText(String.valueOf(offset));
+		offsetText.setLayoutData(parameterFieldData);
+	}
+
+	// file path UI
+	private void createTxtFilePathField(Composite container) {
+		Composite gridContainer = new Composite(container, SWT.NONE);
+		GridLayout layout = new GridLayout(3, false);
+		gridContainer.setLayout(layout);
+		Label parameterFieldLabel = new Label(gridContainer, SWT.NONE);
+		parameterFieldLabel.setText("Arrival Rate File: ");
+		GridData parameterFieldData = new GridData();
+		parameterFieldData.grabExcessHorizontalSpace = false;
+		parameterFieldData.horizontalAlignment = SWT.BEGINNING;
+		parameterFieldData.widthHint = 300;
+		txtFilePathText = new Text(gridContainer, SWT.BORDER);
+		txtFilePathText.setText(txtFilePath);
+		txtFilePathText.setLayoutData(parameterFieldData);
+		Button fileDialogButton = new Button(gridContainer, SWT.PUSH);
+		fileDialogButton.setText("Browse");
+		fileDialogButton.addSelectionListener(new SelectionListener() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				handleSelection(e);
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				handleSelection(e);
+			}
+
+			private void handleSelection(SelectionEvent e) {
+				FileDialog dialog = new FileDialog(getParentShell(), SWT.OPEN);
+				String[] filterNames = { "Arrival Rate files", "All Files" };
+				String[] filterExtensions = new String[] { "*.csv;*.txt", "*.*" };
+				dialog.setFilterNames(filterNames);
+				dialog.setFilterExtensions(filterExtensions);
+				dialog.setText("Select Arrival Rate File");
+				String newPath = dialog.open();
+				if (newPath != null && !newPath.isEmpty()) {
+					txtFilePathText.setText(newPath);
+				}
+			}
+		});
+	}
+
 	/**
 	 * Dialog window label.
+	 *
+	 * @param newShell the new shell
 	 */
 	@Override
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 		newShell.setText("Plot Arrival Rate File");
 	}
-	
+
 	/**
 	 * Cancel button press.
 	 */
@@ -141,58 +162,65 @@ public class PlotArrivalRateFileDialog extends TitleAreaDialog {
 		canceled = true;
 		super.cancelPressed();
 	}
-	
+
 	/**
 	 * Returns true if the user canceled calibration.
-	 * @return
+	 *
+	 * @return true, if successful
 	 */
 	public boolean wasCanceled() {
 		return canceled;
 	}
-	
+
 	/**
-	 * Sets the newValue, depending on user input, read values and possible calibration errors.
+	 * Sets the newValue, depending on user input, read values and possible
+	 * calibration errors.
 	 */
 	@Override
 	protected void okPressed() {
 		boolean error = false;
-		
+
 		try {
 			offset = Double.parseDouble(offsetText.getText().trim());
 			if (offset < 0) {
-				setMessage("Offset must not be negative.", IMessageProvider.ERROR);
+				setMessage("Offset must not be negative.",
+						IMessageProvider.ERROR);
 				error = true;
 			}
 		} catch (NumberFormatException e) {
 			setMessage("Offset must be a number.", IMessageProvider.ERROR);
 			error = true;
 		}
-		
+
 		String tmpFilePath = txtFilePathText.getText().trim();
-		
+
 		IPath filePath = new Path(tmpFilePath);
-			
-			
-			//read value from txt file
-			try {
-				if (!error) {
-					arrivalRateList = ArrivalRateReader.readFileToList(filePath.toString(), offset);
-				}
-			} catch (IOException e) {
-				setMessage("Error reading file. Does it exist?", IMessageProvider.ERROR);
-				error = true;
+
+		// read value from txt file
+		try {
+			if (!error) {
+				arrivalRateList = ArrivalRateReader.readFileToList(
+						filePath.toString(), offset);
 			}
-		
-		
-		//success
+		} catch (IOException e) {
+			setMessage("Error reading file. Does it exist?",
+					IMessageProvider.ERROR);
+			error = true;
+		}
+
+		// success
 		if (!error) {
-			//store last used file
+			// store last used file
 			txtFilePath = tmpFilePath;
 			super.okPressed();
 		}
 	}
-	
-	
+
+	/**
+	 * Gets the arrival rate list.
+	 *
+	 * @return the arrival rate list
+	 */
 	public List<ArrivalRateTuple> getArrivalRateList() {
 		return arrivalRateList;
 	}

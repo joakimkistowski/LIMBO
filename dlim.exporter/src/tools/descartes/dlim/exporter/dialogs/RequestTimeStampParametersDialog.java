@@ -1,3 +1,10 @@
+/*******************************************************************************
+* Copyright (c) 2014 Jóakim v. Kistowski
+* All rights reserved. This program and the accompanying materials
+* are made available under the terms of the Eclipse Public License v1.0
+* which accompanies this distribution, and is available at
+* http://www.eclipse.org/legal/epl-v10.html
+*******************************************************************************/
 package tools.descartes.dlim.exporter.dialogs;
 
 import org.eclipse.jface.dialogs.IMessageProvider;
@@ -15,7 +22,8 @@ import org.eclipse.swt.widgets.Text;
 
 /**
  * This dialog promts for user parameters for request time-stamp generation.
- * @author J�akim G. v. Kistowski
+ *
+ * @author Jóakim v. Kistowski
  *
  */
 public class RequestTimeStampParametersDialog extends TitleAreaDialog {
@@ -25,26 +33,27 @@ public class RequestTimeStampParametersDialog extends TitleAreaDialog {
 	private Text rndSeedText;
 	private Text stretchText;
 	private Text arDevisorText;
-	
+
 	private int decimalPlaces = 3;
 	private int rndSeed = 5;
 	private double step = 1.0;
 	private double stretch = 1.0;
 	private double arDevisor = 1.0;
 	private boolean canceled = false;
-	
+
 	private String fileString;
-	
+
 	/**
 	 * Create a new Dialog.
-	 * @param fileString The path of the model file.
-	 * @param parentShell
+	 *
+	 * @param fileString            The path of the model file.
+	 * @param parentShell the parent shell
 	 */
 	public RequestTimeStampParametersDialog(String fileString, Shell parentShell) {
 		super(parentShell);
 		this.fileString = fileString;
 	}
-	
+
 	private void setDefaultValues() {
 		decimalPlaces = 3;
 		rndSeed = 5;
@@ -53,10 +62,11 @@ public class RequestTimeStampParametersDialog extends TitleAreaDialog {
 		arDevisor = 1.0;
 		canceled = false;
 	}
-	
+
 	/**
 	 * Sets titles.
 	 */
+	@Override
 	public void create() {
 		super.create();
 		setTitle("Request Time Stamp Generation Parameters");
@@ -65,6 +75,9 @@ public class RequestTimeStampParametersDialog extends TitleAreaDialog {
 
 	/**
 	 * Creates the GUI elements.
+	 *
+	 * @param parent the parent
+	 * @return the control
 	 */
 	@Override
 	protected Control createDialogArea(Composite parent) {
@@ -74,17 +87,17 @@ public class RequestTimeStampParametersDialog extends TitleAreaDialog {
 		createDecimalPlaceParameterField(columnContainer);
 		createStepParameterField(columnContainer);
 		createRndSeedParameterField(columnContainer);
-		Label delimiterLabel = new Label(columnContainer,SWT.NONE);
+		Label delimiterLabel = new Label(columnContainer, SWT.NONE);
 		delimiterLabel.setText("Time Stamp Modifiers");
 		delimiterLabel.setAlignment(SWT.CENTER);
 		createStretchParameterField(columnContainer);
 		createArDevisorParameterField(columnContainer);
 		return dialogContainer;
 	}
-	
+
 	private void createDecimalPlaceParameterField(Composite container) {
 		Composite gridContainer = new Composite(container, SWT.NONE);
-		GridLayout layout = new GridLayout(2,false);
+		GridLayout layout = new GridLayout(2, false);
 		gridContainer.setLayout(layout);
 		Label parameterFieldLabel = new Label(gridContainer, SWT.NONE);
 		parameterFieldLabel.setText("Maximum Decimal Places: ");
@@ -96,10 +109,10 @@ public class RequestTimeStampParametersDialog extends TitleAreaDialog {
 		decimalPlacesText.setText("3");
 		decimalPlacesText.setLayoutData(parameterFieldData);
 	}
-	
+
 	private void createRndSeedParameterField(Composite container) {
 		Composite gridContainer = new Composite(container, SWT.NONE);
-		GridLayout layout = new GridLayout(2,false);
+		GridLayout layout = new GridLayout(2, false);
 		gridContainer.setLayout(layout);
 		Label parameterFieldLabel = new Label(gridContainer, SWT.NONE);
 		parameterFieldLabel.setText("Random Generator Seed: ");
@@ -111,10 +124,10 @@ public class RequestTimeStampParametersDialog extends TitleAreaDialog {
 		rndSeedText.setText("5");
 		rndSeedText.setLayoutData(parameterFieldData);
 	}
-	
+
 	private void createStepParameterField(Composite container) {
 		Composite gridContainer = new Composite(container, SWT.NONE);
-		GridLayout layout = new GridLayout(2,false);
+		GridLayout layout = new GridLayout(2, false);
 		gridContainer.setLayout(layout);
 		Label parameterFieldLabel = new Label(gridContainer, SWT.NONE);
 		parameterFieldLabel.setText("Sampling Interval Width: ");
@@ -126,10 +139,10 @@ public class RequestTimeStampParametersDialog extends TitleAreaDialog {
 		stepText.setText("1.0");
 		stepText.setLayoutData(parameterFieldData);
 	}
-	
+
 	private void createStretchParameterField(Composite container) {
 		Composite gridContainer = new Composite(container, SWT.NONE);
-		GridLayout layout = new GridLayout(2,false);
+		GridLayout layout = new GridLayout(2, false);
 		gridContainer.setLayout(layout);
 		Label parameterFieldLabel = new Label(gridContainer, SWT.NONE);
 		parameterFieldLabel.setText("Stretch Model Times by: ");
@@ -141,10 +154,10 @@ public class RequestTimeStampParametersDialog extends TitleAreaDialog {
 		stretchText.setText("1.0");
 		stretchText.setLayoutData(parameterFieldData);
 	}
-	
+
 	private void createArDevisorParameterField(Composite container) {
 		Composite gridContainer = new Composite(container, SWT.NONE);
-		GridLayout layout = new GridLayout(2,false);
+		GridLayout layout = new GridLayout(2, false);
 		gridContainer.setLayout(layout);
 		Label parameterFieldLabel = new Label(gridContainer, SWT.NONE);
 		parameterFieldLabel.setText("Divide Model Arrival Rates by: ");
@@ -156,16 +169,18 @@ public class RequestTimeStampParametersDialog extends TitleAreaDialog {
 		arDevisorText.setText("1.0");
 		arDevisorText.setLayoutData(parameterFieldData);
 	}
-	
+
 	/**
 	 * Dialog window label.
+	 *
+	 * @param newShell the new shell
 	 */
 	@Override
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 		newShell.setText("Request Time Stamp Generation Parameters");
 	}
-	
+
 	/**
 	 * Cancel button was pressed.
 	 */
@@ -175,105 +190,119 @@ public class RequestTimeStampParametersDialog extends TitleAreaDialog {
 		canceled = true;
 		super.cancelPressed();
 	}
-	
+
 	/**
 	 * Returns true if user canceled the dialog.
-	 * @return
+	 *
+	 * @return true, if successful
 	 */
 	public boolean wasCanceled() {
 		return canceled;
 	}
-	
+
 	/**
-	 * Ok Button was pressed.
-	 * Parses parameters from the UI. Displays errors to the user.
+	 * Ok Button was pressed. Parses parameters from the UI. Displays errors to
+	 * the user.
 	 */
 	@Override
 	protected void okPressed() {
 		boolean error = false;
 		try {
-			decimalPlaces = Integer.parseInt(decimalPlacesText.getText().trim());
+			decimalPlaces = Integer
+					.parseInt(decimalPlacesText.getText().trim());
 		} catch (NumberFormatException e) {
-			setMessage("Decimal Places must be an Integer.", IMessageProvider.ERROR);
+			setMessage("Decimal Places must be an Integer.",
+					IMessageProvider.ERROR);
 			error = true;
 		}
 		try {
 			step = Double.parseDouble(stepText.getText().trim());
-			
+
 		} catch (NumberFormatException e) {
-			setMessage("Sampling Interval Width must be a number.", IMessageProvider.ERROR);
+			setMessage("Sampling Interval Width must be a number.",
+					IMessageProvider.ERROR);
 			error = true;
 		}
 		try {
 			rndSeed = Integer.parseInt(rndSeedText.getText().trim());
 		} catch (NumberFormatException e) {
-			setMessage("Random Seed must be an Integer.", IMessageProvider.ERROR);
+			setMessage("Random Seed must be an Integer.",
+					IMessageProvider.ERROR);
 			error = true;
 		}
 		try {
 			stretch = Double.parseDouble(stretchText.getText().trim());
-			
+
 		} catch (NumberFormatException e) {
-			setMessage("Time stretch factor must be a number.", IMessageProvider.ERROR);
+			setMessage("Time stretch factor must be a number.",
+					IMessageProvider.ERROR);
 			error = true;
 		}
 		try {
 			arDevisor = Double.parseDouble(arDevisorText.getText().trim());
-			
+
 		} catch (NumberFormatException e) {
-			setMessage("Arrival Rate Devisor must be a number.", IMessageProvider.ERROR);
+			setMessage("Arrival Rate Devisor must be a number.",
+					IMessageProvider.ERROR);
 			error = true;
 		}
 		if (arDevisor <= 0) {
 			error = true;
-			setMessage("Arrival Rate Devisor must greater than 0.", IMessageProvider.ERROR);
+			setMessage("Arrival Rate Devisor must greater than 0.",
+					IMessageProvider.ERROR);
 		}
 		if (stretch <= 0) {
 			error = true;
-			setMessage("Time stretch factor must greater than 0.", IMessageProvider.ERROR);
+			setMessage("Time stretch factor must greater than 0.",
+					IMessageProvider.ERROR);
 		}
 		if (step <= 0) {
 			error = true;
-			setMessage("Sampling Interval Width must greater than 0.", IMessageProvider.ERROR);
+			setMessage("Sampling Interval Width must greater than 0.",
+					IMessageProvider.ERROR);
 		}
 		if (decimalPlaces <= 0) {
 			error = true;
-			setMessage("Decimal Places must greater than 0.", IMessageProvider.ERROR);
+			setMessage("Decimal Places must greater than 0.",
+					IMessageProvider.ERROR);
 		}
-		
-		
+
 		if (!error) {
 			super.okPressed();
 		}
 	}
-	
+
 	/**
 	 * Get the random number generator seed.
-	 * @return
+	 *
+	 * @return the rnd seed
 	 */
 	public int getRndSeed() {
 		return rndSeed;
 	}
-	
+
 	/**
 	 * Get the number of allowed time-stamp decimal places.
-	 * @return
+	 *
+	 * @return the decimal places
 	 */
 	public int getDecimalPlaces() {
 		return decimalPlaces;
 	}
-	
+
 	/**
 	 * Get the sampling interval width.
-	 * @return
+	 *
+	 * @return the step
 	 */
 	public double getStep() {
 		return step;
 	}
-	
+
 	/**
 	 * Get the time stretch factor.
-	 * @return
+	 *
+	 * @return the stretch
 	 */
 	public double getStretch() {
 		return stretch;
@@ -281,15 +310,19 @@ public class RequestTimeStampParametersDialog extends TitleAreaDialog {
 
 	/**
 	 * Get the devisor for arrival rates for time-stamp generation.
-	 * @return
+	 *
+	 * @return the ar devisor
 	 */
 	public double getArDevisor() {
 		return arDevisor;
 	}
-	
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.jface.dialogs.TitleAreaDialog#getInitialSize()
+	 */
 	@Override
 	protected Point getInitialSize() {
-		//return new Point(340,600);
+		// return new Point(340,600);
 		return super.getInitialSize();
 	}
 }

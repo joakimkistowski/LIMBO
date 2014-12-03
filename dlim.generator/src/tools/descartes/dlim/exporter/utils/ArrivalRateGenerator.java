@@ -1,3 +1,10 @@
+/*******************************************************************************
+ * Copyright (c) 2014 Jóakim v. Kistowski
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
 package tools.descartes.dlim.exporter.utils;
 
 import java.io.File;
@@ -14,54 +21,75 @@ import tools.descartes.dlim.generator.ArrivalRateTuple;
 import tools.descartes.dlim.generator.ModelEvaluator;
 
 /**
- * Generates an arrival rate file and chart by sampling a Descartes Load Intensity
- * Model using a given ModelEvaluator.
- * @author J�akim G. v. Kistowski
+ * Generates an arrival rate file and chart by sampling a Descartes Load
+ * Intensity Model using a given ModelEvaluator.
+ *
+ * @author Jóakim v. Kistowski
  *
  */
-public class ArrivalRateGenerator {
+public final class ArrivalRateGenerator {
 
-	
-	
+	/**
+	 * It's all static anyways.
+	 */
+	private ArrivalRateGenerator() {
+
+	}
+
 	/**
 	 * Run the ArrivalRateGenerator.
-	 * @param step The width of the sampling interval.
-	 * @return A list of ArrivalRateTuples (Time-stamps and arrival rates) sampled from the model.
+	 *
+	 * @param evaluator the evaluator
+	 * @param step            The width of the sampling interval.
+	 * @return A list of ArrivalRateTuples (Time-stamps and arrival rates)
+	 *         sampled from the model.
 	 */
-	public static List<ArrivalRateTuple> generateArrivalRates(ModelEvaluator evaluator, double step) {
+	public static List<ArrivalRateTuple> generateArrivalRates(
+			ModelEvaluator evaluator, double step) {
 		ArrayList<ArrivalRateTuple> arrRates = new ArrayList<ArrivalRateTuple>();
-		for (double i = step/2; i < evaluator.getDuration(); i+=step) {
+		for (double i = step / 2; i < evaluator.getDuration(); i += step) {
 			double arrRate = evaluator.getArrivalRateAtTime(i);
-			arrRates.add(new ArrivalRateTuple(i,arrRate));
+			arrRates.add(new ArrivalRateTuple(i, arrRate));
 		}
 		return arrRates;
 	}
-	
+
 	/**
-	 * Run the ArrivalRateGenerator and write the results to a .txt file and an arrival rate plot.
-	 * @param step The width of the sampling interval.
-	 * @param endOfLineCharacter The character before the end of a line in the output file. Note: the "\n" is always
-	 * 					printed after this character. It does not have to be included here.
-	 * @param fileSuffix The file suffix ("txt","csv" ...)
+	 * Run the ArrivalRateGenerator and write the results to a .txt file and an
+	 * arrival rate plot.
+	 *
+	 * @param arrRates the arr rates
+	 * @param projectPath the project path
+	 * @param modelName the model name
+	 * @param endOfLineCharacter            The character before the end of a line in the output file.
+	 *            Note: the "\n" is always printed after this character. It does
+	 *            not have to be included here.
+	 * @param fileSuffix            The file suffix ("txt","csv" ...)
 	 */
-	public static void writeArrivalRates(List<ArrivalRateTuple> arrRates, String projectPath, String modelName, String endOfLineCharacter, String fileSuffix) {
+	public static void writeArrivalRates(List<ArrivalRateTuple> arrRates,
+			String projectPath, String modelName, String endOfLineCharacter,
+			String fileSuffix) {
 		try {
-			IPath arrivalRateFolderPath = new Path(projectPath).append("arrivalRates");
+			IPath arrivalRateFolderPath = new Path(projectPath)
+			.append("arrivalRates");
 			File arrivalRateFolder = arrivalRateFolderPath.toFile();
-			if (!arrivalRateFolder.exists()){
+			if (!arrivalRateFolder.exists()) {
 				arrivalRateFolder.mkdir();
 			}
-			IPath arrivalRateTxtPath = arrivalRateFolderPath.append(modelName + "ArrivalRates." + fileSuffix);
+			IPath arrivalRateTxtPath = arrivalRateFolderPath.append(modelName
+					+ "ArrivalRates." + fileSuffix);
 			PrintWriter arrRateWriter;
-			arrRateWriter = new PrintWriter(arrivalRateTxtPath.toString(), "UTF-8");
-			
+			arrRateWriter = new PrintWriter(arrivalRateTxtPath.toString(),
+					"UTF-8");
+
 			for (ArrivalRateTuple tuple : arrRates) {
 				double arrRate = tuple.getArrivalRate();
 				double time = tuple.getTimeStamp();
-				arrRateWriter.println(time + "," + arrRate + endOfLineCharacter);
+				arrRateWriter
+				.println(time + "," + arrRate + endOfLineCharacter);
 			}
 			arrRateWriter.close();
-			
+
 		} catch (FileNotFoundException e) {
 			System.out.println("IO error writing Arrival Rate file.");
 			e.printStackTrace();
