@@ -441,6 +441,8 @@ public class DlimSeasonalModelWizardPage extends DlimModelWizardPage {
 			if (firstPeak > 0 || lastPeak > 0) {
 				if (numPeaks == 1 && firstPeak > 0) {
 					highestPeakTime = getRootSequence().getLoopDuration() / 2.0;
+					//this oddness check doesn't work on negative numbers,
+					//fortunately there cannot be a negative amount of peaks
 				} else if (firstPeak == lastPeak && numPeaks % 2 == 1) {
 					highestPeakTime = getRootSequence().getLoopDuration() / 2.0;
 				} else if (lastPeak > firstPeak) {

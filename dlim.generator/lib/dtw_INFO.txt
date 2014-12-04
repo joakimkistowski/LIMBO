@@ -1,0 +1,1 @@
+Uses fastdtw by Stan Salvador and Philip Chan (packaged in dtw.jar), sourcecode and additional documentation is available at: https://code.google.com/p/fastdtw/

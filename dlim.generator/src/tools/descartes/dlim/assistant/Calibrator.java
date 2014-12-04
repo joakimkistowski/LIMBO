@@ -89,6 +89,8 @@ public final class Calibrator {
 		double epsilon = EPSILON;
 		// Since the next element is already under execution at the end time,
 		// it must be decremented by the smallest amount possible
+		// This actually has to be an "==" and not an epsilon comparison,
+		// since that's the point of the entire thing.
 		while (end == time) {
 			time -= epsilon;
 			epsilon *= 2;
