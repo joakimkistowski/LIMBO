@@ -13,6 +13,9 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
+import org.eclipse.core.runtime.Status;
+
+import tools.descartes.dlim.DlimGeneratorPlugin;
 import tools.descartes.dlim.generator.ArrivalRateTuple;
 
 /**
@@ -121,11 +124,14 @@ public abstract class TimeStampWriter {
 			}
 			timeStampWriter.close();
 		} catch (FileNotFoundException e) {
-			System.out.println("Could not write time stamps.");
+			DlimGeneratorPlugin.INSTANCE.log(
+					new Status(Status.INFO, DlimGeneratorPlugin.PLUGIN_ID,
+							"FileNotFound, Could not write time stamps."));
 			e.printStackTrace();
 		} catch (UnsupportedEncodingException e) {
-			System.out.println("Could not write time stamps.");
-			e.printStackTrace();
+			DlimGeneratorPlugin.INSTANCE.log(
+					new Status(Status.INFO, DlimGeneratorPlugin.PLUGIN_ID,
+							"UnsupportedEncoding, Could not write time stamps."));
 		}
 	}
 

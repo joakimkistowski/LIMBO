@@ -11,6 +11,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.common.util.URI;
@@ -20,6 +21,7 @@ import org.osgi.service.prefs.BackingStoreException;
 import org.osgi.service.prefs.Preferences;
 
 import tools.descartes.dlim.exporter.utils.DlimFileUtils;
+import tools.descartes.dlim.presentation.DlimEditorPlugin;
 
 /**
  * This class provides resource and path utilities within an Eclipse project.
@@ -92,8 +94,8 @@ public class ProjectManager {
 		try {
 			currentProject.refreshLocal(IResource.DEPTH_INFINITE, null);
 		} catch (CoreException e) {
-			System.out.println("Failed to refresh Project");
-			e.printStackTrace();
+			DlimEditorPlugin.INSTANCE.log(
+					new Status(Status.ERROR, DlimEditorPlugin.PLUGIN_ID, "Failed to refresh Project"));
 		}
 	}
 

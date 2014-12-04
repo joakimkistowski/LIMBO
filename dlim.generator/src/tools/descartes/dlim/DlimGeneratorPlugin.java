@@ -1,24 +1,23 @@
 /**
  */
-package tools.descartes.dlim.presentation;
+package tools.descartes.dlim;
 
 import org.eclipse.emf.common.EMFPlugin;
-import org.eclipse.emf.common.ui.EclipseUIPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 /**
- * This is the central singleton for the Dlim editor plugin. <!-- begin-user-doc
+ * This is the central singleton for the Dlim model plugin. <!-- begin-user-doc
  * --> <!-- end-user-doc -->
  *
  * @generated
  */
-public final class DlimEditorPlugin extends EMFPlugin {
+public final class DlimGeneratorPlugin extends EMFPlugin {
 
 	/**
 	 * The Plugin's ID.
 	 * @generated not
 	 */
-	public static final String PLUGIN_ID = "tools.descartes.dlim.presentation.DlimEditorPlugin";
+	public static final String PLUGIN_ID = "tools.descartes.dlim.generator";
 
 	/**
 	 * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc
@@ -26,7 +25,7 @@ public final class DlimEditorPlugin extends EMFPlugin {
 	 *
 	 * @generated
 	 */
-	public static final DlimEditorPlugin INSTANCE = new DlimEditorPlugin();
+	public static final DlimGeneratorPlugin INSTANCE = new DlimGeneratorPlugin();
 
 	/**
 	 * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc
@@ -41,7 +40,7 @@ public final class DlimEditorPlugin extends EMFPlugin {
 	 *
 	 * @generated
 	 */
-	public DlimEditorPlugin() {
+	public DlimGeneratorPlugin() {
 		super(new ResourceLocator[] {});
 	}
 
@@ -74,7 +73,7 @@ public final class DlimEditorPlugin extends EMFPlugin {
 	 *
 	 * @generated
 	 */
-	public static class Implementation extends EclipseUIPlugin {
+	public static class Implementation extends EclipsePlugin {
 		/**
 		 * Creates an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
 		 *

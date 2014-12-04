@@ -13,6 +13,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
@@ -22,6 +23,7 @@ import org.eclipse.ui.IWorkbenchPart;
 
 import tools.descartes.dlim.exporter.utils.DlimFileUtils;
 import tools.descartes.dlim.generator.editor.utils.ProjectManager;
+import tools.descartes.dlim.presentation.DlimEditorPlugin;
 import tools.descartes.dlim.reader.RequestTimeSeriesReader;
 
 /**
@@ -84,8 +86,8 @@ public class TimeSeriesReaderAction implements IObjectActionDelegate {
 			try {
 				p.refreshLocal(IResource.DEPTH_INFINITE, null);
 			} catch (CoreException e) {
-				System.out.println("Failed to refresh Workspace");
-				e.printStackTrace();
+				DlimEditorPlugin.INSTANCE.log(
+						new Status(Status.INFO, DlimEditorPlugin.PLUGIN_ID, "Failed to refresh Workspace"));
 			}
 		}
 	}

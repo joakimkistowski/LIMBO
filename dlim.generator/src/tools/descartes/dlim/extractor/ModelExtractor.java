@@ -16,12 +16,14 @@ import java.util.Collections;
 import java.util.List;
 
 import org.apache.commons.math3.analysis.function.Gaussian;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EClass;
 
 import tools.descartes.dlim.Burst;
 import tools.descartes.dlim.Combinator;
 import tools.descartes.dlim.Constant;
 import tools.descartes.dlim.DlimFactory;
+import tools.descartes.dlim.DlimGeneratorPlugin;
 import tools.descartes.dlim.DlimPackage;
 import tools.descartes.dlim.Function;
 import tools.descartes.dlim.NormalNoise;
@@ -109,12 +111,6 @@ public final class ModelExtractor {
 				.createSequence();
 
 		double duration = 0.0;
-		double step = 1.0;
-
-		if (arrivalRateList.size() > 1) {
-			step = arrivalRateList.get(0).getStep(arrivalRateList.get(1));
-			System.out.println("Step = " + step);
-		}
 		duration = arrivalRateList.get(arrivalRateList.size() - 1)
 				.getTimeStamp();
 
@@ -378,7 +374,9 @@ public final class ModelExtractor {
 						t.getArrivalRate()));
 			}
 		} catch (IOException e) {
-			System.out.println("Arrival Rate File does not exist.");
+			DlimGeneratorPlugin.INSTANCE.log(
+					new Status(Status.ERROR, DlimGeneratorPlugin.PLUGIN_ID,
+							"Arrival Rate File does not exist."));
 		}
 
 	}
@@ -1059,8 +1057,9 @@ public final class ModelExtractor {
 			startValue = Calibrator.calibrateTrendStartValue(value, trend,
 					evaluator);
 		} catch (CalibrationException e) {
-			System.out.println("CalibrationException:" + e.getMessage());
-			e.printStackTrace();
+			DlimGeneratorPlugin.INSTANCE.log(
+					new Status(Status.ERROR, DlimGeneratorPlugin.PLUGIN_ID,
+							"CalibrationException:" + e.getMessage()));
 		}
 		return startValue;
 	}
@@ -1077,8 +1076,9 @@ public final class ModelExtractor {
 			endValue = Calibrator.calibrateTrendEndValue(value, trend,
 					evaluator);
 		} catch (CalibrationException e) {
-			System.out.println("CalibrationException:" + e.getMessage());
-			e.printStackTrace();
+			DlimGeneratorPlugin.INSTANCE.log(
+					new Status(Status.ERROR, DlimGeneratorPlugin.PLUGIN_ID,
+							"CalibrationException:" + e.getMessage()));
 		}
 		return endValue;
 	}
@@ -1121,10 +1121,6 @@ public final class ModelExtractor {
 			}
 		}
 
-		/*
-		 * for (ArrivalRateTuple t : burstList) { System.out.println("Burst: " +
-		 * t.toString()); }
-		 */
 
 		return burstList;
 	}
@@ -1209,8 +1205,9 @@ public final class ModelExtractor {
 			endValue = Calibrator.calibrateBurstPeakValue(value, burst,
 					evaluator);
 		} catch (CalibrationException e) {
-			System.out.println("CalibrationException:" + e.getMessage());
-			e.printStackTrace();
+			DlimGeneratorPlugin.INSTANCE.log(
+					new Status(Status.ERROR, DlimGeneratorPlugin.PLUGIN_ID,
+							"CalibrationException:" + e.getMessage()));
 		}
 		return endValue;
 	}
@@ -1237,7 +1234,6 @@ public final class ModelExtractor {
 		// normalize to 1
 		for (int i = 0; i < filterWidth; i++) {
 			filter[i] = filter[i] / filterSum;
-			// System.out.println("filter["+(i)+"]: " + filter[i]);
 		}
 
 		return filter;

@@ -10,9 +10,11 @@ package tools.descartes.dlim.generator.util;
 
 import org.apache.commons.math3.distribution.NormalDistribution;
 import org.apache.commons.math3.random.JDKRandomGenerator;
+import org.eclipse.core.runtime.Status;
 
 import tools.descartes.dlim.AbsoluteSin;
 import tools.descartes.dlim.Burst;
+import tools.descartes.dlim.DlimGeneratorPlugin;
 import tools.descartes.dlim.ExponentialIncreaseAndDecline;
 import tools.descartes.dlim.ExponentialIncreaseLogarithmicDecline;
 import tools.descartes.dlim.ExponentialTrend;
@@ -93,7 +95,9 @@ public class FunctionValueCalculator {
 		} else if (f instanceof Trend) {
 			return getTrendValue((Trend) f, x);
 		} else {
-			System.out.println("Function matches no Category: " + f.toString());
+			DlimGeneratorPlugin.INSTANCE.log(
+					new Status(Status.ERROR, DlimGeneratorPlugin.PLUGIN_ID,
+							"Function matches no Category: " + f.toString()));
 			return 0.0;
 		}
 	}
@@ -135,7 +139,8 @@ public class FunctionValueCalculator {
 			return noise.getMean() + noise.getStandardDeviation()
 					* nDistribution.sample();
 		} else {
-			System.out.println("Unknown Noise: " + f.toString());
+			DlimGeneratorPlugin.INSTANCE.log(
+					new Status(Status.ERROR, DlimGeneratorPlugin.PLUGIN_ID, "Unknown Noise: " + f.toString()));
 			return 0.0;
 		}
 	}
@@ -156,7 +161,9 @@ public class FunctionValueCalculator {
 								/ sin.getPeriod());
 			}
 		} else {
-			System.out.println("Unknown Seasonal: " + f.toString());
+			DlimGeneratorPlugin.INSTANCE.log(
+					new Status(Status.ERROR, DlimGeneratorPlugin.PLUGIN_ID,
+							"Unknown Seasonal: " + f.toString()));
 			return 0.0;
 		}
 	}
@@ -179,7 +186,9 @@ public class FunctionValueCalculator {
 					burst.getLogarithmicOrder(),
 					ModelEvaluatorUtil.getFunctionDuration(f));
 		} else {
-			System.out.println("Unknown Burst: " + f.toString());
+			DlimGeneratorPlugin.INSTANCE.log(
+					new Status(Status.ERROR, DlimGeneratorPlugin.PLUGIN_ID,
+							"Unknown Burst: " + f.toString()));
 			return 0.0;
 		}
 	}
@@ -210,7 +219,9 @@ public class FunctionValueCalculator {
 					trend.getFunctionOutputAtStart(),
 					ModelEvaluatorUtil.getFunctionDuration(f));
 		} else {
-			System.out.println("Unknown Trend: " + f.toString());
+			DlimGeneratorPlugin.INSTANCE.log(
+					new Status(Status.ERROR, DlimGeneratorPlugin.PLUGIN_ID,
+							"Unknown Trend: " + f.toString()));
 			return 1.0;
 		}
 	}

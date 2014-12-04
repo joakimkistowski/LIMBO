@@ -15,7 +15,9 @@ import java.util.List;
 
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Status;
 
+import tools.descartes.dlim.DlimGeneratorPlugin;
 import tools.descartes.dlim.generator.ArrivalRateTuple;
 
 /**
@@ -119,7 +121,9 @@ public final class ArrivalRateReader {
 								readArrivalRate));
 					}
 				} catch (NumberFormatException e) {
-					System.out.println("Wrong file format, number expected.");
+					DlimGeneratorPlugin.INSTANCE.log(
+							new Status(Status.ERROR, DlimGeneratorPlugin.PLUGIN_ID,
+									"Wrong file format, number expected."));
 				}
 			}
 		}

@@ -16,7 +16,9 @@ import java.util.List;
 
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Status;
 
+import tools.descartes.dlim.DlimGeneratorPlugin;
 import tools.descartes.dlim.generator.ArrivalRateTuple;
 import tools.descartes.dlim.generator.ModelEvaluator;
 
@@ -91,11 +93,12 @@ public final class ArrivalRateGenerator {
 			arrRateWriter.close();
 
 		} catch (FileNotFoundException e) {
-			System.out.println("IO error writing Arrival Rate file.");
+			DlimGeneratorPlugin.INSTANCE.log(
+					new Status(Status.ERROR, DlimGeneratorPlugin.PLUGIN_ID, "IO error writing Arrival Rate file."));
 			e.printStackTrace();
 		} catch (UnsupportedEncodingException e) {
-			System.out.println("IO error writing Arrival Rate file.");
-			e.printStackTrace();
+			DlimGeneratorPlugin.INSTANCE.log(
+					new Status(Status.ERROR, DlimGeneratorPlugin.PLUGIN_ID, "IO error writing Arrival Rate file."));
 		}
 	}
 }

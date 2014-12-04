@@ -294,7 +294,6 @@ public class LaunchCalibrationDialog extends TitleAreaDialog {
 		// calibrate
 		if (!error) {
 			try {
-				System.out.println("Read Desired Value: " + desiredValue);
 				newValue = calibrationAction.executeCalibration(desiredValue);
 			} catch (CalibrationException e) {
 				error = true;

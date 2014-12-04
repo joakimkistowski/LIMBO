@@ -21,9 +21,11 @@ import java.util.List;
 
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Status;
+
+import tools.descartes.dlim.DlimGeneratorPlugin;
 
 import com.dtw.FastDTW;
-import com.ibm.icu.math.BigDecimal;
 import com.timeseries.TimeSeries;
 import com.timeseries.TimeSeriesPoint;
 import com.util.EuclideanDistance;
@@ -153,8 +155,7 @@ public class DiffAnalyzer {
 			Collections.sort(relativeDiffList);
 			double dtwDist = FastDTW.getWarpInfoBetween(fileTS, modelTS, 10,
 					new EuclideanDistance()).getDistance();
-			// System.out.println("DTWDist: " + dtwDist + ", diffSum: " +
-			// diffSum);
+
 			// this devision should result in the distance between 0 and a
 			// function being 1
 			dtwDist = dtwDist / diffList.size();
@@ -163,8 +164,7 @@ public class DiffAnalyzer {
 			double mean = diffSum / diffList.size();
 			double median = diffList.get(diffList.size() / 2);
 
-			// System.out.println("Median diff: " + median);
-			// System.out.println("Mean diff: " + mean);
+
 			LinkedList<Double> statisticalValues = new LinkedList<Double>();
 			statisticalValues.add(mean);
 			statisticalValues.add(median);
@@ -175,7 +175,9 @@ public class DiffAnalyzer {
 			statisticalValues
 			.add(relativeDiffList.get(relativeDiffList.size() / 2));
 
-			printToConsole(evaluator.getName(), statisticalValues);
+
+			//Comment in this code for nice LaTeX-Style Diff results in the console
+			//printToConsole(evaluator.getName(), statisticalValues);
 			// System.out.println(evaluator.getName() + " & " +mean + " & " +
 			// statisticalValues.get(3)*100
 			// + " & " + median + " & " + statisticalValues.get(4)*100
@@ -184,50 +186,58 @@ public class DiffAnalyzer {
 			return statisticalValues;
 
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			DlimGeneratorPlugin.INSTANCE.log(
+					new Status(Status.INFO, DlimGeneratorPlugin.PLUGIN_ID,
+							"Trace file not found."));
 		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
+			DlimGeneratorPlugin.INSTANCE.log(
+					new Status(Status.INFO, DlimGeneratorPlugin.PLUGIN_ID,
+							"Trace encoding unsupported."));
 		} catch (IOException e) {
-			e.printStackTrace();
+			DlimGeneratorPlugin.INSTANCE.log(
+					new Status(Status.INFO, DlimGeneratorPlugin.PLUGIN_ID,
+							"General IO Exception while reading trace."));
 		}
 		return new LinkedList<Double>();
 	}
 
-	private static void printToConsole(String name, List<Double> stats) {
-		String firstCol = "";
-		if (name.contains("HLDLIM")) {
-			firstCol += "HLDLIM\\\\ ";
-		} else if (name.contains("_simple_")) {
-			firstCol += "DLIM Simple\\\\ ";
-		} else {
-			firstCol = "DLIM Periodic\\\\ ";
-		}
-		if (name.contains("_Trendlength1_")) {
-			firstCol += "Trend length 1\\\\ ";
-		} else if (name.contains("_Trendlength2_")) {
-			firstCol += "Trend length 2\\\\ ";
-		} else if (name.contains("_Trendlength3_")) {
-			firstCol += "Trend length 3\\\\ ";
-		}
-		if (name.contains("_NoiseEliminated")) {
-			firstCol += "noise eliminated ";
-		} else if (name.contains("_Noise")) {
-			firstCol += "noise extracted ";
-		} else {
-			firstCol += "noise ignored ";
-		}
-
-		System.out.println(firstCol + " & " + roundTo(stats.get(0), 3) + " & "
-				+ roundTo(stats.get(3) * 100, 3) + " & "
-				+ roundTo(stats.get(1), 3) + " & "
-				+ roundTo(stats.get(4) * 100, 3) + " & "
-				+ roundTo(stats.get(2), 6) + " \\\\");
-		System.out.println("\\hline");
-	}
-
-	private static double roundTo(double val, int places) {
-		BigDecimal bd = new BigDecimal(val);
-		bd = bd.setScale(places, BigDecimal.ROUND_HALF_UP);
-		return bd.doubleValue();
-	}
+	//Comment in this code for nice LaTeX-Style Diff results in the console
+	//	private static void printToConsole(String name, List<Double> stats) {
+	//		String firstCol = "";
+	//		if (name.contains("HLDLIM")) {
+	//			firstCol += "HLDLIM\\\\ ";
+	//		} else if (name.contains("_simple_")) {
+	//			firstCol += "DLIM Simple\\\\ ";
+	//		} else {
+	//			firstCol = "DLIM Periodic\\\\ ";
+	//		}
+	//		if (name.contains("_Trendlength1_")) {
+	//			firstCol += "Trend length 1\\\\ ";
+	//		} else if (name.contains("_Trendlength2_")) {
+	//			firstCol += "Trend length 2\\\\ ";
+	//		} else if (name.contains("_Trendlength3_")) {
+	//			firstCol += "Trend length 3\\\\ ";
+	//		}
+	//		if (name.contains("_NoiseEliminated")) {
+	//			firstCol += "noise eliminated ";
+	//		} else if (name.contains("_Noise")) {
+	//			firstCol += "noise extracted ";
+	//		} else {
+	//			firstCol += "noise ignored ";
+	//		}
+	//
+	//		//Additional (optional) output
+	//		//		System.out.println(firstCol + " & " + roundTo(stats.get(0), 3) + " & "
+	//		//				+ roundTo(stats.get(3) * 100, 3) + " & "
+	//		//				+ roundTo(stats.get(1), 3) + " & "
+	//		//				+ roundTo(stats.get(4) * 100, 3) + " & "
+	//		//				+ roundTo(stats.get(2), 6) + " \\\\");
+	//		//		System.out.println("\\hline");
+	//	}
+	//
+	//	private static double roundTo(double val, int places) {
+	//		BigDecimal bd = new BigDecimal(val);
+	//		bd = bd.setScale(places, BigDecimal.ROUND_HALF_UP);
+	//		return bd.doubleValue();
+	//	}
 }

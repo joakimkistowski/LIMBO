@@ -141,9 +141,7 @@ public final class RequestTimeSeriesReader {
 		int arrivalRateCounter = 0;
 		String outputPath = outputDir + "/" + name + "ArrivalRates.txt";
 		PrintWriter arrRateWriter = new PrintWriter(outputPath, "UTF-8");
-		// ArrivalRateChart arrivalRateChart = new
-		// ArrivalRateChart("Arrival Rates");
-		System.out.println("Writing Arrival Rates to: " + outputPath);
+
 		for (Double timeStamp : timeStampList) {
 			while (timeStamp >= bucket + STEP) {
 				printCurrentRate(bucket + STEP / 2, arrivalRateCounter,

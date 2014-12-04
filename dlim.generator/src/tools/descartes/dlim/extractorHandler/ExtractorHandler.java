@@ -15,8 +15,10 @@ import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.ISafeRunnable;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.SafeRunner;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.e4.core.di.annotations.Execute;
 
+import tools.descartes.dlim.DlimGeneratorPlugin;
 import tools.descartes.dlim.Sequence;
 import tools.descartes.dlim.extractor.IDlimExtractor;
 import tools.descartes.dlim.reader.IDlimArrivalRateReader;
@@ -85,7 +87,8 @@ public final class ExtractorHandler {
 				}
 			}
 		} catch (CoreException ex) {
-			System.out.println(ex.getMessage());
+			DlimGeneratorPlugin.INSTANCE.log(
+					new Status(Status.ERROR, DlimGeneratorPlugin.PLUGIN_ID, ex.getMessage()));
 		}
 	}
 
@@ -125,7 +128,8 @@ public final class ExtractorHandler {
 
 			@Override
 			public void handleException(Throwable e) {
-				System.out.println("Exception in client");
+				DlimGeneratorPlugin.INSTANCE.log(
+						new Status(Status.ERROR, DlimGeneratorPlugin.PLUGIN_ID, "Exception in client"));
 			}
 
 			@Override
