@@ -68,6 +68,7 @@ public class SelectExtractorDialog extends TitleAreaDialog {
 	public SelectExtractorDialog(Shell parentShell, String[] labels) {
 		super(parentShell);
 		this.labels = labels;
+		setShellStyle(getShellStyle() | SWT.RESIZE);
 	}
 
 	/**

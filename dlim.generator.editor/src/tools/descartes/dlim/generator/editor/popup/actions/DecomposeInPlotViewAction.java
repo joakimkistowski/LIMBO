@@ -7,6 +7,7 @@
  *******************************************************************************/
 package tools.descartes.dlim.generator.editor.popup.actions;
 
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IObjectActionDelegate;
@@ -17,6 +18,7 @@ import org.eclipse.ui.PlatformUI;
 
 import tools.descartes.dlim.exporter.utils.DlimFileUtils;
 import tools.descartes.dlim.generator.editor.views.PlotView;
+import tools.descartes.dlim.presentation.DlimEditorPlugin;
 
 /**
  * This action toggles the PlotView visualization.
@@ -51,8 +53,8 @@ public class DecomposeInPlotViewAction implements IObjectActionDelegate {
 			}
 
 		} catch (PartInitException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			DlimEditorPlugin.INSTANCE.log(
+					new Status(Status.ERROR, DlimEditorPlugin.PLUGIN_ID, "Failed to initialize Plotview", e));
 		}
 
 	}

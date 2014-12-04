@@ -77,7 +77,7 @@ public final class ExporterHandler {
 		} catch (CoreException ex) {
 			DlimGeneratorPlugin.INSTANCE.log(
 					new Status(Status.INFO, DlimGeneratorPlugin.PLUGIN_ID,
-							ex.getMessage()));
+							ex.getMessage(), ex));
 		}
 	}
 
@@ -116,7 +116,7 @@ public final class ExporterHandler {
 			public void handleException(Throwable e) {
 				DlimGeneratorPlugin.INSTANCE.log(
 						new Status(Status.INFO, DlimGeneratorPlugin.PLUGIN_ID,
-								"Exception in client"));
+								"Exception in client", e));
 			}
 
 			@Override

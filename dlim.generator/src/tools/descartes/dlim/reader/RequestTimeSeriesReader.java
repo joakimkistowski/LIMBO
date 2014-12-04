@@ -19,6 +19,9 @@ import java.util.LinkedList;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Status;
+
+import tools.descartes.dlim.DlimGeneratorPlugin;
 
 /**
  * Reads a time-stamp series into an arrival rate series.
@@ -85,7 +88,9 @@ public final class RequestTimeSeriesReader {
 			br.close();
 			arrRateWriter.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			DlimGeneratorPlugin.INSTANCE.log(
+					new Status(Status.INFO, DlimGeneratorPlugin.PLUGIN_ID,
+							"Could not write arrival rate file", e));
 		}
 
 	}
@@ -126,7 +131,9 @@ public final class RequestTimeSeriesReader {
 			writeArrivalRatesFromTimeStamps(timeStampList, outputDir, fileName);
 
 		} catch (IOException e) {
-			e.printStackTrace();
+			DlimGeneratorPlugin.INSTANCE.log(
+					new Status(Status.WARNING, DlimGeneratorPlugin.PLUGIN_ID,
+							"Could not write arrival rate file", e));
 		}
 	}
 

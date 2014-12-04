@@ -95,7 +95,7 @@ public class ProjectManager {
 			currentProject.refreshLocal(IResource.DEPTH_INFINITE, null);
 		} catch (CoreException e) {
 			DlimEditorPlugin.INSTANCE.log(
-					new Status(Status.ERROR, DlimEditorPlugin.PLUGIN_ID, "Failed to refresh Project"));
+					new Status(Status.ERROR, DlimEditorPlugin.PLUGIN_ID, "Failed to refresh Project", e));
 		}
 	}
 
@@ -111,7 +111,8 @@ public class ProjectManager {
 		try {
 			dlimPrefs.flush();
 		} catch (BackingStoreException e) {
-			e.printStackTrace();
+			DlimEditorPlugin.INSTANCE.log(
+					new Status(Status.WARNING, DlimEditorPlugin.PLUGIN_ID, "Could not save property: " + key, e));
 		}
 	}
 

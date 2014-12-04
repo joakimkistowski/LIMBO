@@ -188,15 +188,15 @@ public class DiffAnalyzer {
 		} catch (FileNotFoundException e) {
 			DlimGeneratorPlugin.INSTANCE.log(
 					new Status(Status.INFO, DlimGeneratorPlugin.PLUGIN_ID,
-							"Trace file not found."));
+							"Trace file not found.", e));
 		} catch (UnsupportedEncodingException e) {
 			DlimGeneratorPlugin.INSTANCE.log(
 					new Status(Status.INFO, DlimGeneratorPlugin.PLUGIN_ID,
-							"Trace encoding unsupported."));
+							"Trace encoding unsupported.", e));
 		} catch (IOException e) {
 			DlimGeneratorPlugin.INSTANCE.log(
 					new Status(Status.INFO, DlimGeneratorPlugin.PLUGIN_ID,
-							"General IO Exception while reading trace."));
+							"General IO Exception while reading trace.", e));
 		}
 		return new LinkedList<Double>();
 	}

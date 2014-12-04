@@ -126,12 +126,11 @@ public abstract class TimeStampWriter {
 		} catch (FileNotFoundException e) {
 			DlimGeneratorPlugin.INSTANCE.log(
 					new Status(Status.INFO, DlimGeneratorPlugin.PLUGIN_ID,
-							"FileNotFound, Could not write time stamps."));
-			e.printStackTrace();
+							"FileNotFound, Could not write time stamps.", e));
 		} catch (UnsupportedEncodingException e) {
 			DlimGeneratorPlugin.INSTANCE.log(
 					new Status(Status.INFO, DlimGeneratorPlugin.PLUGIN_ID,
-							"UnsupportedEncoding, Could not write time stamps."));
+							"UnsupportedEncoding, Could not write time stamps.", e));
 		}
 	}
 

@@ -123,7 +123,7 @@ public class CustomArrivalRatesFromFileImpl extends ArrivalRatesFromFileImpl {
 		} catch (IOException e) {
 			DlimGeneratorPlugin.INSTANCE.log(
 					new Status(Status.ERROR, DlimGeneratorPlugin.PLUGIN_ID,
-							"Arrival Rate File does not exist."));
+							"Arrival Rate File does not exist.", e));
 		}
 
 	}

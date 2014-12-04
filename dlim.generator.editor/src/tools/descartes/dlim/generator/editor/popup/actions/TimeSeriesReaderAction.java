@@ -87,7 +87,7 @@ public class TimeSeriesReaderAction implements IObjectActionDelegate {
 				p.refreshLocal(IResource.DEPTH_INFINITE, null);
 			} catch (CoreException e) {
 				DlimEditorPlugin.INSTANCE.log(
-						new Status(Status.INFO, DlimEditorPlugin.PLUGIN_ID, "Failed to refresh Workspace"));
+						new Status(Status.INFO, DlimEditorPlugin.PLUGIN_ID, "Failed to refresh Workspace", e));
 			}
 		}
 	}

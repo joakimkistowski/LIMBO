@@ -44,6 +44,7 @@ public class SelectExporterDialog extends TitleAreaDialog {
 	public SelectExporterDialog(Shell parentShell, String[] labels) {
 		super(parentShell);
 		this.labels = labels;
+		setShellStyle(getShellStyle() | SWT.RESIZE);
 	}
 
 	/**

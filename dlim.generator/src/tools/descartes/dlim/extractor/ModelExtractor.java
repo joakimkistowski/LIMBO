@@ -376,7 +376,7 @@ public final class ModelExtractor {
 		} catch (IOException e) {
 			DlimGeneratorPlugin.INSTANCE.log(
 					new Status(Status.ERROR, DlimGeneratorPlugin.PLUGIN_ID,
-							"Arrival Rate File does not exist."));
+							"Arrival Rate File does not exist.", e));
 		}
 
 	}
@@ -1059,7 +1059,7 @@ public final class ModelExtractor {
 		} catch (CalibrationException e) {
 			DlimGeneratorPlugin.INSTANCE.log(
 					new Status(Status.ERROR, DlimGeneratorPlugin.PLUGIN_ID,
-							"CalibrationException:" + e.getMessage()));
+							"CalibrationException:" + e.getMessage(), e));
 		}
 		return startValue;
 	}
@@ -1078,7 +1078,7 @@ public final class ModelExtractor {
 		} catch (CalibrationException e) {
 			DlimGeneratorPlugin.INSTANCE.log(
 					new Status(Status.ERROR, DlimGeneratorPlugin.PLUGIN_ID,
-							"CalibrationException:" + e.getMessage()));
+							"CalibrationException:" + e.getMessage(), e));
 		}
 		return endValue;
 	}
@@ -1207,7 +1207,7 @@ public final class ModelExtractor {
 		} catch (CalibrationException e) {
 			DlimGeneratorPlugin.INSTANCE.log(
 					new Status(Status.ERROR, DlimGeneratorPlugin.PLUGIN_ID,
-							"CalibrationException:" + e.getMessage()));
+							"CalibrationException:" + e.getMessage(), e));
 		}
 		return endValue;
 	}

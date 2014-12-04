@@ -94,11 +94,10 @@ public final class ArrivalRateGenerator {
 
 		} catch (FileNotFoundException e) {
 			DlimGeneratorPlugin.INSTANCE.log(
-					new Status(Status.ERROR, DlimGeneratorPlugin.PLUGIN_ID, "IO error writing Arrival Rate file."));
-			e.printStackTrace();
+					new Status(Status.ERROR, DlimGeneratorPlugin.PLUGIN_ID, "IO error writing Arrival Rate file.", e));
 		} catch (UnsupportedEncodingException e) {
 			DlimGeneratorPlugin.INSTANCE.log(
-					new Status(Status.ERROR, DlimGeneratorPlugin.PLUGIN_ID, "IO error writing Arrival Rate file."));
+					new Status(Status.ERROR, DlimGeneratorPlugin.PLUGIN_ID, "IO error writing Arrival Rate file.", e));
 		}
 	}
 }

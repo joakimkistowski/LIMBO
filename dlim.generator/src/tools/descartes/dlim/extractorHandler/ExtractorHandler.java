@@ -88,7 +88,7 @@ public final class ExtractorHandler {
 			}
 		} catch (CoreException ex) {
 			DlimGeneratorPlugin.INSTANCE.log(
-					new Status(Status.ERROR, DlimGeneratorPlugin.PLUGIN_ID, ex.getMessage()));
+					new Status(Status.ERROR, DlimGeneratorPlugin.PLUGIN_ID, ex.getMessage(), ex));
 		}
 	}
 
@@ -129,7 +129,7 @@ public final class ExtractorHandler {
 			@Override
 			public void handleException(Throwable e) {
 				DlimGeneratorPlugin.INSTANCE.log(
-						new Status(Status.ERROR, DlimGeneratorPlugin.PLUGIN_ID, "Exception in client"));
+						new Status(Status.ERROR, DlimGeneratorPlugin.PLUGIN_ID, "Exception in client", e));
 			}
 
 			@Override

@@ -38,7 +38,7 @@ public class SimpleExtractor implements IDlimExtractor {
 		} catch (CalibrationException e) {
 			DlimGeneratorPlugin.INSTANCE.log(
 					new Status(Status.ERROR, DlimGeneratorPlugin.PLUGIN_ID,
-							"Extration Parameter Exception: " + e.getMessage()));
+							"Extration Parameter Exception: " + e.getMessage(), e));
 		}
 
 	}
