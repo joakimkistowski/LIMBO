@@ -29,6 +29,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
 import tools.descartes.dlim.generator.ArrivalRateTuple;
+import tools.descartes.dlim.generator.editor.utils.ProjectManager;
 import tools.descartes.dlim.reader.ArrivalRateReader;
 
 /**
@@ -49,12 +50,13 @@ public class PlotArrivalRateFileDialog extends TitleAreaDialog {
 		super(parentShell);
 	}
 
+	private static final String PLOT_STORE_ID = "dlim.arrivalratefileplot";
+
 	// parameter input fields
 	private Text txtFilePathText;
 	private Text offsetText;
 
 	private double offset = 0.0;
-	private static String txtFilePath = "";
 	private boolean canceled = false;
 	private List<ArrivalRateTuple> arrivalRateList;
 
@@ -113,7 +115,7 @@ public class PlotArrivalRateFileDialog extends TitleAreaDialog {
 		parameterFieldData.horizontalAlignment = SWT.BEGINNING;
 		parameterFieldData.widthHint = 300;
 		txtFilePathText = new Text(gridContainer, SWT.BORDER);
-		txtFilePathText.setText(txtFilePath);
+		txtFilePathText.setText(ProjectManager.retrieveStringFromPreferences(PLOT_STORE_ID));
 		txtFilePathText.setLayoutData(parameterFieldData);
 		Button fileDialogButton = new Button(gridContainer, SWT.PUSH);
 		fileDialogButton.setText("Browse");
@@ -211,7 +213,7 @@ public class PlotArrivalRateFileDialog extends TitleAreaDialog {
 		// success
 		if (!error) {
 			// store last used file
-			txtFilePath = tmpFilePath;
+			ProjectManager.saveStringToPreferences(PLOT_STORE_ID, tmpFilePath);
 			super.okPressed();
 		}
 	}

@@ -122,25 +122,15 @@ public final class ModelExtractor {
 
 		// get base level
 		double base = getBaseLevel(period, duration);
-		// System.out.println("Base Level: " + base);
 		// get peak num
 		int peakNum = getPeakNum(period, duration);
-		// System.out.println("Peak Num: " + peakNum);
 		// get peaks
 		ArrivalRateTuple[] peaks = getPeaks(period, duration, peakNum);
-		/*
-		 * System.out.println("Peaks:"); for (int i = 0; i < peaks.length; i++)
-		 * { System.out.println(peaks[i].toString()); }
-		 */
+
 
 		double maxPeakOffset = getMaxPeakOffset(peaks);
 		// get inner base (get peak num - 1 inner bases)
 		ArrivalRateTuple[] innerBases = getInnerBases(period, duration, peaks);
-		/*
-		 * if (innerBases != null) { System.out.println("Inner Bases:"); for
-		 * (int i = 0; i < innerBases.length; i++) {
-		 * System.out.println(innerBases[i].toString()); } }
-		 */
 
 		// build seasonal part
 		buildSeasonalPart(root, baseline, duration, period, base, peaks,
@@ -188,11 +178,6 @@ public final class ModelExtractor {
 
 
 		double duration = 0.0;
-		//		double step = 1.0;
-		//		if (arrivalRateList.size() > 1) {
-		//			step = arrivalRateList.get(0).getStep(arrivalRateList.get(1));
-		//			// System.out.println("Step = " + step);
-		//		}
 		duration = arrivalRateList.get(arrivalRateList.size() - 1)
 				.getTimeStamp();
 
@@ -200,26 +185,15 @@ public final class ModelExtractor {
 
 		// get base level
 		double base = getBaseLevel(period, duration);
-		// System.out.println("Base Level: " + base);
 		// get peak num
 		int peakNum = getPeakNum(period, duration);
-		// System.out.println("Peak Num: " + peakNum);
 		// get peaks
 		ArrivalRateTuple[] peaks = getPeaks(period, duration, peakNum);
-		// System.out.println("Peaks:");
-		/*
-		 * for (int i = 0; i < peaks.length; i++) {
-		 * System.out.println(peaks[i].toString()); }
-		 */
 
 		double maxPeakOffset = getMaxPeakOffset(peaks);
 		// get inner base (get peak num - 1 inner bases)
 		ArrivalRateTuple[] innerBases = getInnerBases(period, duration, peaks);
-		/*
-		 * if (innerBases != null) { System.out.println("Inner Bases:"); for
-		 * (int i = 0; i < innerBases.length; i++) {
-		 * System.out.println(innerBases[i].toString()); } }
-		 */
+
 		// build seasonal part
 		buildSeasonalPart(root, baseline, duration, period, base, peaks,
 				innerBases, seasonalShape);
@@ -278,22 +252,15 @@ public final class ModelExtractor {
 				.createSequence();
 
 		double duration = 0.0;
-		//		double step = 1.0;
-		//		if (arrivalRateList.size() > 1) {
-		//			step = arrivalRateList.get(0).getStep(arrivalRateList.get(1));
-		//			// System.out.println("Step = " + step);
-		//		}
 		duration = arrivalRateList.get(arrivalRateList.size() - 1)
 				.getTimeStamp();
 
 		// get base level
 		double base = getBaseLevel(period, duration);
 		container.setBase(base);
-		// System.out.println("Base Level: " + base);
 		// get peak num
 		int peakNum = getPeakNum(period, duration);
 		container.setPeakNum(peakNum);
-		// System.out.println("Peak Num: " + peakNum);
 		// get peaks
 		ArrivalRateTuple[] peaks = getPeaks(period, duration, peakNum);
 		container.setPeakIntervalWidth(peaks[peaks.length - 1].getTimeStamp()
@@ -318,12 +285,6 @@ public final class ModelExtractor {
 					/ peaks.length);
 		}
 
-		// System.out.println("Peaks:");
-		/*
-		 * for (int i = 0; i < peaks.length; i++) {
-		 * System.out.println(peaks[i].toString()); }
-		 */
-
 		double maxPeakOffset = getMaxPeakOffset(peaks);
 		container.setTrendOffset(maxPeakOffset);
 		// get inner base (get peak num - 1 inner bases)
@@ -334,9 +295,7 @@ public final class ModelExtractor {
 			double innerBase = innerBases[(innerBases.length - 1) / 2]
 					.getArrivalRate();
 			container.setInnerBase(innerBase);
-			// System.out.println("Inner Bases:");
 			for (int i = 0; i < innerBases.length; i++) {
-				// System.out.println(innerBases[i].toString());
 				innerBases[i].setArrivalRate(innerBase);
 			}
 		}
@@ -487,10 +446,6 @@ public final class ModelExtractor {
 
 			peakNums[index]++;
 		}
-		/*
-		 * for (int i = 0; i < peakNums.length; i++) {
-		 * System.out.println("PeakNums["+i+"]: " + peakNums[i]); }
-		 */
 		Arrays.sort(peakNums);
 		return peakNums[(peakNums.length - 1) / 2];
 	}

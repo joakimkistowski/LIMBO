@@ -30,6 +30,8 @@ import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
+import tools.descartes.dlim.generator.editor.utils.ProjectManager;
+
 /**
  * This dialog has the user select the exporter to use for time-stamp
  * generation.
@@ -38,6 +40,11 @@ import org.eclipse.swt.widgets.Text;
  *
  */
 public class SelectExtractorDialog extends TitleAreaDialog {
+
+	/**
+	 * ID of Eclipse Preference for lasts used trace.
+	 */
+	private static final String EXTRACTED_STORE_ID = "dlim.extractordialogstorepath";
 
 	// parameter input fields
 	private List exporterList;
@@ -49,7 +56,6 @@ public class SelectExtractorDialog extends TitleAreaDialog {
 	private double offset = 0.0;
 
 	private String arrivalRateFilePath = "";
-	private static String lastFunctioningArrivalRateFilePath = "";
 
 	private boolean canceled = false;
 
@@ -121,7 +127,7 @@ public class SelectExtractorDialog extends TitleAreaDialog {
 		parameterFieldData.horizontalAlignment = SWT.BEGINNING;
 		parameterFieldData.widthHint = 300;
 		arrivalRateFilePathText = new Text(gridContainer, SWT.BORDER);
-		arrivalRateFilePathText.setText(lastFunctioningArrivalRateFilePath);
+		arrivalRateFilePathText.setText(ProjectManager.retrieveStringFromPreferences(EXTRACTED_STORE_ID));
 		arrivalRateFilePathText.setLayoutData(parameterFieldData);
 		Button fileDialogButton = new Button(gridContainer, SWT.PUSH);
 		fileDialogButton.setText("Browse");
@@ -235,7 +241,7 @@ public class SelectExtractorDialog extends TitleAreaDialog {
 
 		// success
 		if (!error) {
-			lastFunctioningArrivalRateFilePath = arrivalRateFilePath;
+			ProjectManager.saveStringToPreferences(EXTRACTED_STORE_ID, arrivalRateFilePath);
 			arrivalRateFilePath = filePath.toString();
 			super.okPressed();
 		}

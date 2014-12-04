@@ -30,6 +30,8 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
+import tools.descartes.dlim.generator.editor.utils.ProjectManager;
+
 /**
  * This dialog takes the user parameters for difference Calculation between a
  * model instance and an arrival rate txt file.
@@ -39,12 +41,16 @@ import org.eclipse.swt.widgets.Text;
  */
 public class LaunchDiffDialog extends TitleAreaDialog {
 
+	/**
+	 * ID for the diff dialog stored file path preference.
+	 */
+	private static final String DIFF_PREFERENCES = "dlim.diff";
+
 	private Text rndSeedText;
 	private Text txtFilePathText;
 	private Text offsetText;
 
 	private String txtFilePath = "";
-	private static String lastFunctioningTxtFilePath = "";
 	private int rndSeed = 5;
 	private double offset = 0.0;
 	private boolean canceled = false;
@@ -66,6 +72,8 @@ public class LaunchDiffDialog extends TitleAreaDialog {
 		rndSeed = 5;
 		txtFilePath = "";
 	}
+
+
 
 	/**
 	 * Set titles.
@@ -108,7 +116,7 @@ public class LaunchDiffDialog extends TitleAreaDialog {
 		parameterFieldData.horizontalAlignment = SWT.BEGINNING;
 		parameterFieldData.widthHint = 300;
 		txtFilePathText = new Text(gridContainer, SWT.BORDER);
-		txtFilePathText.setText(lastFunctioningTxtFilePath);
+		txtFilePathText.setText(ProjectManager.retrieveStringFromPreferences(DIFF_PREFERENCES));
 		txtFilePathText.setLayoutData(parameterFieldData);
 		Button fileDialogButton = new Button(gridContainer, SWT.PUSH);
 		fileDialogButton.setText("Browse");
@@ -251,7 +259,7 @@ public class LaunchDiffDialog extends TitleAreaDialog {
 		}
 
 		if (!error) {
-			lastFunctioningTxtFilePath = txtFilePath;
+			ProjectManager.saveStringToPreferences(DIFF_PREFERENCES, txtFilePath);
 			txtFilePath = filePath.toString();
 			super.okPressed();
 		}

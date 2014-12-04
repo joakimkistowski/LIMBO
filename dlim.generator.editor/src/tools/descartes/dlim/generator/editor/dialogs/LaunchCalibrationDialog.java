@@ -31,6 +31,7 @@ import org.eclipse.swt.widgets.Text;
 
 import tools.descartes.dlim.assistant.CalibrationException;
 import tools.descartes.dlim.generator.editor.popup.actions.CalibrationAction;
+import tools.descartes.dlim.generator.editor.utils.ProjectManager;
 import tools.descartes.dlim.reader.ArrivalRateReader;
 
 /**
@@ -41,6 +42,8 @@ import tools.descartes.dlim.reader.ArrivalRateReader;
  *
  */
 public class LaunchCalibrationDialog extends TitleAreaDialog {
+
+	private static final String LASTFILEPATH_STORE_ID = "dlim.calibrationdialogfilepath";
 
 	// The action, that triggered this dialog.
 	// CalibrationAction.executeCalibration(double desriedValue) will have to be
@@ -56,7 +59,6 @@ public class LaunchCalibrationDialog extends TitleAreaDialog {
 	// The dialog's output value
 	private double newValue = 0;
 
-	private static String txtFilePath = "";
 	private static double offset = 0.0;
 	private double defaultTime = 0.0;
 	private boolean canceled = false;
@@ -120,7 +122,7 @@ public class LaunchCalibrationDialog extends TitleAreaDialog {
 		parameterFieldData.horizontalAlignment = SWT.BEGINNING;
 		parameterFieldData.widthHint = 300;
 		txtFilePathText = new Text(gridContainer, SWT.BORDER);
-		txtFilePathText.setText(txtFilePath);
+		txtFilePathText.setText(ProjectManager.retrieveStringFromPreferences(LASTFILEPATH_STORE_ID));
 		txtFilePathText.setLayoutData(parameterFieldData);
 		Button fileDialogButton = new Button(gridContainer, SWT.PUSH);
 		fileDialogButton.setText("Browse");
@@ -304,7 +306,7 @@ public class LaunchCalibrationDialog extends TitleAreaDialog {
 		if (!error) {
 			// store last used time and file, if it was used
 			if (desiredValueString.equals("")) {
-				txtFilePath = tmpFilePath;
+				ProjectManager.saveStringToPreferences(LASTFILEPATH_STORE_ID, tmpFilePath);
 				offset = currentTime - defaultTime;
 			}
 			super.okPressed();

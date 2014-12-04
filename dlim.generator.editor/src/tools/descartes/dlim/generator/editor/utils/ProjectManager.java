@@ -11,9 +11,13 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
+import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ISelection;
+import org.osgi.service.prefs.BackingStoreException;
+import org.osgi.service.prefs.Preferences;
 
 import tools.descartes.dlim.exporter.utils.DlimFileUtils;
 
@@ -24,6 +28,12 @@ import tools.descartes.dlim.exporter.utils.DlimFileUtils;
  *
  */
 public class ProjectManager {
+
+	/**
+	 * The ID of the Eclipse Preferences for the editor.
+	 */
+	private static final String DLIM_EDITOR_PREFERENCES_ID = "tools.descartes.dlim.editor.preferences";
+	private static final String EDITOR_NODE_PREFERENCES_ID = "editor";
 
 	private IProject currentProject = null;
 
@@ -85,6 +95,34 @@ public class ProjectManager {
 			System.out.println("Failed to refresh Project");
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * Stores the String to the Eclipse Preferences.
+	 * @param key the storage key.
+	 * @param value the value to store.
+	 */
+	public static void saveStringToPreferences(String key, String value) {
+		IEclipsePreferences dlimPrefs = InstanceScope.INSTANCE.getNode(DLIM_EDITOR_PREFERENCES_ID);
+		Preferences filePathPref = dlimPrefs.node(EDITOR_NODE_PREFERENCES_ID);
+		filePathPref.put(key, value);
+		try {
+			dlimPrefs.flush();
+		} catch (BackingStoreException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Retrieves the String from the Eclipse Preferences.
+	 * @param key the storage key.
+	 * @return the stored String, returns an empty String for
+	 * invalid or inaccessible keys.
+	 */
+	public static String retrieveStringFromPreferences(String key) {
+		IEclipsePreferences dlimPrefs = InstanceScope.INSTANCE.getNode(ProjectManager.DLIM_EDITOR_PREFERENCES_ID);
+		Preferences filePathPref = dlimPrefs.node(EDITOR_NODE_PREFERENCES_ID);
+		return filePathPref.get(key, "");
 	}
 
 }

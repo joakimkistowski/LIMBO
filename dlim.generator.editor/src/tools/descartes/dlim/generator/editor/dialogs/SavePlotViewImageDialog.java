@@ -25,6 +25,8 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
+import tools.descartes.dlim.generator.editor.utils.ProjectManager;
+
 /**
  * This dialog takes the user parameters for the saving of the plotview into an
  * image file.
@@ -34,13 +36,17 @@ import org.eclipse.swt.widgets.Text;
  */
 public class SavePlotViewImageDialog extends TitleAreaDialog {
 
+	/**
+	 * ID for last stored image in Eclipse Preferences.
+	 */
+	private static final String IMAGE_STORE_ID = "dlim.saveplotviewimage";
+
 	private Text widthText;
 
 	private Text imageFilePathText;
 	private Text heightText;
 
 	private String imageFilePath = "";
-	private static String lastFunctioningImageFilePath = "";
 	private int height = 400;
 	private int width = 800;
 	private boolean canceled = false;
@@ -92,7 +98,7 @@ public class SavePlotViewImageDialog extends TitleAreaDialog {
 		parameterFieldData.horizontalAlignment = SWT.BEGINNING;
 		parameterFieldData.widthHint = 300;
 		imageFilePathText = new Text(gridContainer, SWT.BORDER);
-		imageFilePathText.setText(lastFunctioningImageFilePath);
+		imageFilePathText.setText(ProjectManager.retrieveStringFromPreferences(IMAGE_STORE_ID));
 		imageFilePathText.setLayoutData(parameterFieldData);
 		Button fileDialogButton = new Button(gridContainer, SWT.PUSH);
 		fileDialogButton.setText("Browse");
@@ -241,7 +247,7 @@ public class SavePlotViewImageDialog extends TitleAreaDialog {
 		}
 
 		if (!error) {
-			lastFunctioningImageFilePath = imageFilePath;
+			ProjectManager.saveStringToPreferences(IMAGE_STORE_ID, imageFilePath);
 			imageFilePath = filePath.toString();
 			super.okPressed();
 		}
