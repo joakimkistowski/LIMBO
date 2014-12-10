@@ -53,7 +53,9 @@ public final class DlimTestUtils {
 				if (f.isDirectory()) {
 					cleanDirectory(f);
 				}
-				f.delete();
+				if (!f.getName().equals(".gitignore")) {
+					f.delete();
+				}
 			}
 		}
 	}
