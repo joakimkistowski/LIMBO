@@ -12,5 +12,5 @@ Require-Bundle: tools.descartes.dlim.generator;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.junit;visibility:=reexport,
  org.eclipse.jface,
- org.eclipse.core.resources;bundle-version="3.9.1"
+ org.eclipse.core.resources
 Bundle-ActivationPolicy: lazy
