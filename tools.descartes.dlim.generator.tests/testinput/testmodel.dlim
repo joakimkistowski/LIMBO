@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tools.descartes.dlim:Sequence xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tools.descartes.dlim="http://descartes.tools/dlim/0.1"
+    name="testmodel" terminateAfterTime="1482.5" terminateAfterLoops="4"
+    firstIterationEnd="40.0" loopDuration="10.0" finalDuration="40.0">
+  <combine operator="MULT">
+    <function xsi:type="tools.descartes.dlim:Sin" min="0.7" max="1.2" period="20.0"/>
+  </combine>
+  <combine>
+    <function xsi:type="tools.descartes.dlim:Constant" constant="8.0"/>
+  </combine>
+  <combine operator="MULT">
+    <function xsi:type="tools.descartes.dlim:Sequence" terminateAfterTime="80.0" firstIterationEnd="80.0"
+        loopDuration="20.0" finalDuration="80.0">
+      <sequenceFunctionContainers name="mSeqTDFC1" duration="10.0" firstIterationEnd="10.0"
+          pointOfReferenceClockType="LOOPCLOCK">
+        <function xsi:type="tools.descartes.dlim:SinTrend" functionOutputAtStart="1.0"
+            functionOutputAtEnd="2.0"/>
+      </sequenceFunctionContainers>
+      <sequenceFunctionContainers name="mSeqTDFC2" duration="10.0" firstIterationStart="10.0"
+          firstIterationEnd="20.0">
+        <function xsi:type="tools.descartes.dlim:AbsoluteValueFunction">
+          <function xsi:type="tools.descartes.dlim:LinearIncreaseAndDecline" peak="1.0"
+              base="-1.0" peakTime="6.0"/>
+        </function>
+      </sequenceFunctionContainers>
+    </function>
+  </combine>
+  <referenceClock name="rootRef" loopTime="9.99040767386068" seqTime="39.99040767386068"/>
+  <sequenceFunctionContainers name="noise" duration="5.0" firstIterationEnd="5.0">
+    <function xsi:type="tools.descartes.dlim:UniformNoise" max="3.0"/>
+  </sequenceFunctionContainers>
+  <sequenceFunctionContainers name="lin" duration="5.0" firstIterationStart="5.0"
+      firstIterationEnd="10.0" pointOfReferenceClockType="SEQCLOCK">
+    <function xsi:type="tools.descartes.dlim:Sequence" name="nestedSeq" terminateAfterTime="5.0"
+        firstIterationStart="5.0" firstIterationEnd="10.0" loopDuration="1.0" finalDuration="5.0">
+      <sequenceFunctionContainers name="nested1" firstIterationStart="5.0" firstIterationEnd="6.0"
+          pointOfReferenceClockObject="#//@referenceClock" pointOfReferenceClockType="SEQCLOCK">
+        <function xsi:type="tools.descartes.dlim:LinearTrend" functionOutputAtStart="50.0"
+            functionOutputAtEnd="0.0"/>
+      </sequenceFunctionContainers>
+    </function>
+  </sequenceFunctionContainers>
+</tools.descartes.dlim:Sequence>

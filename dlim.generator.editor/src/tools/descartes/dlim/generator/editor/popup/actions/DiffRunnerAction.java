@@ -7,14 +7,18 @@
  *******************************************************************************/
 package tools.descartes.dlim.generator.editor.popup.actions;
 
+import java.io.IOException;
 import java.util.List;
 
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
+import tools.descartes.dlim.DlimGeneratorPlugin;
 import tools.descartes.dlim.Sequence;
 import tools.descartes.dlim.exporter.utils.DlimFileUtils;
 import tools.descartes.dlim.generator.DiffAnalyzer;
@@ -23,6 +27,7 @@ import tools.descartes.dlim.generator.ModelEvaluator;
 import tools.descartes.dlim.generator.editor.dialogs.DiffResultsDialog;
 import tools.descartes.dlim.generator.editor.dialogs.LaunchDiffDialog;
 import tools.descartes.dlim.generator.editor.utils.ProjectManager;
+import tools.descartes.dlim.reader.ArrivalRateReader;
 
 /**
  * This action runs the DiffAnalyzer for a given DLIM. The txt arrival rate file
@@ -74,21 +79,38 @@ public class DiffRunnerAction implements IObjectActionDelegate {
 					dialog.getRndSeed(), IGeneratorConstants.EVALUATION);
 			DiffAnalyzer analyzer = new DiffAnalyzer(evaluator,
 					pManager.getProjectPath());
-			List<Double> statisticalValues = analyzer.calculateDiff(
-					dialog.getTxtFilePath(), dialog.getOffset());
+			List<Double> statisticalValues;
+			try {
+				statisticalValues = analyzer.calculateDiff(
+						ArrivalRateReader.readFileToList(dialog.getTxtFilePath(), 0.0), dialog.getOffset());
 
-			DiffResultsDialog resultsDialog = new DiffResultsDialog(shell,
-					statisticalValues.get(0), statisticalValues.get(1),
-					statisticalValues.get(2), statisticalValues.get(3),
-					statisticalValues.get(4));
-			resultsDialog.open();
-			/*
-			 * MessageDialog.openInformation( shell, "Diff Results",
-			 * "Diff mean: " + statisticalValues.get(0) + ", diff median: " +
-			 * statisticalValues.get(1) + ", DTW distance: " +
-			 * statisticalValues.get(2));
-			 */
+				if (statisticalValues.isEmpty()) {
+					MessageDialog.openError(shell, "Error Calculating Difference.",
+							"Could not calculate difference.\n"
+									+ "This error is most likely caused by trying "
+									+ "to compare a time stamp file with the model.\n"
+									+ "Keep in mind that you can only compare the model with arrival rate files "
+									+ "containing data points of the form \"<time stamp>,<arrival rate>[;]\"");
+				}
+
+				DiffResultsDialog resultsDialog = new DiffResultsDialog(shell,
+						statisticalValues.get(0), statisticalValues.get(1),
+						statisticalValues.get(2), statisticalValues.get(3),
+						statisticalValues.get(4));
+				resultsDialog.open();
+			} catch (IOException e) {
+				DlimGeneratorPlugin.INSTANCE.log(
+						new Status(Status.WARNING, DlimGeneratorPlugin.PLUGIN_ID,
+								"Error reading trace.", e));
+			}
 		}
+
+		/*
+		 * MessageDialog.openInformation( shell, "Diff Results",
+		 * "Diff mean: " + statisticalValues.get(0) + ", diff median: " +
+		 * statisticalValues.get(1) + ", DTW distance: " +
+		 * statisticalValues.get(2));
+		 */
 
 		pManager.refreshProject();
 	}

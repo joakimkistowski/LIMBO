@@ -7,11 +7,8 @@
  *******************************************************************************/
 package tools.descartes.dlim.generator;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -69,14 +66,14 @@ public class DiffAnalyzer {
 	/**
 	 * Calculate the difference.
 	 *
-	 * @param txtFilePath
+	 * @param readArrivalRates The arrival rates as read from the original trace.
 	 *            The file to which the model is to be compared.
 	 * @param offset the offset of the first arrival rate tuple in the arrival rate file
 	 * @return A list of difference metrices: 1. absolute mean, 2. absolute
 	 *         median, 3. DTW based difference, 4. relative mean, 5. relative
 	 *         median
 	 */
-	public List<Double> calculateDiff(String txtFilePath, double offset) {
+	public List<Double> calculateDiff(List<ArrivalRateTuple> readArrivalRates, double offset) {
 		try {
 			double maxArrivalRate = 0.0;
 			IPath diffFolderPath = projectPath.append("diffs");
@@ -89,66 +86,52 @@ public class DiffAnalyzer {
 					+ "Diff.txt");
 			PrintWriter diffWriter = new PrintWriter(diffTxtPath.toString(),
 					"UTF-8");
-			BufferedReader br;
-
-			br = new BufferedReader(new FileReader(txtFilePath));
-			String line;
-			double lastTimeStamp = 0;
 			double diffSum = 0;
 			double relativeDiffSum = 0;
-			while ((line = br.readLine()) != null) {
-				line = line.substring(0, line.length() - 1);
-				String[] numbers = line.split(",");
-				if (numbers.length >= 2) {
-					double timeStamp = Double.parseDouble(numbers[0].trim());
-					if (lastTimeStamp == 0) {
-						lastTimeStamp = -timeStamp;
+			for (ArrivalRateTuple t : readArrivalRates) {
+				double timeStamp = t.getTimeStamp();
+				double readArrivalRate = t.getArrivalRate();
+				double modelTimeStamp = timeStamp - offset;
+				if (modelTimeStamp > 0
+						&& modelTimeStamp < evaluator.getDuration()) {
+					double[] fileTSPoint = { modelTimeStamp,
+							readArrivalRate };
+					fileTS.addLast(modelTimeStamp, new TimeSeriesPoint(
+							fileTSPoint));
+					double functionArrivalRate = evaluator
+							.getArrivalRateAtTime(modelTimeStamp);
+					double[] modelTSPoint = { modelTimeStamp,
+							functionArrivalRate };
+					modelTS.addLast(modelTimeStamp, new TimeSeriesPoint(
+							modelTSPoint));
+					double diff = Math.abs(readArrivalRate
+							- functionArrivalRate);
+					diffWriter.println(modelTimeStamp + "," + diff + ";");
+					diffList.add(diff);
+					double relativeDiff = 0.0;
+					if (readArrivalRate != 0.0) {
+						relativeDiff = diff / readArrivalRate;
+						// } else if (functionArrivalRate != 0.0) {
+						// relativeDiff = diff/functionArrivalRate;
 					}
-					double readArrivalRate = Double.parseDouble(numbers[1]
-							.trim());
-					double modelTimeStamp = timeStamp - offset;
-					if (modelTimeStamp > 0
-							&& modelTimeStamp < evaluator.getDuration()) {
-						double[] fileTSPoint = { modelTimeStamp,
-								readArrivalRate };
-						fileTS.addLast(modelTimeStamp, new TimeSeriesPoint(
-								fileTSPoint));
-						double functionArrivalRate = evaluator
-								.getArrivalRateAtTime(modelTimeStamp);
-						double[] modelTSPoint = { modelTimeStamp,
-								functionArrivalRate };
-						modelTS.addLast(modelTimeStamp, new TimeSeriesPoint(
-								modelTSPoint));
-						double diff = Math.abs(readArrivalRate
-								- functionArrivalRate);
-						diffWriter.println(modelTimeStamp + "," + diff + ";");
-						diffList.add(diff);
-						double relativeDiff = 0.0;
-						if (readArrivalRate != 0.0) {
-							relativeDiff = diff / readArrivalRate;
-							// } else if (functionArrivalRate != 0.0) {
-							// relativeDiff = diff/functionArrivalRate;
-						}
-						relativeDiffList.add(relativeDiff);
+					relativeDiffList.add(relativeDiff);
 
-						relativeDiffSum += relativeDiff;
-						diffSum += diff;
+					relativeDiffSum += relativeDiff;
+					diffSum += diff;
 
-						// set maximum arrival rate
-						if (readArrivalRate > maxArrivalRate) {
-							maxArrivalRate = readArrivalRate;
-						}
+					// set maximum arrival rate
+					if (readArrivalRate > maxArrivalRate) {
+						maxArrivalRate = readArrivalRate;
 					}
-					lastTimeStamp = timeStamp;
 				}
 			}
-			br.close();
 			diffWriter.close();
 
 			if (diffList.size() == 0) {
-				System.out
-				.println("ERROR: file has an incorrect format. Only files "
-						+ "with the correct Arrival Rate format can be read.");
+				DlimGeneratorPlugin.INSTANCE.log(
+						new Status(Status.WARNING, DlimGeneratorPlugin.PLUGIN_ID,
+								"file has an incorrect format. Only files "
+										+ "with the correct Arrival Rate format can be read."));
 			}
 
 			Collections.sort(diffList);
@@ -188,15 +171,14 @@ public class DiffAnalyzer {
 		} catch (FileNotFoundException e) {
 			DlimGeneratorPlugin.INSTANCE.log(
 					new Status(Status.INFO, DlimGeneratorPlugin.PLUGIN_ID,
-							"Trace file not found.", e));
+							"Output Diff File not found.", e));
 		} catch (UnsupportedEncodingException e) {
 			DlimGeneratorPlugin.INSTANCE.log(
 					new Status(Status.INFO, DlimGeneratorPlugin.PLUGIN_ID,
-							"Trace encoding unsupported.", e));
-		} catch (IOException e) {
-			DlimGeneratorPlugin.INSTANCE.log(
-					new Status(Status.INFO, DlimGeneratorPlugin.PLUGIN_ID,
-							"General IO Exception while reading trace.", e));
+							"Diff encoding unsupported.", e));
+		} catch (IndexOutOfBoundsException e) {
+			new Status(Status.INFO, DlimGeneratorPlugin.PLUGIN_ID,
+					"Could not Calculate Difference. Wrong file Type?");
 		}
 		return new LinkedList<Double>();
 	}

@@ -96,7 +96,7 @@
                class="tools.descartes.dlim.generator.editor.popup.actions.TimeSeriesReaderAction"
                enablesFor="1"
                id="tools.descartes.dlim.generator.editor.timeSeriesReaderAction"
-               label="Generate Arrival Rates from Timestamps"
+               label="Generate Arrival Rates from Time Stamps"
                menubarPath="tools.descartes.dlim.generator.editor.menu1">
          </action>
          <visibility>
