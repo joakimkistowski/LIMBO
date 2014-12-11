@@ -1,3 +1,10 @@
+/*******************************************************************************
+* Copyright (c) 2014 Jóakim v. Kistowski
+* All rights reserved. This program and the accompanying materials
+* are made available under the terms of the Eclipse Public License v1.0
+* which accompanies this distribution, and is available at
+* http://www.eclipse.org/legal/epl-v10.html
+*******************************************************************************/
 package tools.descartes.dlim.reader.tests;
 
 import java.io.IOException;
@@ -13,7 +20,7 @@ import tools.descartes.dlim.tests.DlimTestUtils;
  * Tests arrival rate to List reading using the DefaultArrivalRateReader, which
  * in turn uses the static methods of ArrivalRateReader.
  * 
- * @author J�akim v. Kistowski
+ * @author Jóakim v. Kistowski
  */
 public class DefaultArrivalRateReaderTest extends TestCase {
 

@@ -1,3 +1,10 @@
+/*******************************************************************************
+* Copyright (c) 2014 Jóakim v. Kistowski
+* All rights reserved. This program and the accompanying materials
+* are made available under the terms of the Eclipse Public License v1.0
+* which accompanies this distribution, and is available at
+* http://www.eclipse.org/legal/epl-v10.html
+*******************************************************************************/
 package tools.descartes.dlim.tests;
 
 import junit.framework.TestCase;
@@ -7,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * Test the custom implementation for a given modelElement.
  *
- * @author J�akim v. Kistowski
+ * @author Jóakim v. Kistowski
  */
 public abstract class ModelElementTest extends TestCase {
 

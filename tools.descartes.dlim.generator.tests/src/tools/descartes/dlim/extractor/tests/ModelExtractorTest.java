@@ -1,3 +1,10 @@
+/*******************************************************************************
+ * Copyright (c) 2014 Jóakim v. Kistowski
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
 package tools.descartes.dlim.extractor.tests;
 
 import java.io.IOException;
@@ -18,8 +25,8 @@ import tools.descartes.dlim.tests.DlimTestUtils;
 
 /**
  * Tests the three pre-packaged model extraction processes.
- * 
- * @author J�akim v. Kistowski
+ *
+ * @author Jóakim v. Kistowski
  */
 public class ModelExtractorTest extends TestCase {
 
@@ -30,7 +37,7 @@ public class ModelExtractorTest extends TestCase {
 
 	/**
 	 * Create a new test case.
-	 * 
+	 *
 	 * @param name
 	 *            test case name.
 	 */
