@@ -1,15 +1,17 @@
 /*******************************************************************************
-* Copyright (c) 2014 Jóakim v. Kistowski
-* All rights reserved. This program and the accompanying materials
-* are made available under the terms of the Eclipse Public License v1.0
-* which accompanies this distribution, and is available at
-* http://www.eclipse.org/legal/epl-v10.html
-*******************************************************************************/
+ * Copyright (c) 2014 Jóakim v. Kistowski
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
 package tools.descartes.dlim.exporter.dialogs;
 
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
@@ -52,6 +54,7 @@ public class RequestTimeStampParametersDialog extends TitleAreaDialog {
 	public RequestTimeStampParametersDialog(String fileString, Shell parentShell) {
 		super(parentShell);
 		this.fileString = fileString;
+		setShellStyle(getShellStyle() | SWT.RESIZE);
 	}
 
 	private void setDefaultValues() {
@@ -82,6 +85,17 @@ public class RequestTimeStampParametersDialog extends TitleAreaDialog {
 	@Override
 	protected Control createDialogArea(Composite parent) {
 		Composite dialogContainer = (Composite) super.createDialogArea(parent);
+
+		//Warning label
+		Label warningLabel1 = new Label(dialogContainer, SWT.NONE);
+		warningLabel1.setText(" Caution: Time stamp files for large models can be several 100 MB large.");
+		Label warningLabel2 = new Label(dialogContainer, SWT.NONE);
+		warningLabel2.setText(" Generation may take several minutes.");
+		FontData fontData = warningLabel1.getFont().getFontData()[0];
+		Font boldFont = new Font(getShell().getDisplay(), fontData.getName(), fontData.getHeight(), SWT.BOLD);
+		warningLabel1.setFont(boldFont);
+		warningLabel2.setFont(boldFont);
+
 		Composite columnContainer = new Composite(dialogContainer, SWT.NONE);
 		columnContainer.setLayout(new FillLayout(SWT.VERTICAL));
 		createDecimalPlaceParameterField(columnContainer);
