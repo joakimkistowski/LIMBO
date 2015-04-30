@@ -9,8 +9,6 @@ package tools.descartes.dlim.exporter.utils;
 
 import java.io.PrintWriter;
 
-import com.ibm.icu.math.BigDecimal;
-
 /**
  * Creates a time-stamp file from an arrival rate list. Timestamps are sampled
  * with equal distance.
@@ -47,10 +45,9 @@ public class EqualDistanceTimestampWriter extends TimeStampWriter {
 			double step, double arrRate, double tmpStep, double tmpTime) {
 		int loops = (int) (arrRate * tmpStep);
 		for (double j = 0; j < loops; j++) {
-			BigDecimal bd = new BigDecimal(tmpTime + (j / loops) * tmpStep
-					- tmpStep / 2.0);
-			bd = bd.setScale(getDecimalplaces(), BigDecimal.ROUND_HALF_UP);
-			writer.println(bd.doubleValue() + getEndOfLineCharacter());
+			double d = tmpTime + (j / loops) * tmpStep
+					- tmpStep / 2.0;
+			writer.println(formatDoubleForDecimalPlaces(d) + getEndOfLineCharacter());
 		}
 	}
 }

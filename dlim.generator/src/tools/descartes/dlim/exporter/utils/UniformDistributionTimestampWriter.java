@@ -17,8 +17,6 @@ import org.apache.commons.math3.random.JDKRandomGenerator;
 
 import tools.descartes.dlim.generator.ArrivalRateTuple;
 
-import com.ibm.icu.math.BigDecimal;
-
 /**
  * Creates a time-stamp file from an arrival rate list. Timestamps are sampled
  * using a uniform distribution
@@ -35,7 +33,7 @@ public class UniformDistributionTimestampWriter extends TimeStampWriter {
 	private double duration;
 
 	// The list of time-stamps within each interval.
-	private List<Double> timeStampList = new ArrayList<Double>();
+	private List<String> timeStampList = new ArrayList<String>();
 
 	/**
 	 *
@@ -92,25 +90,21 @@ public class UniformDistributionTimestampWriter extends TimeStampWriter {
 
 	// Adds the time-stamp to the list of time-stamps for this arrival rate
 	// tuple
-	private void addBDToList(BigDecimal bd) {
-		if (bd != null) {
-
-			// clamp value
-			if (bd.doubleValue() > duration * getStretch()) {
-				bd = new BigDecimal(duration * getStretch());
-			} else if (bd.doubleValue() < 0.0) {
-				bd = new BigDecimal(0.0);
-			}
-			bd = bd.setScale(getDecimalplaces(), BigDecimal.ROUND_HALF_UP);
-			timeStampList.add(bd.doubleValue());
+	private void addDoubleValueToList(double d) {
+		// clamp value
+		if (d > duration * getStretch()) {
+			d = duration * getStretch();
+		} else if (d < 0.0) {
+			d = 0.0;
 		}
+		timeStampList.add(formatDoubleForDecimalPlaces(d));
 	}
 
 	// Print the time-stamp list to the .txt file
 	// Don't forget to sort first.
 	private void printList(PrintWriter writer) {
 		Collections.sort(timeStampList);
-		for (Double timeStamp : timeStampList) {
+		for (String timeStamp : timeStampList) {
 			writer.println(timeStamp + getEndOfLineCharacter());
 		}
 	}
@@ -120,9 +114,9 @@ public class UniformDistributionTimestampWriter extends TimeStampWriter {
 			double step, double arrRate, double tmpStep, double tmpTime) {
 		timeStampList.clear();
 		for (double j = 0; j < (int) (arrRate * tmpStep); j++) {
-			BigDecimal bd = new BigDecimal(tmpTime
-					+ (rndGenerator.nextDouble() - 0.5) * (step * getStretch()));
-			addBDToList(bd);
+			double d = tmpTime
+					+ (rndGenerator.nextDouble() - 0.5) * (step * getStretch());
+			addDoubleValueToList(d);
 		}
 		printList(writer);
 	}

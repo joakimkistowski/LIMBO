@@ -41,6 +41,7 @@ public abstract class TimeStampWriter {
 	 */
 	private int decimalplaces = 3;
 
+
 	/**
 	 * Time stretch factor.
 	 */
@@ -62,6 +63,22 @@ public abstract class TimeStampWriter {
 	 */
 	protected int getDecimalplaces() {
 		return decimalplaces;
+	}
+
+	/**
+	 * Formats the double to only contain decimalplaces decimals after the period.
+	 * @return The formatted double as a String.
+	 */
+	protected String formatDoubleForDecimalPlaces(double d) {
+		long intpredecimals = (long) d;
+		double decimals = d - intpredecimals;
+		double postdecimals = decimals * (long)Math.pow(10, decimalplaces);
+		long intpostdecimals = (long)postdecimals;
+		//round
+		if ((postdecimals - intpostdecimals) >= 0.5) {
+			intpostdecimals++;
+		}
+		return intpredecimals + "." + intpostdecimals;
 	}
 
 	/**
