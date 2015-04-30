@@ -17,6 +17,7 @@ import org.eclipse.core.runtime.Status;
 
 import tools.descartes.dlim.DlimGeneratorPlugin;
 import tools.descartes.dlim.generator.ArrivalRateTuple;
+import tools.descartes.dlim.util.MathUtil;
 
 /**
  * Creates a time-stamp file from an arrival rate list. Abstract class.
@@ -70,15 +71,7 @@ public abstract class TimeStampWriter {
 	 * @return The formatted double as a String.
 	 */
 	protected String formatDoubleForDecimalPlaces(double d) {
-		long intpredecimals = (long) d;
-		double decimals = d - intpredecimals;
-		double postdecimals = decimals * (long)Math.pow(10, decimalplaces);
-		long intpostdecimals = (long)postdecimals;
-		//round
-		if ((postdecimals - intpostdecimals) >= 0.5) {
-			intpostdecimals++;
-		}
-		return intpredecimals + "." + intpostdecimals;
+		return MathUtil.formatDoubleForDecimalPlaces(d, decimalplaces);
 	}
 
 	/**

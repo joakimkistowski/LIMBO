@@ -2,12 +2,11 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: tools.descartes.dlim.exporter
 Bundle-SymbolicName: tools.descartes.dlim.exporter;singleton:=true
-Bundle-Version: 0.14.12.1817
+Bundle-Version: 0.15.04.3015
 Bundle-Activator: tools.descartes.dlim.exporter.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- tools.descartes.dlim.generator;bundle-version="0.13.12",
- com.ibm.icu
+ tools.descartes.dlim.generator;bundle-version="0.13.12"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,

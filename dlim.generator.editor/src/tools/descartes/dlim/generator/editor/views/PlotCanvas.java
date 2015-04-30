@@ -28,8 +28,7 @@ import tools.descartes.dlim.Sequence;
 import tools.descartes.dlim.generator.ArrivalRateTuple;
 import tools.descartes.dlim.generator.IGeneratorConstants;
 import tools.descartes.dlim.generator.ModelEvaluator;
-
-import com.ibm.icu.math.BigDecimal;
+import tools.descartes.dlim.util.MathUtil;
 
 /**
  * Canvas within the PlotView. The arrival rate variations are plotted to this
@@ -374,12 +373,8 @@ public class PlotCanvas extends Canvas {
 				gc.drawText(" rates ", 2, maxY - yHeight / 2 + 1);
 				gc.drawText("time", xOffset + xWidth / 2 - 8, maxY + 6);
 
-				BigDecimal bd = new BigDecimal(evaluator.getDuration());
-				bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
-				String durationString = String.valueOf(bd.doubleValue());
-				bd = new BigDecimal(maxArrivalRate);
-				bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
-				String maxArrivalRateString = String.valueOf(bd.doubleValue());
+				String durationString = MathUtil.formatDoubleForDecimalPlaces(evaluator.getDuration(), 2);
+				String maxArrivalRateString = MathUtil.formatDoubleForDecimalPlaces(maxArrivalRate, 2);
 				gc.drawText(durationString, width - xRightMargin
 						- durationString.length() * 6 - 2, maxY + 10);
 				gc.drawText(

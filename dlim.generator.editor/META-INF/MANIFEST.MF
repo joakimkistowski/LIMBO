@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: tools.descartes.dlim.generator.editor;singleton:=true
-Bundle-Version: 0.14.12.1013
+Bundle-Version: 0.15.04.3015
 Bundle-ClassPath: .
 Bundle-Activator: tools.descartes.dlim.presentation.DlimEditorPlugin$Implementation
 Bundle-Vendor: %providerName
@@ -20,7 +20,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui.ide;visibility:=reexport,
  org.eclipse.ui,
  org.eclipse.debug.core;bundle-version="3.7.100",
- org.eclipse.jdt.launching;bundle-version="3.6.100",
- com.ibm.icu
+ org.eclipse.jdt.launching;bundle-version="3.6.100"
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.jdt.core
