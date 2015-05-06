@@ -6,8 +6,7 @@
 -->
 <!--
     Checkstyle-Configuration: LIMBO Checks
-    Description: 
-LIMBO code convention checks, conforms to Sun-Conventions, but allows additional constructs, such as "constant-carrier-interfaces".
+    Description: none
 -->
 <module name="Checker">
   <property name="severity" value="warning"/>
@@ -86,9 +85,6 @@ LIMBO code convention checks, conforms to Sun-Conventions, but allows additional
       <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
     </module>
     <module name="MissingSwitchDefault"/>
-    <module name="RedundantThrows">
-      <property name="suppressLoadErrors" value="true"/>
-    </module>
     <module name="SimplifyBooleanExpression"/>
     <module name="SimplifyBooleanReturn"/>
     <module name="DesignForExtension">
