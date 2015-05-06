@@ -15,19 +15,25 @@ package tools.descartes.dlim.util;
  */
 public final class MathUtil {
 
+	/**
+	 * Hidden Constructor for Utility Class.
+	 */
+	private MathUtil() {
+		
+	}
 
 	/**
 	 * Utility function to format a given double to the accuracy of decimalcount decimal places.
 	 * @param d The double to be formatted.
 	 * @param decimalcount The amount of post period decimal places.
-	 * @return
+	 * @return The formatted double as a String.
 	 */
 	public static String formatDoubleForDecimalPlaces(double d, int decimalcount) {
 		long intpredecimals = (long) d;
 		double tenexp = Math.pow(10, decimalcount);
 		double decimals = d - intpredecimals;
-		double postdecimals = decimals * (long)tenexp;
-		long intpostdecimals = (long)postdecimals;
+		double postdecimals = decimals * (long) tenexp;
+		long intpostdecimals = (long) postdecimals;
 		//round
 		if ((postdecimals - intpostdecimals) >= 0.5) {
 			intpostdecimals++;

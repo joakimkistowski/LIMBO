@@ -68,6 +68,7 @@ public abstract class TimeStampWriter {
 
 	/**
 	 * Formats the double to only contain decimalplaces decimals after the period.
+	 * @param d The double to format.
 	 * @return The formatted double as a String.
 	 */
 	protected String formatDoubleForDecimalPlaces(double d) {
