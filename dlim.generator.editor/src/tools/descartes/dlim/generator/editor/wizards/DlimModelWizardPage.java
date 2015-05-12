@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 Jóakim v. Kistowski
+ * Copyright (c) 2014 Joakim von Kistowski
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,7 +34,7 @@ import tools.descartes.dlim.generator.editor.views.PlotCanvas;
  * Abstract parent class of all DLIM instance creation wizard pages. Features a
  * plot canvas for visualization of the current DLIM instance.
  *
- * @author Jóakim v. Kistowski
+ * @author Joakim von Kistowski
  */
 public abstract class DlimModelWizardPage extends WizardPage {
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 Jóakim v. Kistowski
+ * Copyright (c) 2014 Joakim von Kistowski
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,7 @@ import tools.descartes.dlim.presentation.DlimModelWizard;
 /**
  * This custom wizard helps with the creation of new DLIM instances.
  *
- * @author Jóakim v. Kistowski
+ * @author Joakim von Kistowski
  *
  */
 public class CustomDlimModelWizard extends DlimModelWizard {
@@ -293,7 +293,7 @@ public class CustomDlimModelWizard extends DlimModelWizard {
 	 * I don't need the InitialObjectCreationPage, since the root element of a
 	 * DLIM is always a Sequence.
 	 *
-	 * @author Jóakim v. Kistowski
+	 * @author Joakim von Kistowski
 	 *
 	 */
 	private class DlimModelWizardNullInitialObjectCreationPage extends

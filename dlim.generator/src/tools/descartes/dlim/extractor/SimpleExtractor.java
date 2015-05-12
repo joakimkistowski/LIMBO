@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 Jóakim v. Kistowski
+ * Copyright (c) 2014 Joakim von Kistowski
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,7 @@ import tools.descartes.dlim.generator.ArrivalRateTuple;
  * Default implementation of the IDlimExtractor interface for the Extractor
  * extension point. Use this when testing new arrival rate file readers.
  *
- * @author Jóakim v. Kistowski
+ * @author Joakim von Kistowski
  */
 public class SimpleExtractor implements IDlimExtractor {
 

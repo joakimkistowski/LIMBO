@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 Jóakim v. Kistowski
+ * Copyright (c) 2014 Joakim von Kistowski
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,7 +28,7 @@ import tools.descartes.dlim.generator.ArrivalRateTuple;
  * This view contains a plot canvas on which the arrival rates as defined by the
  * current DLIM instance are plotted.
  *
- * @author Jóakim v. Kistowski
+ * @author Joakim von Kistowski
  */
 public class PlotView extends ViewPart {
 

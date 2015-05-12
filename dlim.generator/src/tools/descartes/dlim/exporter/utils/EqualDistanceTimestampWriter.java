@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 Jóakim v. Kistowski and Andreas Weber
+ * Copyright (c) 2014 Joakim von Kistowski and Andreas Weber
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,7 +13,7 @@ import java.io.PrintWriter;
  * Creates a time-stamp file from an arrival rate list. Timestamps are sampled
  * with equal distance.
  *
- * @author Jóakim v. Kistowski, Andreas Weber
+ * @author Joakim von Kistowski, Andreas Weber
  *
  */
 public class EqualDistanceTimestampWriter extends TimeStampWriter {

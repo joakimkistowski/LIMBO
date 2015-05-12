@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 Jóakim v. Kistowski
+ * Copyright (c) 2014 Joakim von Kistowski
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,7 +33,7 @@ import tools.descartes.dlim.reader.ArrivalRateReader;
  * This action runs the DiffAnalyzer for a given DLIM. The txt arrival rate file
  * is provided by a LaunchDiffDialog.
  *
- * @author Jóakim v. Kistowski
+ * @author Joakim von Kistowski
  *
  */
 public class DiffRunnerAction implements IObjectActionDelegate {

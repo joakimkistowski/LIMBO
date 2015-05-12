@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 Jóakim v. Kistowski
+ * Copyright (c) 2014 Joakim von Kistowski
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,7 +31,7 @@ import tools.descartes.dlim.generator.editor.utils.ProjectManager;
  * This dialog takes the user parameters for the saving of the plotview into an
  * image file.
  *
- * @author Jóakim v. Kistowski
+ * @author Joakim von Kistowski
  *
  */
 public class SavePlotViewImageDialog extends TitleAreaDialog {

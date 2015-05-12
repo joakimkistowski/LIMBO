@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Copyright (c) 2014 Jóakim v. Kistowski
+* Copyright (c) 2014 Joakim von Kistowski
 * All rights reserved. This program and the accompanying materials
 * are made available under the terms of the Eclipse Public License v1.0
 * which accompanies this distribution, and is available at
@@ -16,7 +16,7 @@ import tools.descartes.dlim.generator.ArrivalRateTuple;
  * Default arrival rate reader. Reads the default arrival rate format as
  * produced by the dlim.exporter plugin.
  * 
- * @author Jóakim v. Kistowski
+ * @author Joakim von Kistowski
  */
 public class DefaultArrivalRateReader implements IDlimArrivalRateReader {
 
