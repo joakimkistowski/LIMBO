@@ -17,7 +17,9 @@
       <property name="scope" value="package"/>
       <property name="suppressLoadErrors" value="true"/>
     </module>
-    <module name="JavadocType"/>
+    <module name="JavadocType">
+      <property name="authorFormat" value=".+"/>
+    </module>
     <module name="JavadocVariable">
       <property name="scope" value="package"/>
     </module>
