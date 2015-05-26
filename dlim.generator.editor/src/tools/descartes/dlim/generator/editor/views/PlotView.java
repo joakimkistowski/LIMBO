@@ -166,4 +166,12 @@ public class PlotView extends ViewPart {
 			List<ArrivalRateTuple> arrivalRateFileList) {
 		plotCanvas.setArrivalRateFileList(arrivalRateFileList);
 	}
+	
+	/**
+	 * Returns the PlotView's current root sequence.
+	 * @return The root sequence.
+	 */
+	public Sequence getRootSequence() {
+		return rootSequence;
+	}
 }

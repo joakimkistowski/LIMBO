@@ -18,6 +18,7 @@ import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.PlatformUI;
 
 import tools.descartes.dlim.Sequence;
+import tools.descartes.dlim.generator.ModelEvaluatorUtil;
 import tools.descartes.dlim.generator.editor.views.PlotView;
 import tools.descartes.dlim.presentation.DlimEditor;
 
@@ -30,7 +31,7 @@ import tools.descartes.dlim.presentation.DlimEditor;
 public class CustomDlimEditor extends DlimEditor {
 
 	private static final String PLOTVIEWID = "tools.descartes.dlim.generator.editor.views.PlotView";
-
+	
 	@Override
 	public void setCurrentViewer(Viewer viewer) {
 		// If it is changing...
@@ -56,7 +57,10 @@ public class CustomDlimEditor extends DlimEditor {
 								EObject root = editingDomain.getResourceSet()
 										.getResources().get(0).getContents()
 										.get(0);
-								if (root instanceof Sequence) {
+								//Only change the root of the viewer if we switched to a new DLIM instance.
+								if (root instanceof Sequence
+										&& (view.getRootSequence() == null
+										|| !ModelEvaluatorUtil.containsInTree(root, view.getRootSequence()))) {
 									view.updatePlot(root);
 								} else {
 									view.updatePlot();
