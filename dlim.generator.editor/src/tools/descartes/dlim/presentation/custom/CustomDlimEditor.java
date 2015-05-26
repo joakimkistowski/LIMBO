@@ -7,7 +7,9 @@
 *******************************************************************************/
 package tools.descartes.dlim.presentation.custom;
 
+
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -15,6 +17,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.PlatformUI;
 
+import tools.descartes.dlim.Sequence;
 import tools.descartes.dlim.generator.editor.views.PlotView;
 import tools.descartes.dlim.presentation.DlimEditor;
 
@@ -50,9 +53,15 @@ public class CustomDlimEditor extends DlimEditor {
 							if (references[i].getId().equals(PLOTVIEWID)) {
 								PlotView view = (PlotView) (references[i]
 										.getView(true));
-								view.updatePlot(editingDomain.getResourceSet()
+								EObject root = editingDomain.getResourceSet()
 										.getResources().get(0).getContents()
-										.get(0));
+										.get(0);
+								if (root instanceof Sequence) {
+									view.updatePlot(root);
+								} else {
+									view.updatePlot();
+								}
+								
 							}
 						}
 					}
