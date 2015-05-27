@@ -240,7 +240,7 @@
             class="tools.descartes.dlim.generator.editor.views.PlotView"
             icon="icons/sample.gif"
             id="tools.descartes.dlim.generator.editor.views.PlotView"
-            name="Arrival Rate Plot">
+            name="Load Intensity Plot">
       </view>
    </extension>
              

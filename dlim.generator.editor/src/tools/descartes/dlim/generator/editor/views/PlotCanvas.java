@@ -40,6 +40,10 @@ public class PlotCanvas extends Canvas {
 
 	private double samplingStep = 1.0;
 
+	private static final String XAXISLABEL = "time";
+	private static final String YAXISLABEL_TOP = "   load";
+	private static final String YAXISLABEL_BOTTOM = "intensity";
+	
 	private static final int YMARGIN = 10;
 	private static final int XMARGIN = 10;
 	private static final int AXISMARKERSIZE = 4;
@@ -369,9 +373,9 @@ public class PlotCanvas extends Canvas {
 						+ xWidth, maxY + AXISMARKERSIZE);
 				gc.drawLine(xOffset - AXISMARKERSIZE, YMARGIN + yTopMargin,
 						xOffset + AXISMARKERSIZE, YMARGIN + yTopMargin);
-				gc.drawText("arrival", 2, maxY - yHeight / 2 - 15);
-				gc.drawText(" rates ", 2, maxY - yHeight / 2 + 1);
-				gc.drawText("time", xOffset + xWidth / 2 - 8, maxY + 6);
+				gc.drawText(YAXISLABEL_TOP, 2, maxY - yHeight / 2 - 15);
+				gc.drawText(YAXISLABEL_BOTTOM, 2, maxY - yHeight / 2 + 1);
+				gc.drawText(XAXISLABEL, xOffset + xWidth / 2 - 8, maxY + 6);
 
 				String durationString = MathUtil.formatDoubleForDecimalPlaces(evaluator.getDuration(), 2);
 				String maxArrivalRateString = MathUtil.formatDoubleForDecimalPlaces(maxArrivalRate, 2);
