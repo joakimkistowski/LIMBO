@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: tools.descartes.power.sert.regressor
 Bundle-SymbolicName: tools.descartes.dlim.extractor;singleton:=true
-Bundle-Version: 0.14.12.1013
+Bundle-Version: 0.15.07.1417
 Bundle-Activator: tools.descartes.dlim.extractor.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,

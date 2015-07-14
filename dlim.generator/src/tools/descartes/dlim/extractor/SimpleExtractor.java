@@ -32,7 +32,7 @@ public class SimpleExtractor implements IDlimExtractor {
 	public void extractIntoSequence(Sequence root,
 			List<ArrivalRateTuple> readArrivalRates) {
 		try {
-			ModelExtractor.extractArrivalRateFileIntoSequence(root,
+			ModelExtractor.extractArrivalRateFileIntoSequenceBinarySplits(root,
 					readArrivalRates, 24, 2, "SinTrend", "SinTrend", "MULT",
 					false);
 		} catch (CalibrationException e) {

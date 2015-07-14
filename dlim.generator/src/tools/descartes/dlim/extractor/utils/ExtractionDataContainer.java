@@ -81,6 +81,14 @@ public class ExtractionDataContainer {
 	/** The trend point values. */
 	private double[] trendPointValues;
 	
+	/**
+	 * The beginning time offset of the container's arrival rate list.
+	 */
+	private double beginTime = 0;
+	
+	/** The sub container list. */
+	private ArrayList<ExtractionDataContainer> subContainerList = new ArrayList<ExtractionDataContainer>();
+	
 	
 	/**
 	 * Instantiates a new extraction data container.
@@ -321,6 +329,24 @@ public class ExtractionDataContainer {
 	}
 
 	/**
+	 * Sets the local mins.
+	 *
+	 * @param localMins the new local mins
+	 */
+	public void setLocalMins(ArrayList<ArrivalRateTuple> localMins) {
+		this.localMins = localMins;
+	}
+
+	/**
+	 * Sets the local maxes.
+	 *
+	 * @param localMaxes the new local maxes
+	 */
+	public void setLocalMaxes(ArrayList<ArrivalRateTuple> localMaxes) {
+		this.localMaxes = localMaxes;
+	}
+	
+	/**
 	 * Gets the noisy arrival rate list.
 	 *
 	 * @return the noisy arrival rate list
@@ -419,4 +445,56 @@ public class ExtractionDataContainer {
 		this.innerBases = innerBases;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#clone()
+	 */
+	@Override
+	public ExtractionDataContainer clone() {
+		ExtractionDataContainer c = new ExtractionDataContainer(arrivalRateList, period,
+				seasonalsPerTrend, seasonalShape, trendShape, operatorLiteral);
+		c.localMaxes = localMaxes;
+		c.localMins = localMins;
+		c.noisyArrivalRateList = noisyArrivalRateList;
+		c.bursts = bursts;
+		c.duration = duration;
+		c.extractNoise = extractNoise;
+		c.base = base;
+		c.peakNum = peakNum;
+		c.maxPeakOffset = maxPeakOffset;
+		c.burstWidth = burstWidth;
+		c.innerBases = innerBases;
+		c.peaks = peaks;
+		c.trendPointValues = trendPointValues;
+		c.subContainerList = subContainerList;
+		return c;
+	}
+
+	/**
+	 * Gets the beginning time offset of the container's arrival rate list.
+	 *
+	 * @return the begin time
+	 */
+	public double getBeginTime() {
+		return beginTime;
+	}
+
+	
+	/**
+	 * Sets the beginning time offset of the container's arrival rate list.
+	 *
+	 * @param beginTime the new begin time
+	 */
+	public void setBeginTime(double beginTime) {
+		this.beginTime = beginTime;
+	}
+
+	
+	/**
+	 * Gets the sub container list.
+	 *
+	 * @return the sub container list
+	 */
+	public ArrayList<ExtractionDataContainer> getSubContainerList() {
+		return subContainerList;
+	}
 }

@@ -297,8 +297,7 @@ public class LaunchExtractionDialog extends TitleAreaDialog {
 
 			// Perform extraction
 			try {
-				ModelExtractor
-						.extractArrivalRateFileIntoSequence(rootSequence,
+				performExtraction(rootSequence,
 								readArrivalRates, getSeasonalPeriod(),
 								getSeasonalsPerTrend(), getSeasonalShape(),
 								getTrendShape(), getOperatorLiteral(),
@@ -310,6 +309,30 @@ public class LaunchExtractionDialog extends TitleAreaDialog {
 			}
 
 		}
+	}
+	
+	/**
+	 * Launches the Extraction. Override to reuse dialog for other extractions.
+	 * @param root the root
+	 * @param arrList the read list of arrival rates
+	 * @param period the seasonal period
+	 * @param seasonalsPerTrend the seasonals per trend (trend segment length)
+	 * @param seasonalShape the seasonal shape
+	 * @param trendShape the trend shape
+	 * @param operatorLiteral the operator literal (how is the trend to be applied to the seasonal part)
+	 * @param extractNoise true, if noise is to be reduced and extracted
+	 * @throws CalibrationException exception if calibration is ineffective (devision by 0 or unused function)
+	 */
+	protected void performExtraction(Sequence root,
+			List<ArrivalRateTuple> arrList, double period,
+			int seasonalsPerTrend, String seasonalShape, String trendShape,
+			String operatorLiteral, boolean extractNoise) throws CalibrationException {
+		ModelExtractor
+		.extractArrivalRateFileIntoSequenceNoSplits(root,
+				arrList, getSeasonalPeriod(),
+				getSeasonalsPerTrend(), getSeasonalShape(),
+				getTrendShape(), getOperatorLiteral(),
+				isExtractNoise());
 	}
 
 	/**

@@ -188,4 +188,11 @@ public class ArrivalRateTuple implements Comparable<ArrivalRateTuple> {
 		return timeStamp + "," + arrivalRate + ";";
 	}
 
+	/**
+	 * Clones the current arrival rate tuple.
+	 */
+	@Override
+	public ArrivalRateTuple clone() {
+		return new ArrivalRateTuple(this.timeStamp, this.arrivalRate);
+	}
 }

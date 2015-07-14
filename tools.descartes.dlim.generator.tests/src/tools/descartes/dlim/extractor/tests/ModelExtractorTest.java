@@ -61,7 +61,7 @@ public class ModelExtractorTest extends TestCase {
 	public void testArrivalRateFileIntoSequence() {
 
 		try {
-			ModelExtractor.extractArrivalRateFileIntoSequence(root,
+			ModelExtractor.extractArrivalRateFileIntoSequenceBinarySplits(root,
 					ArrivalRateReader.readFileToList(TEST_TRACE, 0.0), 24, 1,
 					"SinTrend", "SinTrend", "MULT", true);
 			testOutputModel(0.16, 0.1);
