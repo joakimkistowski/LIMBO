@@ -36,6 +36,7 @@ import tools.descartes.dlim.Sequence;
 import tools.descartes.dlim.assistant.CalibrationException;
 import tools.descartes.dlim.extractor.ModelExtractor;
 import tools.descartes.dlim.generator.ArrivalRateTuple;
+import tools.descartes.dlim.generator.editor.utils.ProjectManager;
 
 /**
  * This dialog takes the user parameters for the simple extraction process.
@@ -45,6 +46,22 @@ import tools.descartes.dlim.generator.ArrivalRateTuple;
  */
 public class LaunchExtractionDialog extends TitleAreaDialog {
 
+	/**
+	 * ID of Eclipse Preference for lasts used trace parameters.
+	 */
+	private static final String SEASONAL_PERIOD_ID =
+			"tools.descartes.dlim.extractor.LaunchExtractionDialog.SEASONAL_PERIOD_ID";
+	private static final String TREND_LENGTH_ID =
+			"tools.descartes.dlim.extractor.LaunchExtractionDialog.TREND_LENGTH_ID";
+	private static final String TREND_SHAPE_ID =
+			"tools.descartes.dlim.extractor.LaunchExtractionDialog.TREND_SHAPE_ID";
+	private static final String SEASONAL_SHAPE_ID =
+			"tools.descartes.dlim.extractor.LaunchExtractionDialog.SEASONAL_SHAPE_ID";
+	private static final String OPERATOR_LITERAL_ID =
+			"tools.descartes.dlim.extractor.LaunchExtractionDialog.OPERATOR_LITERAL_ID";
+	private static final String EXTRACT_NOISE_ID =
+			"tools.descartes.dlim.extractor.LaunchExtractionDialog.EXTRACT_NOISE_ID";
+	
 	private Text seasonalPeriodText;
 	private Text seasonalsPerTrendText;
 
@@ -122,6 +139,11 @@ public class LaunchExtractionDialog extends TitleAreaDialog {
 
 	// period of seasonal part
 	private void createSeasonalPeriodParameterField(Composite container) {
+		String lastSeasonalPeriod = ProjectManager.retrieveStringFromPreferences(SEASONAL_PERIOD_ID);
+		if (!lastSeasonalPeriod.isEmpty()) {
+			seasonalPeriod = Double.parseDouble(lastSeasonalPeriod);
+		}
+		
 		Label parameterFieldLabel = new Label(container, SWT.NONE);
 		parameterFieldLabel.setText("Seasonal Period: ");
 		GridData parameterFieldData = new GridData();
@@ -135,6 +157,11 @@ public class LaunchExtractionDialog extends TitleAreaDialog {
 
 	// seasonals per trend (implicit trend duration)
 	private void createSeasonalsPerTrendParameterField(Composite container) {
+		String lastSeasonalsPerTrend = ProjectManager.retrieveStringFromPreferences(TREND_LENGTH_ID);
+		if (!lastSeasonalsPerTrend.isEmpty()) {
+			seasonalsPerTrend = Integer.parseInt(lastSeasonalsPerTrend);
+		}
+		
 		Label parameterFieldLabel = new Label(container, SWT.NONE);
 		parameterFieldLabel.setText("    Seasonal Periods per Trend: ");
 		GridData parameterFieldData = new GridData();
@@ -147,9 +174,15 @@ public class LaunchExtractionDialog extends TitleAreaDialog {
 	}
 
 	private void createExtractNoiseCheckBox(Composite container) {
+		boolean boxSelection = false;
+		String lastExtractNoise = ProjectManager.retrieveStringFromPreferences(EXTRACT_NOISE_ID);
+		if (!lastExtractNoise.isEmpty()) {
+			boxSelection = Boolean.parseBoolean(lastExtractNoise);
+		}
+		
 		extractNoiseButton = new Button(container, SWT.CHECK);
 		extractNoiseButton.setText("Extract Noise");
-		extractNoiseButton.setSelection(false);
+		extractNoiseButton.setSelection(boxSelection);
 	}
 
 	private void createSeasonalShapeSelectionField(Composite parent) {
@@ -170,6 +203,10 @@ public class LaunchExtractionDialog extends TitleAreaDialog {
 			seasonalShapeCombo.add(name);
 		}
 		seasonalShapeCombo.select(seasonalShapeCombo.getItemCount() - 1);
+		String lastSeasonalShape = ProjectManager.retrieveStringFromPreferences(SEASONAL_SHAPE_ID);
+		if (!lastSeasonalShape.isEmpty()) {
+			seasonalShapeCombo.setText(lastSeasonalShape);
+		}
 	}
 
 	private void createTrendShapeSelectionField(Composite parent) {
@@ -190,6 +227,10 @@ public class LaunchExtractionDialog extends TitleAreaDialog {
 			trendShapeCombo.add(name);
 		}
 		trendShapeCombo.select(trendShapeCombo.getItemCount() - 1);
+		String lastTrendShape = ProjectManager.retrieveStringFromPreferences(TREND_SHAPE_ID);
+		if (!lastTrendShape.isEmpty()) {
+			trendShapeCombo.setText(lastTrendShape);
+		}
 	}
 
 	private void createOperatorSelectionField(Composite parent) {
@@ -210,6 +251,10 @@ public class LaunchExtractionDialog extends TitleAreaDialog {
 			operatorCombo.add(op.getLiteral());
 		}
 		operatorCombo.setText("MULT");
+		String lastOperator = ProjectManager.retrieveStringFromPreferences(OPERATOR_LITERAL_ID);
+		if (!lastOperator.isEmpty()) {
+			operatorCombo.setText(lastOperator);
+		}
 	}
 
 	private Collection<String> getInitialTrendNames() {
@@ -289,12 +334,20 @@ public class LaunchExtractionDialog extends TitleAreaDialog {
 		}
 
 		extractNoise = extractNoiseButton.getSelection();
+		ProjectManager.saveStringToPreferences(EXTRACT_NOISE_ID, String.valueOf(extractNoise));
 		seasonalShape = seasonalShapeCombo.getText().trim();
+		ProjectManager.saveStringToPreferences(SEASONAL_SHAPE_ID, seasonalShape);
 		trendShape = trendShapeCombo.getText().trim();
+		ProjectManager.saveStringToPreferences(TREND_SHAPE_ID, trendShape);
 		operatorLiteral = operatorCombo.getText().trim();
+		ProjectManager.saveStringToPreferences(OPERATOR_LITERAL_ID, operatorLiteral);
 
 		if (!error) {
 
+			//store data
+			ProjectManager.saveStringToPreferences(SEASONAL_PERIOD_ID, String.valueOf(seasonalPeriod));
+			ProjectManager.saveStringToPreferences(TREND_LENGTH_ID, String.valueOf(seasonalsPerTrend));
+			
 			// Perform extraction
 			try {
 				performExtraction(rootSequence,

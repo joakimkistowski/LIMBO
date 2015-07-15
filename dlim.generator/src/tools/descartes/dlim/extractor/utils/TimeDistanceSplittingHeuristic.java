@@ -23,7 +23,7 @@ public class TimeDistanceSplittingHeuristic implements ISplittingRule {
 	/**
 	 * Maximum allowed mean absolute deviation. Relative to the seasonal period.
 	 */
-	private static final double MAX_MEAN_DEVIATION = 0.1;
+	private static final double MAX_MEAN_DEVIATION = 0.08;
 	
 	/**
 	 * Maximum allowed number of time-deviation matches.
@@ -33,7 +33,7 @@ public class TimeDistanceSplittingHeuristic implements ISplittingRule {
 	/**
 	 * Maximum allowed relative difference in seasonal peak counts.
 	 */
-	private static final double MAX_MEAN_PEAK_DIFFERENCE = 0.33;
+	private static final double MAX_MEAN_PEAK_DIFFERENCE = 0.12;
 	
 	@Override
 	public boolean warrantSplit(ExtractionDataContainer cleft, ExtractionDataContainer cright) {

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: tools.descartes.dlim.generator;singleton:=true
-Bundle-Version: 0.15.07.1417
+Bundle-Version: 0.15.07.1510
 Bundle-ClassPath: .,
  lib/commons-math3-3.2.jar,
  lib/dtw.jar

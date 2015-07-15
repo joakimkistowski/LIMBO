@@ -159,19 +159,8 @@ public final class ModelExtractor {
 
 		// Future Work: get period; use the Fourier approach here?
 
-		// get base level
-		container.setBase(BasicSeasonalExtractionUtilities.getBaseLevel(container));
-		// get peak num
-		container.setPeakNum(BasicSeasonalExtractionUtilities.getPeakNum(container));
-		// get peaks
-		container.setPeaks(BasicSeasonalExtractionUtilities.getPeaks(container));
-
-		container.setMaxPeakOffset(BasicSeasonalExtractionUtilities.getMaxPeakOffset(container.getPeaks()));
-		// get inner base (get peak num - 1 inner bases)
-		container.setInnerBases(BasicSeasonalExtractionUtilities.getInnerBases(container));
-
 		// build seasonal part
-		BasicSeasonalExtractionUtilities.buildSeasonalPart(root, baseline, container);
+		BasicSeasonalExtractionUtilities.extractSeasonalPart(root, baseline, container);
 
 		// build trend part
 		container.setTrendPointValues(getTrendValues(container));
@@ -221,19 +210,8 @@ public final class ModelExtractor {
 
 		// todo: get period; use the Fourier approach here?
 
-		// get base level
-		container.setBase(BasicSeasonalExtractionUtilities.getBaseLevel(container));
-		// get peak num
-		container.setPeakNum(BasicSeasonalExtractionUtilities.getPeakNum(container));
-		// get peaks
-		container.setPeaks(BasicSeasonalExtractionUtilities.getPeaks(container));
-
-		container.setMaxPeakOffset(BasicSeasonalExtractionUtilities.getMaxPeakOffset(container.getPeaks()));
-		// get inner base (get peak num - 1 inner bases)
-		container.setInnerBases(BasicSeasonalExtractionUtilities.getInnerBases(container));
-
 		// build seasonal part
-		BasicSeasonalExtractionUtilities.buildSeasonalPart(root, baseline, container);
+		BasicSeasonalExtractionUtilities.extractSeasonalPart(root, baseline, container);
 
 		// build trend part
 		root.getCombine().clear();
