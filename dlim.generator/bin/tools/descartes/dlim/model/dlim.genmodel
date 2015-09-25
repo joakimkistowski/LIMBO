@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/tools.descartes.dlim.generator/src" modelPluginID="tools.descartes.dlim.generator"
+    modelName="Dlim" modelPluginClass="tools.descartes.dlim.DlimGeneratorPlugin" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>dlim.ecore</foreignModel>
+  <genPackages prefix="Dlim" basePackage="tools.descartes" disposableProviderFactory="true"
+      ecorePackage="dlim.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dlim.ecore#//ClockType">
+      <genEnumLiterals ecoreEnumLiteral="dlim.ecore#//ClockType/RootClock"/>
+      <genEnumLiterals ecoreEnumLiteral="dlim.ecore#//ClockType/ContainerClock"/>
+      <genEnumLiterals ecoreEnumLiteral="dlim.ecore#//ClockType/SequenceClock"/>
+      <genEnumLiterals ecoreEnumLiteral="dlim.ecore#//ClockType/LoopClock"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dlim.ecore#//Operator">
+      <genEnumLiterals ecoreEnumLiteral="dlim.ecore#//Operator/add"/>
+      <genEnumLiterals ecoreEnumLiteral="dlim.ecore#//Operator/subtract"/>
+      <genEnumLiterals ecoreEnumLiteral="dlim.ecore#//Operator/mult"/>
+    </genEnums>
+    <genClasses ecoreClass="dlim.ecore#//Sequence">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//Sequence/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//Sequence/terminateAfterTime"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dlim.ecore#//Sequence/referenceClock"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dlim.ecore#//Sequence/sequenceFunctionContainers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//Sequence/terminateAfterLoops"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//Sequence/firstIterationStart"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//Sequence/firstIterationEnd"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//Sequence/loopDuration"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//Sequence/finalDuration"/>
+      <genOperations ecoreOperation="dlim.ecore#//Sequence/durationDefined">
+        <genParameters ecoreParameter="dlim.ecore#//Sequence/durationDefined/chain"/>
+        <genParameters ecoreParameter="dlim.ecore#//Sequence/durationDefined/context"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="dlim.ecore#//Combinator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//Combinator/operator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dlim.ecore#//Combinator/function"/>
+    </genClasses>
+    <genClasses ecoreClass="dlim.ecore#//TimeDependentFunctionContainer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//TimeDependentFunctionContainer/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//TimeDependentFunctionContainer/duration"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//TimeDependentFunctionContainer/firstIterationStart"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//TimeDependentFunctionContainer/firstIterationEnd"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dlim.ecore#//TimeDependentFunctionContainer/function"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dlim.ecore#//TimeDependentFunctionContainer/pointOfReferenceClockObject"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//TimeDependentFunctionContainer/pointOfReferenceClockType"/>
+      <genOperations ecoreOperation="dlim.ecore#//TimeDependentFunctionContainer/durationGreaterZero">
+        <genParameters ecoreParameter="dlim.ecore#//TimeDependentFunctionContainer/durationGreaterZero/chain"/>
+        <genParameters ecoreParameter="dlim.ecore#//TimeDependentFunctionContainer/durationGreaterZero/context"/>
+      </genOperations>
+      <genOperations ecoreOperation="dlim.ecore#//TimeDependentFunctionContainer/referenceClockInTreeNode">
+        <genParameters ecoreParameter="dlim.ecore#//TimeDependentFunctionContainer/referenceClockInTreeNode/chain"/>
+        <genParameters ecoreParameter="dlim.ecore#//TimeDependentFunctionContainer/referenceClockInTreeNode/context"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="dlim.ecore#//Function">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dlim.ecore#//Function/combine"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="dlim.ecore#//Seasonal"/>
+    <genClasses image="false" ecoreClass="dlim.ecore#//Noise"/>
+    <genClasses ecoreClass="dlim.ecore#//UniformNoise">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//UniformNoise/min"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//UniformNoise/max"/>
+    </genClasses>
+    <genClasses ecoreClass="dlim.ecore#//NormalNoise">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//NormalNoise/mean"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//NormalNoise/standardDeviation"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="dlim.ecore#//Burst">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//Burst/peak"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//Burst/base"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//Burst/peakTime"/>
+      <genOperations ecoreOperation="dlim.ecore#//Burst/peakTimeGreaterZero">
+        <genParameters ecoreParameter="dlim.ecore#//Burst/peakTimeGreaterZero/chain"/>
+        <genParameters ecoreParameter="dlim.ecore#//Burst/peakTimeGreaterZero/context"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="dlim.ecore#//Trend">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//Trend/functionOutputAtStart"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//Trend/functionOutputAtEnd"/>
+    </genClasses>
+    <genClasses ecoreClass="dlim.ecore#//Constant">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//Constant/constant"/>
+    </genClasses>
+    <genClasses ecoreClass="dlim.ecore#//Sin">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//Sin/min"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//Sin/max"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//Sin/period"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//Sin/phase"/>
+    </genClasses>
+    <genClasses ecoreClass="dlim.ecore#//ExponentialIncreaseAndDecline"/>
+    <genClasses ecoreClass="dlim.ecore#//ExponentialIncreaseLogarithmicDecline">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//ExponentialIncreaseLogarithmicDecline/logarithmicOrder"/>
+    </genClasses>
+    <genClasses ecoreClass="dlim.ecore#//LinearIncreaseAndDecline"/>
+    <genClasses ecoreClass="dlim.ecore#//AbsoluteSin"/>
+    <genClasses ecoreClass="dlim.ecore#//LinearTrend"/>
+    <genClasses ecoreClass="dlim.ecore#//ExponentialTrend"/>
+    <genClasses ecoreClass="dlim.ecore#//LogarithmicTrend">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//LogarithmicTrend/order"/>
+    </genClasses>
+    <genClasses ecoreClass="dlim.ecore#//SinTrend"/>
+    <genClasses ecoreClass="dlim.ecore#//ReferenceClockObject">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//ReferenceClockObject/name"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//ReferenceClockObject/loopTime"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//ReferenceClockObject/seqTime"/>
+    </genClasses>
+    <genClasses ecoreClass="dlim.ecore#//ArrivalRatesFromFile">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//ArrivalRatesFromFile/filePath"/>
+      <genOperations ecoreOperation="dlim.ecore#//ArrivalRatesFromFile/getArrivalRate">
+        <genParameters ecoreParameter="dlim.ecore#//ArrivalRatesFromFile/getArrivalRate/x"/>
+      </genOperations>
+      <genOperations ecoreOperation="dlim.ecore#//ArrivalRatesFromFile/readFile"/>
+    </genClasses>
+    <genClasses ecoreClass="dlim.ecore#//AbsoluteValueFunction"/>
+    <genClasses image="false" ecoreClass="dlim.ecore#//UnivariateFunction">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dlim.ecore#//UnivariateFunction/function"/>
+    </genClasses>
+    <genClasses ecoreClass="dlim.ecore#//Polynomial">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dlim.ecore#//Polynomial/factors"/>
+    </genClasses>
+    <genClasses ecoreClass="dlim.ecore#//PolynomialFactor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//PolynomialFactor/factor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dlim.ecore#//PolynomialFactor/offset"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
