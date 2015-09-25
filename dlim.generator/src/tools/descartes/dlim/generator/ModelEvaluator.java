@@ -21,6 +21,7 @@ import tools.descartes.dlim.Function;
 import tools.descartes.dlim.ReferenceClockObject;
 import tools.descartes.dlim.Sequence;
 import tools.descartes.dlim.TimeDependentFunctionContainer;
+import tools.descartes.dlim.generator.util.ConcurrentModelEvaluator;
 import tools.descartes.dlim.generator.util.FunctionValueCalculator;
 import tools.descartes.dlim.generator.util.TimeKeeper;
 
@@ -89,16 +90,28 @@ public class ModelEvaluator {
 	 */
 	public double getArrivalRateAtTime(double rootTime) {
 		try {
-			return Math.max(
-					0.0,
-					getFunctionNodeArrivalRate(rootSequence, rootTime,
-							rootTime, rootTime));
+			return getFunctionNodeArrivalRate(rootSequence, rootTime,
+							rootTime, rootTime);
 		} catch (Exception e) {
 			return 0.0;
 		}
 
 	}
 
+	/**
+	 * Evaluates the model for the specified
+	 * time interval and stores the result in a list.
+	 * Uses multithreading for performance.
+	 * @param startTime The time to start evaluation (inclusive).
+	 * @param endTime The time to end evaluation (exclusive).
+	 * @param step The sampling steps.
+	 * @return A list with the arrival rate tuples.
+	 */
+	public ArrayList<ArrivalRateTuple> getArrivalRateAtTimes(double startTime, double endTime, double step) {
+		ConcurrentModelEvaluator concurrentEvaluator = new ConcurrentModelEvaluator(this);
+		return concurrentEvaluator.evaluateForTimeStamps(startTime, endTime, step);
+	}
+	
 	/**
 	 * Gets the Delta between the root function and the final output including the index-th combinators.
 	 * @param rootTime time stamp as defined at this moment within the root sequence
@@ -168,6 +181,20 @@ public class ModelEvaluator {
 	 */
 	public double getDuration() {
 		return rootSequence.getFinalDuration();
+	}
+	
+	/**
+	 * Returns a model duration that guarantees model execution.
+	 * Returns the model duration if it is not infinite. Returns
+	 * the duration of a single iteration of the loop sequence, otherwise.
+	 * @return A terminating model duration
+	 */
+	public double getTerminatingDuration() {
+		double duration = getDuration();
+		if (duration >= Double.MAX_VALUE) {
+			duration = rootSequence.getLoopDuration();
+		}
+		return duration;
 	}
 
 	/**
@@ -387,5 +414,16 @@ public class ModelEvaluator {
 		for (EObject child : object.eContents()) {
 			precompute(child);
 		}
+	}
+	
+	/**
+	 * Checks and returns true, if the model contains and uses a
+	 * ReferenceClockObject.
+	 * @return True, if at least one Sequence in the model contains a
+	 * 			ReferenceClockObject.
+	 */
+	public boolean containsReferenceClockObject() {
+		boolean contains = ModelEvaluatorUtil.containsReferenceClock(rootSequence);
+		return contains;
 	}
 }

@@ -7,6 +7,9 @@
  *******************************************************************************/
 package tools.descartes.dlim.generator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.emf.ecore.EObject;
 
 import tools.descartes.dlim.Combinator;
@@ -260,5 +263,45 @@ public final class ModelEvaluatorUtil {
 			return getRootSequence(modelElement.eContainer());
 		}
 		return null;
+	}
+	
+	/**
+	 * Checks and returns true, if the model contains and uses a
+	 * ReferenceClockObject.
+	 * @param root The model's root
+	 * @return True, if at least one Sequence in the model contains a
+	 * 			ReferenceClockObject.
+	 */
+	public static boolean containsReferenceClock(Function root) {
+		List<Function> functions = new ArrayList<Function>();
+		
+		if (root instanceof Sequence) {
+			Sequence sequence = (Sequence) root;
+			if (sequence.getReferenceClock() != null) {
+				return true;
+			}
+			for (TimeDependentFunctionContainer tdfc : sequence.getSequenceFunctionContainers()) {
+				Function f = tdfc.getFunction();
+				if (f != null) {
+					functions.add(f);
+				}
+			}
+		}
+		for (Combinator c : root.getCombine()) {
+			Function combF = c.getFunction();
+			if (combF != null) {
+				functions.add(c.getFunction());
+			}
+		}
+		
+		if (functions.isEmpty()) {
+			return false;
+		} else {
+			boolean contains = false;
+			for (Function f : functions) {
+				contains = contains || containsReferenceClock(f);
+			}
+			return contains;
+		}
 	}
 }

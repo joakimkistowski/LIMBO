@@ -44,7 +44,7 @@ DlimRequestStampExporter implements IDlimExporter {
 		Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
 				.getShell();
 		RequestTimeStampParametersDialog paramDialog = new RequestTimeStampParametersDialog(
-				modelPath, shell);
+				evaluator, modelPath, shell);
 		paramDialog.open();
 
 		if (!paramDialog.wasCanceled()) {

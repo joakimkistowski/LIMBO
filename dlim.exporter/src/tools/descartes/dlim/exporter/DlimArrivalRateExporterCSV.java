@@ -41,7 +41,7 @@ public class DlimArrivalRateExporterCSV implements IDlimExporter {
 				.getShell();
 
 		ArrivalRateTimeStampParametersDialog paramDialog = new ArrivalRateTimeStampParametersDialog(
-				modelPath, shell);
+				evaluator, modelPath, shell);
 		paramDialog.open();
 
 		if (!paramDialog.wasCanceled()) {

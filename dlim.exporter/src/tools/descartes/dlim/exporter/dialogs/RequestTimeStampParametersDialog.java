@@ -22,6 +22,8 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
+import tools.descartes.dlim.generator.ModelEvaluator;
+
 /**
  * This dialog promts for user parameters for request time-stamp generation.
  *
@@ -44,16 +46,20 @@ public class RequestTimeStampParametersDialog extends TitleAreaDialog {
 	private boolean canceled = false;
 
 	private String fileString;
+	private ModelEvaluator evaluator;
 
 	/**
 	 * Create a new Dialog.
 	 *
 	 * @param fileString            The path of the model file.
+	 * @param evaluator The model evaluator
 	 * @param parentShell the parent shell
 	 */
-	public RequestTimeStampParametersDialog(String fileString, Shell parentShell) {
+	public RequestTimeStampParametersDialog(ModelEvaluator evaluator,
+			String fileString, Shell parentShell) {
 		super(parentShell);
 		this.fileString = fileString;
+		this.evaluator = evaluator;
 		setShellStyle(getShellStyle() | SWT.RESIZE);
 	}
 
@@ -74,6 +80,9 @@ public class RequestTimeStampParametersDialog extends TitleAreaDialog {
 		super.create();
 		setTitle("Request Time Stamp Generation Parameters");
 		setMessage("For Model: " + fileString, IMessageProvider.INFORMATION);
+		if (evaluator.getDuration() >= Double.MAX_VALUE) {
+			setMessage("Model has infinite duration. Terminating after first loop!", IMessageProvider.WARNING);
+		}
 	}
 
 	/**

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: tools.descartes.dlim.generator;singleton:=true
-Bundle-Version: 0.15.07.1510
+Bundle-Version: 0.15.09.2512
 Bundle-ClassPath: .,
  lib/commons-math3-3.2.jar,
  lib/dtw.jar
@@ -24,7 +24,7 @@ Export-Package: tools.descartes.dlim,
  tools.descartes.dlim.extractor,
  tools.descartes.dlim.extractorHandler;x-friends:="tools.descartes.dlim.generator.editor",
  tools.descartes.dlim.generator,
- tools.descartes.dlim.generator.util;x-friends:="tools.descartes.dlim.generator.tests",
+ tools.descartes.dlim.generator.util;x-friends:="tools.descartes.dlim.generator.tests,tools.descartes.dlim.generator.editor",
  tools.descartes.dlim.impl,
  tools.descartes.dlim.reader,
  tools.descartes.dlim.util

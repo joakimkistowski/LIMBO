@@ -49,7 +49,7 @@ public final class ArrivalRateGenerator {
 	public static List<ArrivalRateTuple> generateArrivalRates(
 			ModelEvaluator evaluator, double step) {
 		ArrayList<ArrivalRateTuple> arrRates = new ArrayList<ArrivalRateTuple>();
-		for (double i = step / 2; i < evaluator.getDuration(); i += step) {
+		for (double i = step / 2; i < evaluator.getTerminatingDuration(); i += step) {
 			double arrRate = evaluator.getArrivalRateAtTime(i);
 			arrRates.add(new ArrivalRateTuple(i, arrRate));
 		}

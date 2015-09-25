@@ -83,7 +83,9 @@ public final class TimeKeeper {
 		seq.setLoopDuration(loopDuration);
 
 		// set Final Duration
-		if (seq.getTerminateAfterLoops() < 0) {
+		if (seq.getTerminateAfterLoops() < 0 && seq.getTerminateAfterTime() <= 0) {
+			seq.setFinalDuration(Double.MAX_VALUE);
+		} else if (seq.getTerminateAfterLoops() < 0) {
 			seq.setFinalDuration(seq.getTerminateAfterTime());
 		} else if (seq.getTerminateAfterTime() <= 0) {
 			seq.setFinalDuration(seq.getTerminateAfterLoops()

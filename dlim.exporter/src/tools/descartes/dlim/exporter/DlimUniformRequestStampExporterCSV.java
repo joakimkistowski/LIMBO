@@ -41,9 +41,9 @@ DlimRequestStampExporter implements IDlimExporter {
 				.getShell();
 
 		RequestTimeStampParametersDialog paramDialog = new RequestTimeStampParametersDialog(
-				modelPath, shell);
+				evaluator, modelPath, shell);
 		paramDialog.open();
-
+		
 		if (!paramDialog.wasCanceled()) {
 			evaluator.setRandomSeed(paramDialog.getRndSeed());
 			IPath timeStampFolderPath = perpareTimestampDir(projectPath);
@@ -55,7 +55,7 @@ DlimRequestStampExporter implements IDlimExporter {
 					"", evaluator.getRndGenerator());
 			writer.generateTimeStampsFromArrivalRates(file, arrList,
 					paramDialog.getDecimalPlaces(), paramDialog.getStretch(),
-					paramDialog.getArDevisor(), evaluator.getDuration());
+					paramDialog.getArDevisor(), evaluator.getTerminatingDuration());
 		}
 	}
 

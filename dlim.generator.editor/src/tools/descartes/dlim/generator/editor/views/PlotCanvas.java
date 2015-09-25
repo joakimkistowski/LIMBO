@@ -28,6 +28,7 @@ import tools.descartes.dlim.Sequence;
 import tools.descartes.dlim.generator.ArrivalRateTuple;
 import tools.descartes.dlim.generator.IGeneratorConstants;
 import tools.descartes.dlim.generator.ModelEvaluator;
+import tools.descartes.dlim.generator.util.ConcurrentModelEvaluator;
 import tools.descartes.dlim.util.MathUtil;
 
 /**
@@ -219,14 +220,15 @@ public class PlotCanvas extends Canvas {
 			ModelEvaluator evaluator = new ModelEvaluator(rootSequence, 5,
 					IGeneratorConstants.EVALUATION);
 			// force 1 sampling per pixel
-			samplingStep = evaluator.getDuration() / xWidth;
-			for (double i = samplingStep / 2.0; i < evaluator.getDuration(); i += samplingStep) {
-				double y = evaluator.getArrivalRateAtTime(i);
-				arrivalRateList.add(new ArrivalRateTuple(i, y));
-				if (y > maxArrivalRate) {
-					maxArrivalRate = y;
-				}
+			samplingStep = evaluator.getTerminatingDuration() / xWidth;
 
+			ConcurrentModelEvaluator concEvaluator = new ConcurrentModelEvaluator(evaluator);
+			arrivalRateList = concEvaluator.evaluateForTimeStamps(
+					samplingStep / 2.0, evaluator.getTerminatingDuration(), samplingStep);
+			maxArrivalRate = concEvaluator.getMax();
+			
+			
+			for (double i = samplingStep / 2.0; i < evaluator.getTerminatingDuration(); i += samplingStep) {	
 				if (drawCombinatorImpact) {
 					double innerY = evaluator.getArrivalRateDelta(i, -1,
 							new boolean[1]);
@@ -236,12 +238,12 @@ public class PlotCanvas extends Canvas {
 					}
 				}
 			}
-
+			
 			if (plottingFile && arrivalRateFileList != null
 					&& arrivalRateFileList.size() > 1) {
 				for (ArrivalRateTuple t : arrivalRateFileList) {
 					if (t.getArrivalRate() > maxArrivalRate) {
-						if (t.getTimeStamp() > evaluator.getDuration()) {
+						if (t.getTimeStamp() > evaluator.getTerminatingDuration()) {
 							break;
 						}
 						maxArrivalRate = t.getArrivalRate();
@@ -254,10 +256,10 @@ public class PlotCanvas extends Canvas {
 						/ maxArrivalRate);
 				int x1 = xOffset
 						+ (int) ((t.getTimeStamp() - samplingStep / 2.0)
-								* xWidth / evaluator.getDuration());
+								* xWidth / evaluator.getTerminatingDuration());
 				int x2 = xOffset
 						+ (int) ((t.getTimeStamp() + samplingStep / 2.0)
-								* xWidth / evaluator.getDuration());
+								* xWidth / evaluator.getTerminatingDuration());
 
 				// paint combinator impact
 				if (drawCombinatorImpact) {
@@ -377,7 +379,7 @@ public class PlotCanvas extends Canvas {
 				gc.drawText(YAXISLABEL_BOTTOM, 2, maxY - yHeight / 2 + 1);
 				gc.drawText(XAXISLABEL, xOffset + xWidth / 2 - 8, maxY + 6);
 
-				String durationString = MathUtil.formatDoubleForDecimalPlaces(evaluator.getDuration(), 2);
+				String durationString = MathUtil.formatDoubleForDecimalPlaces(evaluator.getTerminatingDuration(), 2);
 				String maxArrivalRateString = MathUtil.formatDoubleForDecimalPlaces(maxArrivalRate, 2);
 				gc.drawText(durationString, width - xRightMargin
 						- durationString.length() * 6 - 2, maxY + 10);

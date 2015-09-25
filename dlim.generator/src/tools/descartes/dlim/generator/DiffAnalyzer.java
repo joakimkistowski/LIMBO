@@ -93,7 +93,7 @@ public class DiffAnalyzer {
 				double readArrivalRate = t.getArrivalRate();
 				double modelTimeStamp = timeStamp - offset;
 				if (modelTimeStamp > 0
-						&& modelTimeStamp < evaluator.getDuration()) {
+						&& modelTimeStamp < evaluator.getTerminatingDuration()) {
 					double[] fileTSPoint = { modelTimeStamp,
 							readArrivalRate };
 					fileTS.addLast(modelTimeStamp, new TimeSeriesPoint(

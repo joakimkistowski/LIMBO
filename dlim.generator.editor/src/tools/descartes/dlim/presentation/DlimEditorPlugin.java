@@ -5,6 +5,12 @@ package tools.descartes.dlim.presentation;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.ui.EclipseUIPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.ui.ISelectionService;
+import org.eclipse.ui.PlatformUI;
+import org.osgi.framework.BundleContext;
+
+import tools.descartes.dlim.presentation.custom.DLIMSelectionListener;
+import tools.descartes.dlim.presentation.custom.DLIMWorkbenchPartListener;
 
 /**
  * This is the central singleton for the Dlim editor plugin. <!-- begin-user-doc
@@ -78,7 +84,7 @@ public final class DlimEditorPlugin extends EMFPlugin {
 		/**
 		 * Creates an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
 		 *
-		 * @generated
+		 * @generated not
 		 */
 		public Implementation() {
 			super();
@@ -86,6 +92,27 @@ public final class DlimEditorPlugin extends EMFPlugin {
 			// Remember the static instance.
 			//
 			plugin = this;
+		}
+		
+		/**
+		 * @generated not
+		 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
+		 */
+		public void start(BundleContext context) throws Exception {
+			super.start(context);
+			plugin = this;
+			ISelectionService service = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getSelectionService();
+	        service.addSelectionListener(new DLIMSelectionListener());
+	        PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPartService().addPartListener(new DLIMWorkbenchPartListener());
+		}
+
+		/**
+		 * @generated not
+		 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
+		 */
+		public void stop(BundleContext context) throws Exception {
+			plugin = null;
+			super.stop(context);
 		}
 	}
 

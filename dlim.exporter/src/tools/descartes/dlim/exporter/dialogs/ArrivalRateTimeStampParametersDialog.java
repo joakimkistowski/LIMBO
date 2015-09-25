@@ -20,6 +20,8 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
+import tools.descartes.dlim.generator.ModelEvaluator;
+
 /**
  * This dialog promts for user parameters for time-stamp and arrival rate series
  * generation.
@@ -36,18 +38,21 @@ public class ArrivalRateTimeStampParametersDialog extends TitleAreaDialog {
 	private double step = 1.0;
 	private boolean canceled = false;
 
+	private ModelEvaluator evaluator;
 	private String fileString;
 
 	/**
 	 * Create a new Dialog.
 	 *
 	 * @param fileString            The path of the model file.
+	 * @param evaluator The model evaluator.
 	 * @param parentShell the parent shell
 	 */
-	public ArrivalRateTimeStampParametersDialog(String fileString,
+	public ArrivalRateTimeStampParametersDialog(ModelEvaluator evaluator, String fileString,
 			Shell parentShell) {
 		super(parentShell);
 		this.fileString = fileString;
+		this.evaluator = evaluator;
 	}
 
 	private void setDefaultValues() {
@@ -64,6 +69,9 @@ public class ArrivalRateTimeStampParametersDialog extends TitleAreaDialog {
 		super.create();
 		setTitle("Arrival Rate Time Stamp Generation Parameters");
 		setMessage("For Model: " + fileString, IMessageProvider.INFORMATION);
+		if (evaluator.getDuration() >= Double.MAX_VALUE) {
+			setMessage("Model has infinite duration. Terminating after first loop!", IMessageProvider.WARNING);
+		}
 	}
 
 	/**
