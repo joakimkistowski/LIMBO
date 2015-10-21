@@ -359,7 +359,7 @@ public class PlotCanvas extends Canvas {
 				gc.setForeground(display.getSystemColor(SWT.COLOR_BLACK));
 				gc.setBackground(display.getSystemColor(SWT.COLOR_WHITE));
 				gc.setLineStyle(SWT.LINE_SOLID);
-				gc.drawText(rootSequence.getName(), 10, height - YMARGIN - 4);
+                gc.drawText(rootSequence.getName() != null ? rootSequence.getName() : "", 10, height - YMARGIN - 4);
 				gc.drawText("0", xOffset - 16, maxY - 7);
 
 				gc.drawText("0", xOffset - 2, maxY + 10);
