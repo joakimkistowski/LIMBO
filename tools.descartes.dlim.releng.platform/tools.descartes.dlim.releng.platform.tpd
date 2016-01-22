@@ -1,0 +1,6 @@
+target "Limbo Update Site"
+
+location "http://download.eclipse.org/releases/kepler" {
+	org.eclipse.sdk.feature.group
+	org.eclipse.emf.sdk.feature.group
+}

@@ -1,0 +1,23 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<prerequisites>
+		<maven>3.0</maven>
+	</prerequisites>
+
+	<groupId>tools.descartes.dlim</groupId>
+	<artifactId>tools.descartes.dlim.parent</artifactId>
+	<version>0.16.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	
+	
+
+	<modules>
+		<module>../dlim.exporter</module>
+		<module>../dlim.extractor</module>
+		<module>../dlim.generator</module>
+		<module>../dlim.generator.edit</module>
+		<module>../dlim.generator.editor</module>
+	</modules>
+</project>
