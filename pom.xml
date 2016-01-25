@@ -11,13 +11,21 @@
 	<version>0.16.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	
-	
+	<parent>
+		<groupId>tools.descartes.dlim</groupId>
+		<artifactId>tools.descartes.dlim.releng</artifactId>
+		<version>0.16.1-SNAPSHOT</version>
+	<relativePath>tools.descartes.dlim.releng</relativePath>
+	</parent>
 
 	<modules>
-		<module>../dlim.exporter</module>
-		<module>../dlim.extractor</module>
-		<module>../dlim.generator</module>
-		<module>../dlim.generator.edit</module>
-		<module>../dlim.generator.editor</module>
+		<module>./dlim.exporter</module>
+		<module>./dlim.extractor</module>
+		<module>./dlim.generator</module>
+		<module>./dlim.generator.edit</module>
+		<module>./dlim.generator.editor</module>
+		<module>./tools.descartes.dlim.releng</module>
+		<module>./tools.descartes.dlim.releng.platform</module>
+		<!--module>./DLIM_Feature</module-->
 	</modules>
 </project>

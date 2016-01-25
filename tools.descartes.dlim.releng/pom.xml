@@ -8,26 +8,16 @@
 
 	<groupId>tools.descartes.dlim</groupId>
 	<artifactId>tools.descartes.dlim.releng</artifactId>
-	<version>0.16.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	
-	<parent>
-		<groupId>tools.descartes</groupId>
-		<artifactId>tools.descartes.releng</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
-	</parent>
 
 	<organization>
-		<url>https://bitbucket.org/librede/librede</url>
 		<name>University of Wuerzburg</name>
+		<url>http://descartes.tools/limbo</url>
 	</organization>
 
 	<properties>
 		<tycho-version>0.24.0</tycho-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
-    	<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-    	<sonar.jacoco.reportPath>../tools.descartes.librede.releng/target/jacoco.exec</sonar.jacoco.reportPath>
 	</properties>
 	
 	<repositories>
@@ -49,11 +39,14 @@
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<extensions>true</extensions>
 			</plugin>
 
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho-version}</version>
 				<configuration>
 					<target>
 						<artifact>
@@ -62,16 +55,6 @@
 							<version>0.16.1-SNAPSHOT</version>
 						</artifact>
 					</target>
-					<!-- Fix resolution problem with mockito and hamcrest -->
-					<dependency-resolution>
-						<extraRequirements>
-							<requirement>
-								<type>eclipse-plugin</type>
-								<id>org.hamcrest</id>
-								<versionRange>0.0.0</versionRange>
-							</requirement>
-						</extraRequirements>
-					</dependency-resolution>
 					<!-- configure the p2 target environments for multi-platform build -->
 					<environments>
 						<environment>
@@ -99,4 +82,5 @@
 			</plugin>
 		</plugins>
 	</build>
+	<version>0.16.1-SNAPSHOT</version>
 </project>
