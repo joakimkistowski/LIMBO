@@ -2,7 +2,8 @@
 <feature
       id="LIMBO_DLIM"
       label="LIMBO"
-      version="0.15.09.2512">
+      version="0.16.1.qualifier"
+      provider-name="Descartes Research Group">
 
    <description>
       LIMBO: Load Intensity Modeling Tool
@@ -235,35 +236,35 @@ any resulting litigation.
          id="tools.descartes.dlim.exporter"
          download-size="0"
          install-size="0"
-         version="0.15.9.2512"
+         version="0.15.9.qualifier"
          unpack="false"/>
 
    <plugin
          id="tools.descartes.dlim.extractor"
          download-size="0"
          install-size="0"
-         version="0.15.7.1510"
+         version="0.15.7.qualifier"
          unpack="false"/>
 
    <plugin
          id="tools.descartes.dlim.generator"
          download-size="0"
          install-size="0"
-         version="0.15.9.2512"
+         version="0.15.9.qualifier"
          unpack="false"/>
 
    <plugin
          id="tools.descartes.dlim.generator.edit"
          download-size="0"
          install-size="0"
-         version="0.14.12.1013"
+         version="0.14.12.qualifier"
          unpack="false"/>
 
    <plugin
          id="tools.descartes.dlim.generator.editor"
          download-size="0"
          install-size="0"
-         version="0.15.9.2512"
+         version="0.15.9.qualifier"
          unpack="false"/>
 
 </feature>

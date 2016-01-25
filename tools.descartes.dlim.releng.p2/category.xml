@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/LIMBO_DLIM_0.16.1.qualifier.jar" id="LIMBO_DLIM" version="0.16.1.qualifier" patch="true">
+      <category name="LIMBO_category"/>
+   </feature>
+   <category-def name="LIMBO_category" label="LIMBO"/>
+</site>

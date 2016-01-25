@@ -26,6 +26,7 @@
 		<module>./dlim.generator.editor</module>
 		<module>./tools.descartes.dlim.releng</module>
 		<module>./tools.descartes.dlim.releng.platform</module>
-		<!--module>./DLIM_Feature</module-->
+		<module>./tools.descartes.dlim.feature</module>
+		<module>./tools.descartes.dlim.releng.p2</module>
 	</modules>
 </project>
