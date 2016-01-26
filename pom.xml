@@ -28,5 +28,6 @@
 		<module>./tools.descartes.dlim.releng.platform</module>
 		<module>./tools.descartes.dlim.feature</module>
 		<module>./tools.descartes.dlim.releng.p2</module>
+		<!-- module>./tools.descartes.dlim.generator.tests</module -->
 	</modules>
 </project>
