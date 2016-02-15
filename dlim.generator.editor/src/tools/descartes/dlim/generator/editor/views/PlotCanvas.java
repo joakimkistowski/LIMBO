@@ -223,16 +223,19 @@ public class PlotCanvas extends Canvas {
 			samplingStep = evaluator.getTerminatingDuration() / xWidth;
 
 			ConcurrentModelEvaluator concEvaluator = new ConcurrentModelEvaluator(evaluator);
-			arrivalRateList = concEvaluator.evaluateForTimeStamps(
-					samplingStep / 2.0, evaluator.getTerminatingDuration(), samplingStep);
-			maxArrivalRate = concEvaluator.getMax();
-			
-			
-			for (double i = samplingStep / 2.0; i < evaluator.getTerminatingDuration(); i += samplingStep) {	
-				if (drawCombinatorImpact) {
-					double innerY = evaluator.getArrivalRateDelta(i, -1,
+			if (!drawCombinatorImpact) {
+				arrivalRateList = concEvaluator.evaluateForTimeStamps(
+						samplingStep / 2.0, evaluator.getTerminatingDuration(), samplingStep);
+				maxArrivalRate = concEvaluator.getMax();
+			} else {
+				arrivalRateList = concEvaluator.evaluateForTimeStampsSequentially(
+						samplingStep / 2.0, evaluator.getTerminatingDuration(), samplingStep);
+				maxArrivalRate = concEvaluator.getMax();
+				for (ArrivalRateTuple t : arrivalRateList) {
+					double timeStamp = t.getTimeStamp();
+					double innerY = evaluator.getArrivalRateDelta(timeStamp, -1,
 							new boolean[1]);
-					innerArrivalRateList.add(new ArrivalRateTuple(i, innerY));
+					innerArrivalRateList.add(new ArrivalRateTuple(timeStamp, innerY));
 					if (innerY > maxArrivalRate) {
 						maxArrivalRate = innerY;
 					}
@@ -251,6 +254,7 @@ public class PlotCanvas extends Canvas {
 				}
 			}
 
+			int indexOfT = 0;
 			for (ArrivalRateTuple t : arrivalRateList) {
 				int y = (int) (maxY - t.getArrivalRate() * yHeight
 						/ maxArrivalRate);
@@ -264,11 +268,8 @@ public class PlotCanvas extends Canvas {
 				// paint combinator impact
 				if (drawCombinatorImpact) {
 
-					// double innerSequenceArrRate =
-					// evaluator.getArrivalRateDelta(t.getTimeStamp(), -1, new
-					// boolean[1]);
 					double innerSequenceArrRate = innerArrivalRateList.get(
-							arrivalRateList.indexOf(t)).getArrivalRate();
+							indexOfT).getArrivalRate();
 					double cl = innerSequenceArrRate;
 					double cs = innerSequenceArrRate;
 					for (int i = 0; i < rootSequence.getCombine().size(); i++) {
@@ -278,6 +279,10 @@ public class PlotCanvas extends Canvas {
 						boolean[] isMult = new boolean[1];
 						double delta = evaluator.getArrivalRateDelta(
 								t.getTimeStamp(), i, isMult);
+						if (i == rootSequence.getCombine().size() - 1 && delta > 0) {
+							delta = t.getArrivalRate() - cl;
+						}
+								
 						if (isMult[0]) {
 							rectColor = new Color(display, grayScale,
 									grayScale, 0);
@@ -295,7 +300,7 @@ public class PlotCanvas extends Canvas {
 							int rectHeight = (int) (maxY - (cs + delta)
 									* yHeight / maxArrivalRate)
 									- csY;
-							gc.fillRectangle(x1, csY, x2 - x1, rectHeight);
+							gc.fillRectangle(x1, csY, 1/*x2 - x1*/, rectHeight);
 							cs = cs + delta;
 						} else if (delta > 0) {
 							int clY = (int) (maxY - cl * yHeight
@@ -303,7 +308,7 @@ public class PlotCanvas extends Canvas {
 							int rectHeight = (int) (maxY - (cl + delta)
 									* yHeight / maxArrivalRate)
 									- clY;
-							gc.fillRectangle(x1, clY, x2 - x1, rectHeight);
+							gc.fillRectangle(x1, clY, 1/*x2 - x1*/, rectHeight);
 							cl = cl + delta;
 						}
 						rectColor.dispose();
@@ -326,6 +331,7 @@ public class PlotCanvas extends Canvas {
 				gc.drawLine(x1, lastY, x1, y);
 				gc.drawLine(x1, y, x2, y);
 				lastY = y;
+				indexOfT++;
 			}
 
 			// draw Arrival Rate file

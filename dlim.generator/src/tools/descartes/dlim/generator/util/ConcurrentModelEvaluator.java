@@ -95,13 +95,13 @@ public class ConcurrentModelEvaluator {
 	
 	/**
 	 * Evaluates the model for the specified
-	 * time interval and stores the result in a list.
+	 * time interval and stores the result in a list, forces sequential execution.
 	 * @param startTime The time to start evaluation (inclusive).
 	 * @param endTime The time to end evaluation (exclusive).
 	 * @param step The sampling steps.
 	 * @return A list with the arrival rate tuples.
 	 */
-	private ArrayList<ArrivalRateTuple> evaluateForTimeStampsSequentially(double startTime,
+	public ArrayList<ArrivalRateTuple> evaluateForTimeStampsSequentially(double startTime,
 			double endTime, double step) {
 		ArrayList<ArrivalRateTuple> tuples = new ArrayList<ArrivalRateTuple>();
 			for (double time = startTime; time < endTime; time += step) {
