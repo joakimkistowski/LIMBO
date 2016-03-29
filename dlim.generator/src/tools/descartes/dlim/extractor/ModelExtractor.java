@@ -625,4 +625,55 @@ public final class ModelExtractor {
 					.getArrivalRate()));
 		}
 	}
+	
+	
+	/**
+	 * Extract an arrival Rate file using the simple extraction process.
+	 *
+	 * @param root the root
+	 * @param arrList the read list of arrival rates
+	 * @param period the seasonal period
+	 * @param seasonalsPerTrend the seasonals per trend (trend segment length)
+	 * @param seasonalShape the seasonal shape
+	 * @param trendShape the trend shape
+	 * @param operatorLiteral the operator literal (how is the trend to be applied to the seasonal part)
+	 * @param extractNoise true, if noise is to be reduced and extracted
+	 * @throws CalibrationException exception if calibration is ineffective (devision by 0 or unused function)
+	 */
+	public static void bennoExtractArrivalRateFileIntoSequenceNoSplits(Sequence root,
+			List<ArrivalRateTuple> arrList, double period,
+			int seasonalsPerTrend, String seasonalShape, String trendShape,
+			String operatorLiteral, boolean extractNoise)
+					throws CalibrationException {
+		ExtractionDataContainer container = new ExtractionDataContainer(
+				arrList, period, seasonalsPerTrend, seasonalShape, trendShape, operatorLiteral);
+		setupArrivalRateLists(arrList, container);
+		reduceArrivalRateListNoise(container, extractNoise);
+		BasicSeasonalExtractionUtilities.performMinMaxSearch(container);
+
+		Sequence baseline = DlimPackage.eINSTANCE.getDlimFactory()
+				.createSequence();
+
+		double duration = 0.0;
+		duration = container.getArrivalRateList().get(container.getArrivalRateList().size() - 1)
+				.getTimeStamp();
+		container.setDuration(duration);
+
+		// Future Work: get period; use the Fourier approach here?
+
+		// build seasonal part
+		BasicSeasonalExtractionUtilities.extractSeasonalPart(root, baseline, container);
+
+		// build trend part
+		container.setTrendPointValues(getTrendValues(container));
+		
+		container.setBurstWidth(container.getPeriod() / container.getPeakNum());
+		BasicTrendExtractionUtilities.buildTrendPart(root, container, container.getMaxPeakOffset(), true);
+		BasicTrendExtractionUtilities.buildTrendPart(baseline, container, container.getMaxPeakOffset(), true);
+
+		container.setBursts(BasicBurstExtractionUtilities.getBursts(root, baseline, container));
+		BasicBurstExtractionUtilities.buildBurstPart(root, container);
+
+		buildNormalNoisePart(root, container, extractNoise);
+	}
 }
