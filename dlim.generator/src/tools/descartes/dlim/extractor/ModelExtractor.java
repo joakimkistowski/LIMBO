@@ -35,6 +35,7 @@ import tools.descartes.dlim.extractor.utils.TimeDistanceSplittingHeuristic;
 import tools.descartes.dlim.generator.ArrivalRateTuple;
 import tools.descartes.dlim.generator.IGeneratorConstants;
 import tools.descartes.dlim.generator.ModelEvaluator;
+import org.apache.commons.math3.transform.FastFourierTransformer;
 
 /**
  * Offers the default model extraction processes as used by the dlim.exporter
@@ -87,6 +88,7 @@ public final class ModelExtractor {
 			int seasonalsPerTrend, String seasonalShape, String trendShape,
 			String operatorLiteral, boolean extractNoise)
 					throws CalibrationException {
+		
 		ExtractionDataContainer container = new ExtractionDataContainer(
 				arrList, period, seasonalsPerTrend, seasonalShape, trendShape, operatorLiteral);
 		//Reset splitting counts for pretty names!
@@ -645,6 +647,36 @@ public final class ModelExtractor {
 			int seasonalsPerTrend, String seasonalShape, String trendShape,
 			String operatorLiteral, boolean extractNoise)
 					throws CalibrationException {
+		int arrListLengthCounter=0;
+		//Länge von arrList berechnen
+		for(ArrivalRateTuple art: arrList){
+			arrListLengthCounter++;
+		}
+		//finde kleinste 2er-Potenz die Größer als arrListLength ist.
+		int i=0;
+		while(Math.pow(2, i)<arrListLengthCounter){
+			i++;
+		}
+		
+		//FFT arbeitet nur mit Arrays der Länge einer 2er-Potenz
+		//alle reellen Einträge werden unter arrRateArray[0][*] gespeichert.
+		//Die benutze FFT will aber auch Auskunft über den Imaginärteil
+		//unserer ArrivalRates. Die haben aber alle als Imaginärteil 0.
+		double [][] arrRateArray=new double[2][i];
+		//befülle Array nun mit den Daten aus der Liste.
+		for(ArrivalRateTuple art: arrList){
+			//Zählvariable für das Array
+			int j=0;
+			arrRateArray[0][j]=Math.floor(art.getTimeStamp());
+			j++;
+			//test
+			System.out.println(arrRateArray[0][j]);
+		}
+		
+//		FastFourierTransformer FFT= new FastFourierTransformer(STANDARD);
+//		
+//		FastFourierTransformer.transformInPlace(arrRateArray,STANDARD,forward);
+		
 		ExtractionDataContainer container = new ExtractionDataContainer(
 				arrList, period, seasonalsPerTrend, seasonalShape, trendShape, operatorLiteral);
 		setupArrivalRateLists(arrList, container);
