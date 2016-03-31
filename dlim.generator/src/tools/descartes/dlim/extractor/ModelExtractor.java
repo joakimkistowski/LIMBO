@@ -36,6 +36,8 @@ import tools.descartes.dlim.generator.ArrivalRateTuple;
 import tools.descartes.dlim.generator.IGeneratorConstants;
 import tools.descartes.dlim.generator.ModelEvaluator;
 import org.apache.commons.math3.transform.FastFourierTransformer;
+import org.apache.commons.math3.transform.DftNormalization;
+import org.apache.commons.math3.transform.TransformType;
 
 /**
  * Offers the default model extraction processes as used by the dlim.exporter
@@ -667,15 +669,18 @@ public final class ModelExtractor {
 		for(ArrivalRateTuple art: arrList){
 			//Zählvariable für das Array
 			int j=0;
-			arrRateArray[0][j]=Math.floor(art.getTimeStamp());
+			arrRateArray[0][j]=Math.floor(art.getArrivalRate());
 			j++;
-			//test
+			//Print values before FFT
 			System.out.println(arrRateArray[0][j]);
 		}
 		
-//		FastFourierTransformer FFT= new FastFourierTransformer(STANDARD);
-//		
-//		FastFourierTransformer.transformInPlace(arrRateArray,STANDARD,forward);
+	
+		FastFourierTransformer.transformInPlace(arrRateArray,DftNormalization.STANDARD,TransformType.FORWARD);
+		//values after FFT
+		for(int k=0;k<arrRateArray.length;k++){
+			System.out.println(arrRateArray[0][k]);
+		}
 		
 		ExtractionDataContainer container = new ExtractionDataContainer(
 				arrList, period, seasonalsPerTrend, seasonalShape, trendShape, operatorLiteral);
