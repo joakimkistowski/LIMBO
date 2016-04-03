@@ -669,18 +669,29 @@ public final class ModelExtractor {
 		for(ArrivalRateTuple art: arrList){
 			//Zählvariable für das Array
 			int j=0;
-			arrRateArray[0][j]=Math.floor(art.getArrivalRate());
+			arrRateArray[0][j]=art.getArrivalRate();
 			j++;
 			//Print values before FFT
 			System.out.println(arrRateArray[0][j]);
 		}
 		
-	
+		//FFT happens
 		FastFourierTransformer.transformInPlace(arrRateArray,DftNormalization.STANDARD,TransformType.FORWARD);
-		//values after FFT
+		
+		//print values after FFT
 		for(int k=0;k<arrRateArray.length;k++){
 			System.out.println(arrRateArray[0][k]);
 		}
+		
+		//calculate periods arrRateArray.length/i=P_i (only correct for i<=N/2)
+		//So würde für den Index i=0 arrRateArray/i= NaN :(
+		// dann starten wir erst bei i=1;
+		double[] periods=new double[arrRateArray.length];
+		for(int k=1;k<arrRateArray.length;k++){
+			periods[k]=arrRateArray.length/k;
+		}
+		
+		//welche Periode ist geeignet zum Übergeben?
 		
 		ExtractionDataContainer container = new ExtractionDataContainer(
 				arrList, period, seasonalsPerTrend, seasonalShape, trendShape, operatorLiteral);
