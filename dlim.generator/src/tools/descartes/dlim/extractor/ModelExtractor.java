@@ -683,15 +683,24 @@ public final class ModelExtractor {
 			System.out.println(arrRateArray[0][k]);
 		}
 		
-		//calculate periods arrRateArray.length/i=P_i (only correct for i<=N/2)
-		//So würde für den Index i=0 arrRateArray/i= NaN :(
-		// dann starten wir erst bei i=1;
-		double[] periods=new double[arrRateArray.length];
-		for(int k=1;k<arrRateArray.length;k++){
-			periods[k]=arrRateArray.length/k;
+		//Index (<=N/2) der betragsmäßig größten Amplitude suchen (Amplituden können komplex sein)
+		int indexOfMax=0;
+		double max=0;
+		//bei k=1 starten, weil Periode=N/k;
+		for(int k=1;k<arrRateArray.length/2;k++){
+			if(Math.pow(arrRateArray[0][k], 2)+Math.pow(arrRateArray[1][k], 2)>max){
+				max=Math.pow(arrRateArray[0][k], 2)+Math.pow(arrRateArray[1][k], 2);
+				indexOfMax=k;
+			}
 		}
 		
+		//calculate period arrRateArray.length/i=P_i for i=indexOfMax (only correct for i<=N/2)
+		//So würde für den Index i=0 arrRateArray/i= NaN :(
+		// dann starten wir erst bei i=1;
+		double periodFromFFT=arrRateArray.length/indexOfMax;
+		
 		//welche Periode ist geeignet zum Übergeben?
+		//Die mit der größten zugehörigen Amplitude?
 		
 		ExtractionDataContainer container = new ExtractionDataContainer(
 				arrList, period, seasonalsPerTrend, seasonalShape, trendShape, operatorLiteral);
