@@ -381,7 +381,7 @@ public class BennosOfLaunchExtractionDialog extends TitleAreaDialog {
 			int seasonalsPerTrend, String seasonalShape, String trendShape,
 			String operatorLiteral, boolean extractNoise) throws CalibrationException {
 		ModelExtractor
-		.extractArrivalRateFileIntoSequenceNoSplits(root,
+		.bennoExtractArrivalRateFileIntoSequenceNoSplits(root,
 				arrList, getSeasonalPeriod(),
 				getSeasonalsPerTrend(), getSeasonalShape(),
 				getTrendShape(), getOperatorLiteral(),

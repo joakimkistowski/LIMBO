@@ -649,14 +649,9 @@ public final class ModelExtractor {
 			int seasonalsPerTrend, String seasonalShape, String trendShape,
 			String operatorLiteral, boolean extractNoise)
 					throws CalibrationException {
-		int arrListLengthCounter=0;
-		//Länge von arrList berechnen
-		for(ArrivalRateTuple art: arrList){
-			arrListLengthCounter++;
-		}
 		//finde kleinste 2er-Potenz die Größer als arrListLength ist.
 		int i=0;
-		while(Math.pow(2, i)<arrListLengthCounter){
+		while(Math.pow(2, i)<arrList.size()){
 			i++;
 		}
 		
@@ -664,40 +659,50 @@ public final class ModelExtractor {
 		//alle reellen Einträge werden unter arrRateArray[0][*] gespeichert.
 		//Die benutze FFT will aber auch Auskunft über den Imaginärteil
 		//unserer ArrivalRates. Die haben aber alle als Imaginärteil 0.
-		double [][] arrRateArray=new double[2][i];
+		double [][] arrRateArray=new double[2][(int) Math.pow(2, i)];
 		//befülle Array nun mit den Daten aus der Liste.
+		int j=0;//Zählvariable für das Array
 		for(ArrivalRateTuple art: arrList){
-			//Zählvariable für das Array
-			int j=0;
 			arrRateArray[0][j]=art.getArrivalRate();
-			j++;
 			//Print values before FFT
-			System.out.println(arrRateArray[0][j]);
+			System.out.println("Realteil vor FFT= "+arrRateArray[0][j]);
+			System.out.println("Imaginärteil vor FFT= "+arrRateArray[1][j]);
+			System.out.println(" ");
+			j++;
 		}
 		
 		//FFT happens
 		FastFourierTransformer.transformInPlace(arrRateArray,DftNormalization.STANDARD,TransformType.FORWARD);
 		
+		System.out.println("FFT happens");
+		System.out.println(" ");
+		System.out.println(" ");
+		
 		//print values after FFT
-		for(int k=0;k<arrRateArray.length;k++){
-			System.out.println(arrRateArray[0][k]);
+		for(int k=0;k<arrRateArray[0].length;k++){
+			System.out.println("Realteil nach FFT= "+arrRateArray[0][k]);
+			System.out.println("Imaginärteil nach FFT= "+arrRateArray[1][k]);
+			System.out.println(" ");
 		}
 		
 		//Index (<=N/2) der betragsmäßig größten Amplitude suchen (Amplituden können komplex sein)
 		int indexOfMax=0;
 		double max=0;
 		//bei k=1 starten, weil Periode=N/k;
-		for(int k=1;k<arrRateArray.length/2;k++){
+		for(int k=1;k<arrRateArray[0].length/2;k++){
 			if(Math.pow(arrRateArray[0][k], 2)+Math.pow(arrRateArray[1][k], 2)>max){
 				max=Math.pow(arrRateArray[0][k], 2)+Math.pow(arrRateArray[1][k], 2);
 				indexOfMax=k;
+				
 			}
 		}
-		
+		System.out.println("indexOfMax="+indexOfMax);
 		//calculate period arrRateArray.length/i=P_i for i=indexOfMax (only correct for i<=N/2)
 		//So würde für den Index i=0 arrRateArray/i= NaN :(
 		// dann starten wir erst bei i=1;
-		double periodFromFFT=arrRateArray.length/indexOfMax;
+		double periodFromFFT=arrRateArray[0].length/indexOfMax;
+		
+		System.out.println("errechnete Periode = "+periodFromFFT);
 		
 		//welche Periode ist geeignet zum Übergeben?
 		//Die mit der größten zugehörigen Amplitude?
