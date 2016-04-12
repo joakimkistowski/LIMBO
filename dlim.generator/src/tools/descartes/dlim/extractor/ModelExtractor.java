@@ -38,7 +38,7 @@ import tools.descartes.dlim.generator.ModelEvaluator;
 import org.apache.commons.math3.transform.FastFourierTransformer;
 import org.apache.commons.math3.transform.DftNormalization;
 import org.apache.commons.math3.transform.TransformType;
-
+import javax.swing.JFrame;
 /**
  * Offers the default model extraction processes as used by the dlim.exporter
  * plugin.
@@ -700,9 +700,14 @@ public final class ModelExtractor {
 		//calculate period arrRateArray.length/i=P_i for i=indexOfMax (only correct for i<=N/2)
 		//So würde für den Index i=0 arrRateArray/i= NaN :(
 		// dann starten wir erst bei i=1;
-		double periodFromFFT=arrRateArray[0].length/indexOfMax;
+		double periodFromFFT=arrRateArray[0].length/(indexOfMax);
 		
 		System.out.println("errechnete Periode = "+periodFromFFT);
+		
+		//Plot FFT output(x-Werte entsprechen den Arraypositionen i=N*f_i/f_s,
+		//y-Werte sind die Beträge der Amplituden  )
+		double []xWerte=new double[arrRateArray[0].length];
+		double []amplitudenBetrag= new double[arrRateArray[0].length];
 		
 		//welche Periode ist geeignet zum Übergeben?
 		//Die mit der größten zugehörigen Amplitude?
