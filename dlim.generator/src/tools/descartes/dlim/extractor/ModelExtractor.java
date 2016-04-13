@@ -39,6 +39,7 @@ import org.apache.commons.math3.transform.FastFourierTransformer;
 import org.apache.commons.math3.transform.DftNormalization;
 import org.apache.commons.math3.transform.TransformType;
 import javax.swing.JFrame;
+import jmathplot;
 /**
  * Offers the default model extraction processes as used by the dlim.exporter
  * plugin.
@@ -708,9 +709,25 @@ public final class ModelExtractor {
 		//y-Werte sind die Beträge der Amplituden  )
 		double []xWerte=new double[arrRateArray[0].length];
 		double []amplitudenBetrag= new double[arrRateArray[0].length];
+		//xWerte=0,1,2,3,4,5,... xWerte.length-1
+		//amplitudenBetrag= Summe über k [k-ter Realteil^2+k-ter Imagniärteil^2]
+		for(int k=0;k<xWerte.length;k++){
+			xWerte[k]=k;
+			amplitudenBetrag[k]=Math.pow(arrRateArray[0][k], 2)+Math.pow(arrRateArray[1][k], 2);
+		}
 		
-		//welche Periode ist geeignet zum Übergeben?
-		//Die mit der größten zugehörigen Amplitude?
+		Plot2DPanel panel = new Plot2DPanel();
+		panel.addLinePlot("Line", xWerte, amplitudenBetrag);
+		JFrame  frame= new JFrame("Histogram");
+		frame.setContentPane(panel);
+		frame.setSize(500, 600);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+		
+		
+		
+		
+		
 		
 		ExtractionDataContainer container = new ExtractionDataContainer(
 				arrList, period, seasonalsPerTrend, seasonalShape, trendShape, operatorLiteral);
@@ -742,5 +759,6 @@ public final class ModelExtractor {
 		BasicBurstExtractionUtilities.buildBurstPart(root, container);
 
 		buildNormalNoisePart(root, container, extractNoise);
+		
 	}
 }
