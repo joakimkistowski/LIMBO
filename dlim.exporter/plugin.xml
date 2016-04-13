@@ -28,6 +28,10 @@
             label="Request Time Stamps via Uniform Random Sampling (.csv)">
       </Exporter>
       <Exporter
+            class="tools.descartes.dlim.exporter.DlimNoBinningRequestStampExporterCSV"
+            label="Request Time Stamps using perfect sampling (.csv)">
+      </Exporter>
+      <Exporter
             class="tools.descartes.dlim.exporter.DlimArrivalRateExporterCSV"
             label="Simple Arrival Rate File (.csv)">
       </Exporter>

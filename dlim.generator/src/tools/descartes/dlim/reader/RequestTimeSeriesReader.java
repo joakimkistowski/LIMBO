@@ -71,8 +71,13 @@ public final class RequestTimeSeriesReader {
 					absPath.toFile()));
 			String line;
 			while ((line = br.readLine()) != null) {
-				line = line.substring(0, line.length() - 1);
-				double timeStamp = Double.parseDouble(line);
+				double timeStamp = 0;
+				try {
+					timeStamp = Double.parseDouble(line);
+				} catch (NumberFormatException e) {
+					line = line.substring(0, line.length() - 1);
+					timeStamp = Double.parseDouble(line);
+				}
 				while (timeStamp >= bucket + STEP) {
 					printCurrentRate(bucket + STEP / 2, arrivalRateCounter,
 							arrRateWriter);
