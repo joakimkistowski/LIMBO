@@ -38,8 +38,7 @@ import tools.descartes.dlim.generator.ModelEvaluator;
 import org.apache.commons.math3.transform.FastFourierTransformer;
 import org.apache.commons.math3.transform.DftNormalization;
 import org.apache.commons.math3.transform.TransformType;
-import javax.swing.JFrame;
-import jmathplot;
+import org.apache.commons.math3.stat.correlation.PearsonsCorrelation;
 /**
  * Offers the default model extraction processes as used by the dlim.exporter
  * plugin.
@@ -656,73 +655,39 @@ public final class ModelExtractor {
 			i++;
 		}
 		
-		//FFT arbeitet nur mit Arrays der Länge einer 2er-Potenz
-		//alle reellen Einträge werden unter arrRateArray[0][*] gespeichert.
-		//Die benutze FFT will aber auch Auskunft über den Imaginärteil
-		//unserer ArrivalRates. Die haben aber alle als Imaginärteil 0.
-		double [][] arrRateArray=new double[2][(int) Math.pow(2, i)];
+	
+		double [] arrRateArray=new double[arrList.size()];
 		//befülle Array nun mit den Daten aus der Liste.
 		int j=0;//Zählvariable für das Array
 		for(ArrivalRateTuple art: arrList){
-			arrRateArray[0][j]=art.getArrivalRate();
+			arrRateArray[j]=art.getArrivalRate();
 			//Print values before FFT
-			System.out.println("Realteil vor FFT= "+arrRateArray[0][j]);
-			System.out.println("Imaginärteil vor FFT= "+arrRateArray[1][j]);
-			System.out.println(" ");
+			System.out.println("Wert vor Autokorrelation (ohne Lag)= "+arrRateArray[j]);
+			System.out.println("arrRateArray["+j+"] = "
+					+arrRateArray[j]);
+			System.out.println("");
 			j++;
 		}
 		
-		//FFT happens
-		FastFourierTransformer.transformInPlace(arrRateArray,DftNormalization.STANDARD,TransformType.FORWARD);
-		
-		System.out.println("FFT happens");
-		System.out.println(" ");
-		System.out.println(" ");
-		
-		//print values after FFT
-		for(int k=0;k<arrRateArray[0].length;k++){
-			System.out.println("Realteil nach FFT= "+arrRateArray[0][k]);
-			System.out.println("Imaginärteil nach FFT= "+arrRateArray[1][k]);
-			System.out.println(" ");
+		//befülle weiteres Array mit Daten aus der Liste zum Lag k.
+		double [] arrRateArrayLag=new double[arrList.size()];
+		int l=0;//Zählvariable für das Array
+		int k=10;//Lag-Variable
+		for(ArrivalRateTuple art: arrList){
+				arrRateArrayLag[(l+k)%(arrList.size())]=art.getArrivalRate();
+			System.out.println("Wert vor Autokorrelation (mit Lag "+k+")  ");
+			System.out.println("arrRateArrayLag["+(l+k)%(arrList.size())+"] = "
+				+art.getArrivalRate());
+			System.out.println("");
+			l++;
 		}
 		
-		//Index (<=N/2) der betragsmäßig größten Amplitude suchen (Amplituden können komplex sein)
-		int indexOfMax=0;
-		double max=0;
-		//bei k=1 starten, weil Periode=N/k;
-		for(int k=1;k<arrRateArray[0].length/2;k++){
-			if(Math.pow(arrRateArray[0][k], 2)+Math.pow(arrRateArray[1][k], 2)>max){
-				max=Math.pow(arrRateArray[0][k], 2)+Math.pow(arrRateArray[1][k], 2);
-				indexOfMax=k;
-				
-			}
-		}
-		System.out.println("indexOfMax="+indexOfMax);
-		//calculate period arrRateArray.length/i=P_i for i=indexOfMax (only correct for i<=N/2)
-		//So würde für den Index i=0 arrRateArray/i= NaN :(
-		// dann starten wir erst bei i=1;
-		double periodFromFFT=arrRateArray[0].length/(indexOfMax);
+		//compute Pearson product-moment correlation coefficient. (A number in the intervall [-1,1])
+		PearsonsCorrelation corr=new PearsonsCorrelation();
+		double correlationTraceLagTrace=corr.correlation(arrRateArray, arrRateArrayLag);
+		System.out.println("Korrelation zwischen Trace und Trace mit Lag k = "+k+" entspricht:");
+		System.out.println(correlationTraceLagTrace);
 		
-		System.out.println("errechnete Periode = "+periodFromFFT);
-		
-		//Plot FFT output(x-Werte entsprechen den Arraypositionen i=N*f_i/f_s,
-		//y-Werte sind die Beträge der Amplituden  )
-		double []xWerte=new double[arrRateArray[0].length];
-		double []amplitudenBetrag= new double[arrRateArray[0].length];
-		//xWerte=0,1,2,3,4,5,... xWerte.length-1
-		//amplitudenBetrag= Summe über k [k-ter Realteil^2+k-ter Imagniärteil^2]
-		for(int k=0;k<xWerte.length;k++){
-			xWerte[k]=k;
-			amplitudenBetrag[k]=Math.pow(arrRateArray[0][k], 2)+Math.pow(arrRateArray[1][k], 2);
-		}
-		
-		Plot2DPanel panel = new Plot2DPanel();
-		panel.addLinePlot("Line", xWerte, amplitudenBetrag);
-		JFrame  frame= new JFrame("Histogram");
-		frame.setContentPane(panel);
-		frame.setSize(500, 600);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setVisible(true);
 		
 		
 		
