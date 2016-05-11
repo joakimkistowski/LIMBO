@@ -672,7 +672,7 @@ public final class ModelExtractor {
 		//befülle weiteres Array mit Daten aus der Liste zum Lag k.
 		double [] arrRateArrayLag=new double[arrList.size()];
 		int l=0;//Zählvariable für das Array
-		int k=10;//Lag-Variable
+		int k=168;//Lag-Variable
 		for(ArrivalRateTuple art: arrList){
 				arrRateArrayLag[(l+k)%(arrList.size())]=art.getArrivalRate();
 			System.out.println("Wert vor Autokorrelation (mit Lag "+k+")  ");
