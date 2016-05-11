@@ -649,11 +649,6 @@ public final class ModelExtractor {
 			int seasonalsPerTrend, String seasonalShape, String trendShape,
 			String operatorLiteral, boolean extractNoise)
 					throws CalibrationException {
-		//finde kleinste 2er-Potenz die Größer als arrListLength ist.
-		int i=0;
-		while(Math.pow(2, i)<arrList.size()){
-			i++;
-		}
 		
 	
 		double [] arrRateArray=new double[arrList.size()];
@@ -671,26 +666,57 @@ public final class ModelExtractor {
 		
 		//befülle weiteres Array mit Daten aus der Liste zum Lag k.
 		double [] arrRateArrayLag=new double[arrList.size()];
-		int l=0;//Zählvariable für das Array
-		int k=168;//Lag-Variable
-		for(ArrivalRateTuple art: arrList){
-				arrRateArrayLag[(l+k)%(arrList.size())]=art.getArrivalRate();
-			System.out.println("Wert vor Autokorrelation (mit Lag "+k+")  ");
-			System.out.println("arrRateArrayLag["+(l+k)%(arrList.size())+"] = "
-				+art.getArrivalRate());
-			System.out.println("");
-			l++;
+		//zum Speicher der Korrelationswerte. (Später suchen wir den größten
+		//Korrelationswert und
+		//probieren Vielfache von ihm aus)
+		double[] corrSaver=new double[300];
+		
+		//k ist Lag-Variable. Wir versuchen mehrere Lags aus
+		//und suchen Korrelation zwischen Original-Trace
+		//und Lag-Trace nahe dem Wert 1.
+		for(int k=0;k<200;k++){
+			int l=0;//Zählvariable für das Array
+			for(ArrivalRateTuple art: arrList){
+					arrRateArrayLag[(l+k)%(arrList.size())]=art.getArrivalRate();
+				System.out.println("Wert vor Autokorrelation (mit Lag "+k+")  ");
+				System.out.println("arrRateArrayLag["+(l+k)%(arrList.size())+"] = "
+					+art.getArrivalRate());
+				System.out.println("");
+				l++;
+			}
+			
+			//compute Pearson product-moment correlation coefficient. (A number in the intervall [-1,1])
+			PearsonsCorrelation corr=new PearsonsCorrelation();
+			double correlationTraceLagTrace=corr.correlation(arrRateArray, arrRateArrayLag);
+			//speicher Korrelationswert im Array
+			corrSaver[k]=correlationTraceLagTrace;
+			System.out.println("Korrelation zwischen Trace und Trace mit Lag k = "+k+" entspricht:");
+			System.out.println(correlationTraceLagTrace);
+			
+		}
+		System.out.println("Alle errechneten Korrelationen");
+		System.out.println(Arrays.toString(corrSaver));
+		
+		//Variablen zum Speichern der maximalen Korrelation
+		// und des zugehörigen Lags
+		double maxCorr=0;
+		int lagOfMax=0;
+		//zu geringe Lags produzieren hohe Korrelationen wegen zu großer Ähnlichkeit
+		//zum ursprünglichen Trace. Deswegen Start bei Lag k=4.
+		for(int k=4;k<corrSaver.length;k++){
+			if(corrSaver[k]>maxCorr){
+				maxCorr=corrSaver[k];
+				lagOfMax=k;
+			}
 		}
 		
-		//compute Pearson product-moment correlation coefficient. (A number in the intervall [-1,1])
-		PearsonsCorrelation corr=new PearsonsCorrelation();
-		double correlationTraceLagTrace=corr.correlation(arrRateArray, arrRateArrayLag);
-		System.out.println("Korrelation zwischen Trace und Trace mit Lag k = "+k+" entspricht:");
-		System.out.println(correlationTraceLagTrace);
+		System.out.println("maximale Korrelation bei Lag "+lagOfMax+" entspricht "+maxCorr);
 		
-		
-		
-		
+		//liefern Vielfache des Lags der maximalen Korrelation auch hohe Korrelationswerte?
+		for(int i=1;i<10;i++){
+			System.out.println("Korrelation bei "+i+"-fachen Lag");
+			System.out.println("corrSaver[lagOfMax*"+ i+"] = "+corrSaver[lagOfMax*i]);
+		}
 		
 		
 		
