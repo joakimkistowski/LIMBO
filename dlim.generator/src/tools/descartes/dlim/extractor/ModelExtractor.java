@@ -650,7 +650,9 @@ public final class ModelExtractor {
 			String operatorLiteral, boolean extractNoise)
 					throws CalibrationException {
 		
-	
+		//Abschnitt: Autokorrelation zum bestimmen von dominanten Perioden
+		int numberOfCorrAndLags=200;
+		//wie viele Lags (und damit auch Korrelationen) sollen betrachtet werden?
 		double [] arrRateArray=new double[arrList.size()];
 		//befülle Array nun mit den Daten aus der Liste.
 		int j=0;//Zählvariable für das Array
@@ -669,12 +671,12 @@ public final class ModelExtractor {
 		//zum Speicher der Korrelationswerte. (Später suchen wir den größten
 		//Korrelationswert und
 		//probieren Vielfache von ihm aus)
-		double[] corrSaver=new double[300];
+		double[] corrSaver=new double[numberOfCorrAndLags];
 		
 		//k ist Lag-Variable. Wir versuchen mehrere Lags aus
 		//und suchen Korrelation zwischen Original-Trace
 		//und Lag-Trace nahe dem Wert 1.
-		for(int k=0;k<200;k++){
+		for(int k=0;k<numberOfCorrAndLags;k++){
 			int l=0;//Zählvariable für das Array
 			for(ArrivalRateTuple art: arrList){
 					arrRateArrayLag[(l+k)%(arrList.size())]=art.getArrivalRate();
@@ -690,11 +692,9 @@ public final class ModelExtractor {
 			double correlationTraceLagTrace=corr.correlation(arrRateArray, arrRateArrayLag);
 			//speicher Korrelationswert im Array
 			corrSaver[k]=correlationTraceLagTrace;
-			System.out.println("Korrelation zwischen Trace und Trace mit Lag k = "+k+" entspricht:");
-			System.out.println(correlationTraceLagTrace);
 			
 		}
-		System.out.println("Alle errechneten Korrelationen");
+		System.out.println("Alle errechneten Korrelationen für Lags zwischen 0 und 199");
 		System.out.println(Arrays.toString(corrSaver));
 		
 		//Variablen zum Speichern der maximalen Korrelation
@@ -715,7 +715,7 @@ public final class ModelExtractor {
 		//liefern Vielfache des Lags der maximalen Korrelation auch hohe Korrelationswerte?
 		for(int i=1;i<10;i++){
 			System.out.println("Korrelation bei "+i+"-fachen Lag");
-			System.out.println("corrSaver[lagOfMax*"+ i+"] = "+corrSaver[lagOfMax*i]);
+			System.out.println("corrSaver[lagOfMax*"+ i+"] = "+corrSaver[(lagOfMax*i)%corrSaver.length]);
 		}
 		
 		
@@ -734,7 +734,6 @@ public final class ModelExtractor {
 				.getTimeStamp();
 		container.setDuration(duration);
 
-		// Future Work: get period; use the Fourier approach here?
 
 		// build seasonal part
 		BasicSeasonalExtractionUtilities.extractSeasonalPart(root, baseline, container);
