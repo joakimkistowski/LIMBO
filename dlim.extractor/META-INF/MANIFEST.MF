@@ -10,3 +10,5 @@ Require-Bundle: org.eclipse.ui,
  tools.descartes.dlim.generator.editor
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: lib/commons-math3-3.2.jar,
+ .
