@@ -140,9 +140,9 @@ public class BennosOfLaunchExtractionDialog extends TitleAreaDialog {
 	// period of seasonal part
 	private void createSeasonalPeriodParameterField(Composite container) {
 		String lastSeasonalPeriod = ProjectManager.retrieveStringFromPreferences(SEASONAL_PERIOD_ID);
-		if (!lastSeasonalPeriod.isEmpty()) {
+		
 			seasonalPeriod = Double.parseDouble(lastSeasonalPeriod);
-		}
+		
 		
 		Label parameterFieldLabel = new Label(container, SWT.NONE);
 		parameterFieldLabel.setText("Seasonal Period: ");
@@ -395,6 +395,10 @@ public class BennosOfLaunchExtractionDialog extends TitleAreaDialog {
 	 */
 	public double getSeasonalPeriod() {
 		return seasonalPeriod;
+	}
+	
+	public void setSeasonalPeriod(double period){
+		seasonalPeriod=period;
 	}
 
 	/**
