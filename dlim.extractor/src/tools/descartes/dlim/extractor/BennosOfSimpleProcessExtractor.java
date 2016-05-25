@@ -65,18 +65,22 @@ public class BennosOfSimpleProcessExtractor implements IDlimExtractor {
 		//mit einem Gauss-Filter geglätteten
 		//Trace betrachten.
 		else{
+			System.out.println(" ");
 			System.out.println("normales Verfahren mit Autokorrelation war nicht ausreichend.");
 			System.out.println("Führe eine Glättung mit Gaußfilter durch");
 			System.out.println("und wiederhole das Verfahren");
-			//arrList wird jetzt vom Gauß-Filter geglättet.
-			reduceArrivalRateListNoise(arrList, lagOfMax);
+			System.out.println(" ");
+			//Kopiere Tracedaten in eine neue Liste arrListGauss und führe dort
+			//die Glättung mit dem Gauß-Filter durch.
+			List<ArrivalRateTuple>arrListGauss= arrList;
+			reduceArrivalRateListNoise(arrListGauss, lagOfMax);
 			//System.out.println(arrList.toString());
 			//lagOfMax wird jetzt überschrieben (hoffentlich mit einer besseren Periode)
 			//corrSaver wurde auch bei den Berechnungen in reduceArrivalRateListNoise
 			//überschrieben. Aber diese Überschreibungen sind ok, weil wir in diesem
 			//Fall entweder die Periode von der geglätteten Liste nehmen 
 			//oder wenn alle Stricke reißen seasonalPeriod auf den Standardwert 24 setzen.
-			lagOfMax=getPeriodFromAutocorr( arrList);
+			lagOfMax=getPeriodFromAutocorr( arrListGauss);
 			
 			//Periode gut? falls ja kann man sie setzen, sonst
 			//wird jetzt der Standardwert gesetzt.
@@ -214,13 +218,17 @@ public class BennosOfSimpleProcessExtractor implements IDlimExtractor {
 							
 						}
 						
+						//remove me
+						System.out.println(Arrays.toString(corrSaver));
+						//remove me
+						
 						//Variablen zum Speichern der maximalen Korrelation
 						// und des zugehörigen Lags
 						double maxCorr=0;
 						int lagOfMax=0;
 						//zu geringe Lags produzieren hohe Korrelationen wegen zu großer Ähnlichkeit
-						//zum ursprünglichen Trace. Deswegen Start bei Lag k=4.
-						for(int k=4;k<corrSaver.length;k++){
+						//zum ursprünglichen Trace. Deswegen Start bei Lag k=10.
+						for(int k=10;k<corrSaver.length;k++){
 							if(corrSaver[k]>maxCorr){
 								maxCorr=corrSaver[k];
 								lagOfMax=k;
@@ -258,12 +266,22 @@ public class BennosOfSimpleProcessExtractor implements IDlimExtractor {
 				//IBM_Transactions_S-MIEP_Trendlength1_Noise_ignored den Standardwert 24 für
 				//seasonalPeriod nutzen.
 				for(int k=1;k<6;k++){
-					if(corrSaver[(lagOfMax*k)%corrSaver.length]<=0.5){
+					if(corrSaver[(lagOfMax*k)%corrSaver.length]<=0.33){
 						return false;
 					}
 				}
 		
 		return true;
+	}
+	
+	
+	public static void plot(double[]array){
+		for(int i=0;i<array.length;i++){
+			for(int j=0;j<array[i]*10;j++){
+				System.out.print(1);
+			}
+			System.out.println(" ");
+		}
 	}
 	
 	
