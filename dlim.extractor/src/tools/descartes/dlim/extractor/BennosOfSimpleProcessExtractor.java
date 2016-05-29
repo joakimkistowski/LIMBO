@@ -218,9 +218,6 @@ public class BennosOfSimpleProcessExtractor implements IDlimExtractor {
 							
 						}
 						
-						//remove me
-						System.out.println(Arrays.toString(corrSaver));
-						//remove me
 						
 						//Variablen zum Speichern der maximalen Korrelation
 						// und des zugehörigen Lags
@@ -228,7 +225,10 @@ public class BennosOfSimpleProcessExtractor implements IDlimExtractor {
 						int lagOfMax=0;
 						//zu geringe Lags produzieren hohe Korrelationen wegen zu großer Ähnlichkeit
 						//zum ursprünglichen Trace. Deswegen Start bei Lag k=10.
-						for(int k=10;k<corrSaver.length;k++){
+						//29.05.16 schaue traces an und versuche nun startlag 75, weil
+						// das globale maxima in den Korrelationen häufig von der Ähnlichkeit der
+						// Traces bei geringem Lag rührt
+						for(int k=75;k<corrSaver.length;k++){
 							if(corrSaver[k]>maxCorr){
 								maxCorr=corrSaver[k];
 								lagOfMax=k;
@@ -260,28 +260,19 @@ public class BennosOfSimpleProcessExtractor implements IDlimExtractor {
 		//Prüfung ob Lag gut gewählt ist.
 				//Es wird geprüft ob der errechnete Lag und seine k-fachen mit 0<k<6
 				// zu Korrelationen> 50% führen.
-				//Unter diesem Kriterium benutzen zum Beispiel der wikipedia_trace,
+				//Unter diesem  Kriterium benutzen zum Beispiel der wikipedia_trace,
 				//der ru.wikipedia.org_trace und der WorldCup98_trace die durch die Autokorrelation
 				//errechnete Periode, während bibsonomy_2011_05-07_nospammer und
 				//IBM_Transactions_S-MIEP_Trendlength1_Noise_ignored den Standardwert 24 für
 				//seasonalPeriod nutzen.
 				for(int k=1;k<6;k++){
 					if(corrSaver[(lagOfMax*k)%corrSaver.length]<=0.33){
+						//versuche mit 33% statt 50%
 						return false;
 					}
 				}
 		
 		return true;
-	}
-	
-	
-	public static void plot(double[]array){
-		for(int i=0;i<array.length;i++){
-			for(int j=0;j<array[i]*10;j++){
-				System.out.print(1);
-			}
-			System.out.println(" ");
-		}
 	}
 	
 	
