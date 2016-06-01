@@ -218,6 +218,8 @@ public class BennosOfSimpleProcessExtractor implements IDlimExtractor {
 							
 						}
 						
+					
+						
 						
 						//Variablen zum Speichern der maximalen Korrelation
 						// und des zugehörigen Lags
