@@ -217,9 +217,9 @@ public class BennosOfSimpleProcessExtractor implements IDlimExtractor {
 							corrSaver[k]=correlationTraceLagTrace;
 							
 						}
-						
-					
-						
+						//lokale Maxima in corrSaver die größer
+						//als Nachbarn in range (zweites Argument) sind
+						findLocalMaxima(corrSaver,5);
 						
 						//Variablen zum Speichern der maximalen Korrelation
 						// und des zugehörigen Lags
@@ -268,13 +268,64 @@ public class BennosOfSimpleProcessExtractor implements IDlimExtractor {
 				//IBM_Transactions_S-MIEP_Trendlength1_Noise_ignored den Standardwert 24 für
 				//seasonalPeriod nutzen.
 				for(int k=1;k<6;k++){
-					if(corrSaver[(lagOfMax*k)%corrSaver.length]<=0.33){
-						//versuche mit 33% statt 50%
+					if(corrSaver[(lagOfMax*k)%corrSaver.length]<=0.50){
+					
 						return false;
 					}
 				}
 		
 		return true;
+	}
+	
+	//finds up to 20 local maxima that are bigger then their neighbours in range 10
+	public static double[][] findLocalMaxima(double[] corrSaver, int range){
+		
+		//Größe 21 weil 21=2*range+1 (range=10)
+		double[]window=new double[2*range+1];
+		//speichert die gefundenen lokalen Maxima und ihre Lags
+		//lagMax[0] sind lags, lagMax[1] sind zugehörige Maxima
+		double[][]lagMax=new double[2][20];
+		//zählvariable für lagMax
+		int r=0;
+		//speichert das momentane Maximum in Window
+		double maxCorr=0;
+		//Start bei 10, weil range 10
+		//Ende bei corrSaver.length-10, weil range 10
+		for(int i=range;i<corrSaver.length-range;i++){
+			//befülle window
+			for(int j=0;j<window.length;j++){
+				//corrSaver[i-10+j], weil range 10
+				window[j]=corrSaver[i-range+j];
+			}
+			//ist der Wert in der Mitte von window der größte
+			//im window-array?
+			//nach der for-Schleife ist der größte Wert von Window in
+			//maxCorr gespeichert.
+			for(int n=0;n<window.length;n++){
+				if(window[n]>maxCorr){
+					maxCorr=window[n];
+				}
+			}
+			
+			//jetzt noch maxCorr mit window[10] vergleichen. (10 weil range=10)
+			//Bei Gleichheit ist window[10] bzw. corrSaver[i-10+j] ein lokales Maximum.
+			if(window[range]==maxCorr){
+				//der Lag wird abgespeichert
+				lagMax[0][r]=i;
+				//und der zugehörige Wert des Maximums
+				lagMax[1][r]=maxCorr;
+				//neuer freier Platz in lagMax für andere Maxima und deren Lag
+				r++;
+			}
+			//maxCorr wieder reseten
+			maxCorr=0;
+		}
+		System.out.println(" ");
+		System.out.println("gefundene lokale Maxima an Positionen");
+		System.out.println(Arrays.toString(lagMax[0]));
+		System.out.println(" ");
+		
+		return lagMax;
 	}
 	
 	
