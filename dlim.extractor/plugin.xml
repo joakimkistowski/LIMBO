@@ -24,7 +24,7 @@
       </Extractor>
       <Extractor
             extractor_class="tools.descartes.dlim.extractor.SimpleProcessExtractorAutocorrelation"
-            label="Awesome FFT Process Extractor"
+            label="Autocorrelation Process Extractor"
             reader_class="tools.descartes.dlim.reader.DefaultArrivalRateReader">
       </Extractor>
    </extension>
