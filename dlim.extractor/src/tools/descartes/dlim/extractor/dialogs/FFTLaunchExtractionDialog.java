@@ -44,7 +44,7 @@ import tools.descartes.dlim.generator.editor.utils.ProjectManager;
  * @author Joakim von Kistowski
  *
  */
-public class BennosOfLaunchExtractionDialog extends TitleAreaDialog {
+public class FFTLaunchExtractionDialog extends TitleAreaDialog {
 
 	/**
 	 * ID of Eclipse Preference for lasts used trace parameters.
@@ -90,7 +90,7 @@ public class BennosOfLaunchExtractionDialog extends TitleAreaDialog {
 	 * @param rootSequence the root sequence
 	 * @param readArrivalRates the read arrival rates
 	 */
-	public BennosOfLaunchExtractionDialog(Shell parentShell, Sequence rootSequence,
+	public FFTLaunchExtractionDialog(Shell parentShell, Sequence rootSequence,
 			List<ArrivalRateTuple> readArrivalRates) {
 		super(parentShell);
 		this.rootSequence = rootSequence;
@@ -381,7 +381,7 @@ public class BennosOfLaunchExtractionDialog extends TitleAreaDialog {
 			int seasonalsPerTrend, String seasonalShape, String trendShape,
 			String operatorLiteral, boolean extractNoise) throws CalibrationException {
 		ModelExtractor
-		.bennoExtractArrivalRateFileIntoSequenceNoSplits(root,
+		.extractArrivalRateFileIntoSequenceNoSplitsFFT(root,
 				arrList, getSeasonalPeriod(),
 				getSeasonalsPerTrend(), getSeasonalShape(),
 				getTrendShape(), getOperatorLiteral(),

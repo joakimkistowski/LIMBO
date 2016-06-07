@@ -16,7 +16,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 
 import tools.descartes.dlim.Sequence;
-import tools.descartes.dlim.extractor.dialogs.BennosOfLaunchExtractionDialog;
+import tools.descartes.dlim.extractor.dialogs.FFTLaunchExtractionDialog;
 import tools.descartes.dlim.generator.ArrivalRateTuple;
 
 
@@ -25,7 +25,7 @@ import tools.descartes.dlim.generator.ArrivalRateTuple;
  *
  * @author Joakim von Kistowski
  */
-public class BennosOfSimpleProcessExtractor implements IDlimExtractor {
+public class SimpleProcessExtractorAutocorrelation implements IDlimExtractor {
 	//EXPECTEDMAXPEAKSPERSEASONAL kopiert aus ModelExtractor
 	private static final int EXPECTEDMAXPEAKSPERSEASONAL = 8;
 	static int numberOfCorrAndLags=200;
@@ -50,7 +50,7 @@ public class BennosOfSimpleProcessExtractor implements IDlimExtractor {
 		Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
 				.getShell();
 		
-		BennosOfLaunchExtractionDialog dialog = new BennosOfLaunchExtractionDialog(shell, root,
+		FFTLaunchExtractionDialog dialog = new FFTLaunchExtractionDialog(shell, root,
 				arrList);
 		
 		//Falls die Periode (lagOfMax) gut genug
@@ -230,7 +230,7 @@ public class BennosOfSimpleProcessExtractor implements IDlimExtractor {
 						//29.05.16 schaue traces an und versuche nun startlag 75, weil
 						// das globale maxima in den Korrelationen häufig von der Ähnlichkeit der
 						// Traces bei geringem Lag rührt
-						for(int k=75;k<corrSaver.length;k++){
+						for(int k=10;k<corrSaver.length;k++){
 							if(corrSaver[k]>maxCorr){
 								maxCorr=corrSaver[k];
 								lagOfMax=k;
@@ -262,11 +262,11 @@ public class BennosOfSimpleProcessExtractor implements IDlimExtractor {
 		//Prüfung ob Lag gut gewählt ist.
 				//Es wird geprüft ob der errechnete Lag und seine k-fachen mit 0<k<6
 				// zu Korrelationen> 50% führen.
-				//Unter diesem  Kriterium benutzen zum Beispiel der wikipedia_trace,
-				//der ru.wikipedia.org_trace und der WorldCup98_trace die durch die Autokorrelation
-				//errechnete Periode, während bibsonomy_2011_05-07_nospammer und
-				//IBM_Transactions_S-MIEP_Trendlength1_Noise_ignored den Standardwert 24 für
-				//seasonalPeriod nutzen.
+//				Unter diesem  Kriterium benutzen zum Beispiel der wikipedia_trace,
+//				der ru.wikipedia.org_trace und der WorldCup98_trace die durch die Autokorrelation
+//				errechnete Periode, während bibsonomy_2011_05-07_nospammer und
+//				IBM_Transactions_S-MIEP_Trendlength1_Noise_ignored den Standardwert 24 für
+//				seasonalPeriod nutzen.
 				for(int k=1;k<6;k++){
 					if(corrSaver[(lagOfMax*k)%corrSaver.length]<=0.50){
 					

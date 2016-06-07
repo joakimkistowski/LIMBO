@@ -644,7 +644,7 @@ public final class ModelExtractor {
 	 * @param extractNoise true, if noise is to be reduced and extracted
 	 * @throws CalibrationException exception if calibration is ineffective (devision by 0 or unused function)
 	 */
-	public static void bennoExtractArrivalRateFileIntoSequenceNoSplits(Sequence root,
+	public static void extractArrivalRateFileIntoSequenceNoSplitsFFT(Sequence root,
 			List<ArrivalRateTuple> arrList, double period,
 			int seasonalsPerTrend, String seasonalShape, String trendShape,
 			String operatorLiteral, boolean extractNoise)

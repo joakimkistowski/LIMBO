@@ -23,7 +23,7 @@
             reader_class="tools.descartes.dlim.reader.DefaultArrivalRateReader">
       </Extractor>
       <Extractor
-            extractor_class="tools.descartes.dlim.extractor.BennosOfSimpleProcessExtractor"
+            extractor_class="tools.descartes.dlim.extractor.SimpleProcessExtractorAutocorrelation"
             label="Awesome FFT Process Extractor"
             reader_class="tools.descartes.dlim.reader.DefaultArrivalRateReader">
       </Extractor>
