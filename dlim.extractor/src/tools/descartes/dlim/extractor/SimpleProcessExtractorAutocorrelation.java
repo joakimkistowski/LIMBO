@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 Joakim von Kistowski
+ * Copyright (c) 2014 Benno Heilmann, Joakim von Kistowski
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,14 +16,14 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 
 import tools.descartes.dlim.Sequence;
-import tools.descartes.dlim.extractor.dialogs.FFTLaunchExtractionDialog;
+import tools.descartes.dlim.extractor.dialogs.LaunchExtractionDialogWithAutocorrelation;
 import tools.descartes.dlim.generator.ArrivalRateTuple;
 
 
 /**
  * Extracts a DLIM instance based on the Simple Extraction Model.
  *
- * @author Joakim von Kistowski
+ * @author Benno Heilmann, Joakim von Kistowski
  */
 public class SimpleProcessExtractorAutocorrelation implements IDlimExtractor {
 	//EXPECTEDMAXPEAKSPERSEASONAL kopiert aus ModelExtractor
@@ -50,7 +50,7 @@ public class SimpleProcessExtractorAutocorrelation implements IDlimExtractor {
 		Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
 				.getShell();
 		
-		FFTLaunchExtractionDialog dialog = new FFTLaunchExtractionDialog(shell, root,
+		LaunchExtractionDialogWithAutocorrelation dialog = new LaunchExtractionDialogWithAutocorrelation(shell, root,
 				arrList);
 		
 		//Falls die Periode (lagOfMax) gut genug
@@ -323,6 +323,21 @@ public class SimpleProcessExtractorAutocorrelation implements IDlimExtractor {
 		System.out.println(" ");
 		System.out.println("gefundene lokale Maxima an Positionen");
 		System.out.println(Arrays.toString(lagMax[0]));
+		System.out.println(" ");
+		System.out.println("erstes lokal maximale Korrelation bei Lag: "+lagMax[0][0]);
+		System.out.println(" ");
+		
+		int countMaxima=0;
+		//zählt wie viele lokale Maxima es gibt
+		for(int i=0;i<lagMax[0].length;i++){
+			
+			if(lagMax[0][i]!=0){
+				countMaxima++;
+			}
+			
+		}
+		
+		System.out.println("Die Anzahl lokaler Maxima beträgt: "+countMaxima);
 		System.out.println(" ");
 		
 		return lagMax;

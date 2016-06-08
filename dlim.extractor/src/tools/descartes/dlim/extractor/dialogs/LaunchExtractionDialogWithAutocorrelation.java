@@ -44,7 +44,7 @@ import tools.descartes.dlim.generator.editor.utils.ProjectManager;
  * @author Joakim von Kistowski
  *
  */
-public class FFTLaunchExtractionDialog extends TitleAreaDialog {
+public class LaunchExtractionDialogWithAutocorrelation extends TitleAreaDialog {
 
 	/**
 	 * ID of Eclipse Preference for lasts used trace parameters.
@@ -90,7 +90,7 @@ public class FFTLaunchExtractionDialog extends TitleAreaDialog {
 	 * @param rootSequence the root sequence
 	 * @param readArrivalRates the read arrival rates
 	 */
-	public FFTLaunchExtractionDialog(Shell parentShell, Sequence rootSequence,
+	public LaunchExtractionDialogWithAutocorrelation(Shell parentShell, Sequence rootSequence,
 			List<ArrivalRateTuple> readArrivalRates) {
 		super(parentShell);
 		this.rootSequence = rootSequence;
@@ -141,8 +141,8 @@ public class FFTLaunchExtractionDialog extends TitleAreaDialog {
 	private void createSeasonalPeriodParameterField(Composite container) {
 		String lastSeasonalPeriod = ProjectManager.retrieveStringFromPreferences(SEASONAL_PERIOD_ID);
 		
-			seasonalPeriod = Double.parseDouble(lastSeasonalPeriod);
-		
+				seasonalPeriod = Double.parseDouble(lastSeasonalPeriod);
+			
 		
 		Label parameterFieldLabel = new Label(container, SWT.NONE);
 		parameterFieldLabel.setText("Seasonal Period: ");
@@ -381,7 +381,7 @@ public class FFTLaunchExtractionDialog extends TitleAreaDialog {
 			int seasonalsPerTrend, String seasonalShape, String trendShape,
 			String operatorLiteral, boolean extractNoise) throws CalibrationException {
 		ModelExtractor
-		.extractArrivalRateFileIntoSequenceNoSplitsFFT(root,
+		.extractArrivalRateFileIntoSequenceNoSplits(root,
 				arrList, getSeasonalPeriod(),
 				getSeasonalsPerTrend(), getSeasonalShape(),
 				getTrendShape(), getOperatorLiteral(),
