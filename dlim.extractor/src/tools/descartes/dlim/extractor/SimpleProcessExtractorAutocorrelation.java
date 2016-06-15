@@ -324,7 +324,7 @@ public class SimpleProcessExtractorAutocorrelation implements IDlimExtractor {
 		System.out.println("gefundene lokale Maxima an Positionen");
 		System.out.println(Arrays.toString(lagMax[0]));
 		System.out.println(" ");
-		System.out.println("erstes lokal maximale Korrelation bei Lag: "+lagMax[0][0]);
+		System.out.println("erste lokal maximale Korrelation bei Lag: "+lagMax[0][0]);
 		System.out.println(" ");
 		
 		int countMaxima=0;
