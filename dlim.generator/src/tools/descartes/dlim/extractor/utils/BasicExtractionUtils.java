@@ -7,6 +7,8 @@
  *******************************************************************************/
 package tools.descartes.dlim.extractor.utils;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.List;
 
 import tools.descartes.dlim.generator.ArrivalRateTuple;
@@ -34,6 +36,7 @@ public final class BasicExtractionUtils {
 	 * @return The array's median.
 	 */
 	public static double getMedian(double[] array) {
+		//System.out.println(Arrays.toString(array));
 		if (array.length > 0 && array.length % 2 == 0) {
 			return (array[(array.length - 1) / 2] + array[(array.length) / 2]) / 2.0;
 		}

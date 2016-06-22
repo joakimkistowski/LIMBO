@@ -35,7 +35,10 @@ import tools.descartes.dlim.extractor.utils.TimeDistanceSplittingHeuristic;
 import tools.descartes.dlim.generator.ArrivalRateTuple;
 import tools.descartes.dlim.generator.IGeneratorConstants;
 import tools.descartes.dlim.generator.ModelEvaluator;
-
+import org.apache.commons.math3.transform.FastFourierTransformer;
+import org.apache.commons.math3.transform.DftNormalization;
+import org.apache.commons.math3.transform.TransformType;
+import org.apache.commons.math3.stat.correlation.PearsonsCorrelation;
 /**
  * Offers the default model extraction processes as used by the dlim.exporter
  * plugin.
@@ -87,6 +90,7 @@ public final class ModelExtractor {
 			int seasonalsPerTrend, String seasonalShape, String trendShape,
 			String operatorLiteral, boolean extractNoise)
 					throws CalibrationException {
+		
 		ExtractionDataContainer container = new ExtractionDataContainer(
 				arrList, period, seasonalsPerTrend, seasonalShape, trendShape, operatorLiteral);
 		//Reset splitting counts for pretty names!
@@ -511,7 +515,7 @@ public final class ModelExtractor {
 	 * Reduce noise within the read arrival rate list by applying a gaussian
 	 * filter.
 	 */
-	private static void reduceArrivalRateListNoise(ExtractionDataContainer container,
+	public static void reduceArrivalRateListNoise(ExtractionDataContainer container,
 			boolean extractNoise) {
 		if (!extractNoise) {
 			return;
@@ -625,4 +629,5 @@ public final class ModelExtractor {
 					.getArrivalRate()));
 		}
 	}
+	
 }
