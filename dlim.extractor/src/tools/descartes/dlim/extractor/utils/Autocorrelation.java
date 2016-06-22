@@ -13,6 +13,7 @@ import org.apache.commons.math3.stat.correlation.PearsonsCorrelation;
 import tools.descartes.dlim.extractor.ModelExtractor;
 import tools.descartes.dlim.generator.ArrivalRateTuple;
 
+
 /**
  * Utility class for finding seasonal periods using auto-correlation
  * 
@@ -21,6 +22,9 @@ import tools.descartes.dlim.generator.ArrivalRateTuple;
  */
 public final class Autocorrelation {
 
+	//assumed filtering period, if no period is known
+	private static final int DUMMY_PERIOD = 9*8;
+	
 	// utility class has a private constructor
 	private Autocorrelation() {
 
@@ -50,7 +54,7 @@ public final class Autocorrelation {
 			// Kopiere Tracedaten in eine neue Liste arrListGauss und führe dort
 			// die Glättung mit dem Gauß-Filter durch.
 			List<ArrivalRateTuple> arrListGauss = arrivalRates;
-			ModelExtractor.reduceArrivalRateListNoise(arrListGauss, result.getMaxLag());
+			ModelExtractor.reduceArrivalRateListNoise(arrListGauss, DUMMY_PERIOD);
 			// System.out.println(arrList.toString());
 			// lagOfMax wird jetzt überschrieben (hoffentlich mit einer besseren
 			// Periode)
