@@ -40,6 +40,7 @@ import tools.descartes.dlim.Operator;
 import tools.descartes.dlim.Sequence;
 import tools.descartes.dlim.assistant.CalibrationException;
 import tools.descartes.dlim.extractor.ModelExtractor;
+import tools.descartes.dlim.extractor.utils.Autocorrelation;
 import tools.descartes.dlim.generator.ArrivalRateTuple;
 
 /**
@@ -57,6 +58,7 @@ public class LaunchPeriodicExtractionDialog extends TitleAreaDialog {
 	private Text seasonalsPerTrend2Text;
 	private Button addToListButton;
 	private Button extractNoiseButton;
+	private Button autocorrelationButton;
 
 	private Combo seasonalShapeCombo;
 	private Combo trendShapeCombo;
@@ -112,7 +114,7 @@ public class LaunchPeriodicExtractionDialog extends TitleAreaDialog {
 		Composite columnContainer = new Composite(dialogContainer, SWT.NONE);
 		columnContainer.setLayout(new GridLayout(1, false));
 		Composite gridComposite = new Composite(columnContainer, SWT.NONE);
-		GridLayout gridLayout = new GridLayout(4, false);
+		GridLayout gridLayout = new GridLayout(5, false);
 		gridLayout.marginWidth = 5;
 		gridLayout.marginHeight = 5;
 		gridLayout.verticalSpacing = 2;
@@ -280,6 +282,22 @@ public class LaunchPeriodicExtractionDialog extends TitleAreaDialog {
 		seasonalPeriodText = new Text(container, SWT.BORDER);
 		seasonalPeriodText.setText(String.valueOf(seasonalPeriod));
 		seasonalPeriodText.setLayoutData(parameterFieldData);
+		autocorrelationButton = new Button(container, SWT.PUSH);
+		autocorrelationButton.setText("Detect Period");
+		autocorrelationButton.addSelectionListener(new SelectionListener() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				selected();
+			}
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				selected();
+			}
+			private void selected() {
+				double period = Autocorrelation.seasonalPeriodUsingAutocorrelation(readArrivalRates);
+				setSeasonalPeriod(period);
+			}
+		});
 	}
 
 	private void createExtractNoiseCheckBox(Composite container) {
@@ -445,6 +463,16 @@ public class LaunchPeriodicExtractionDialog extends TitleAreaDialog {
 	 */
 	public double getSeasonalPeriod() {
 		return seasonalPeriod;
+	}
+	
+	/**
+	 * Sets the seasonal period. Updates dialog texts.
+	 *
+	 * @param seasonalPeriod the seasonal period
+	 */
+	protected void setSeasonalPeriod(double seasonalPeriod) {
+		this.seasonalPeriod = seasonalPeriod;
+		seasonalPeriodText.setText(String.valueOf(seasonalPeriod));
 	}
 
 	/**

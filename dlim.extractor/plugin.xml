@@ -22,11 +22,6 @@
             label="Binary Split Process Extractor"
             reader_class="tools.descartes.dlim.reader.DefaultArrivalRateReader">
       </Extractor>
-      <Extractor
-            extractor_class="tools.descartes.dlim.extractor.SimpleProcessExtractorAutocorrelation"
-            label="Autocorrelation Process Extractor"
-            reader_class="tools.descartes.dlim.reader.DefaultArrivalRateReader">
-      </Extractor>
    </extension>
 
 

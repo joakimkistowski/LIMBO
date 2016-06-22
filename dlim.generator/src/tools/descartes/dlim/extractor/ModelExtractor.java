@@ -35,10 +35,6 @@ import tools.descartes.dlim.extractor.utils.TimeDistanceSplittingHeuristic;
 import tools.descartes.dlim.generator.ArrivalRateTuple;
 import tools.descartes.dlim.generator.IGeneratorConstants;
 import tools.descartes.dlim.generator.ModelEvaluator;
-import org.apache.commons.math3.transform.FastFourierTransformer;
-import org.apache.commons.math3.transform.DftNormalization;
-import org.apache.commons.math3.transform.TransformType;
-import org.apache.commons.math3.stat.correlation.PearsonsCorrelation;
 /**
  * Offers the default model extraction processes as used by the dlim.exporter
  * plugin.
@@ -511,11 +507,24 @@ public final class ModelExtractor {
 		return filter;
 	}
 
-	/*
+	/**
+	 * Reduces noise of a given arrival rate list with an expected seasonal period.
+	 * @param arrivalRates The arrival rates for which to reduce noise.
+	 * @param period Seasonal period within the arrival rate list.
+	 */
+	public static void reduceArrivalRateListNoise(List<ArrivalRateTuple> arrivalRates,
+			double period) {
+		ExtractionDataContainer reductionContainer = new ExtractionDataContainer(arrivalRates, period, 0, null, null, null);
+		reduceArrivalRateListNoise(reductionContainer, true);
+	}
+	
+	/**
 	 * Reduce noise within the read arrival rate list by applying a gaussian
 	 * filter.
+	 * @param container Extraction container.
+	 * @param extractNoise True, if noise is to be extracted.
 	 */
-	public static void reduceArrivalRateListNoise(ExtractionDataContainer container,
+	private static void reduceArrivalRateListNoise(ExtractionDataContainer container,
 			boolean extractNoise) {
 		if (!extractNoise) {
 			return;
