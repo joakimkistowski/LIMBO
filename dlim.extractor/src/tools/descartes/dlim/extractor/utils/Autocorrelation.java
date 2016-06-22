@@ -25,13 +25,15 @@ public final class Autocorrelation {
 	//assumed filtering period, if no period is known
 	private static final int DUMMY_PERIOD = 9*8;
 	
+	private static final int MAX_LAGS_TO_CONSIDER = 200;
+	
 	// utility class has a private constructor
 	private Autocorrelation() {
 
 	}
 
 	public static double seasonalPeriodUsingAutocorrelation(List<ArrivalRateTuple> arrivalRates) {
-		CorrelationResult result = getPeriodFromAutocorr(arrivalRates);
+		CorrelationResult result = getPeriodFromAutocorr(arrivalRates, new CorrelationResult(0, new double[MAX_LAGS_TO_CONSIDER]));
 
 		// Falls die Periode (lagOfMax) gut genug
 		// (Erklärung in der Methode periodGood)ist,
@@ -65,7 +67,7 @@ public final class Autocorrelation {
 			// Fall entweder die Periode von der geglätteten Liste nehmen
 			// oder wenn alle Stricke reißen seasonalPeriod auf den Standardwert
 			// 24 setzen.
-			result = getPeriodFromAutocorr(arrListGauss);
+			result = getPeriodFromAutocorr(arrListGauss, result);
 
 			// Periode gut? falls ja kann man sie setzen, sonst
 			// wird jetzt der Standardwert gesetzt.
@@ -78,10 +80,9 @@ public final class Autocorrelation {
 	}
 
 	// Bestimmt mit Autokorrelation einen Kandidaten für die Periode.
-	private static CorrelationResult getPeriodFromAutocorr(List<ArrivalRateTuple> arrList) {
+	private static CorrelationResult getPeriodFromAutocorr(List<ArrivalRateTuple> arrList, CorrelationResult previousResult) {
 
-		int numberOfCorrAndLags = 200;
-		double[] corrSaver = new double[numberOfCorrAndLags];
+		double[] corrSaver = previousResult.getCorrSaver();
 
 		// Abschnitt: Autokorrelation zum bestimmen von dominanten Perioden
 
@@ -103,7 +104,7 @@ public final class Autocorrelation {
 		// k ist Lag-Variable. Wir versuchen mehrere Lags aus
 		// und suchen Korrelation zwischen Original-Trace
 		// und Lag-Trace nahe dem Wert 1.
-		for (int k = 0; k < numberOfCorrAndLags; k++) {
+		for (int k = 0; k < MAX_LAGS_TO_CONSIDER; k++) {
 			int l = 0;// Zählvariable für das Array
 			for (ArrivalRateTuple art : arrList) {
 				arrRateArrayLag[(l + k) % (arrList.size())] = art.getArrivalRate();
@@ -140,16 +141,16 @@ public final class Autocorrelation {
 			}
 		}
 
-		// System.out.println("maximale Korrelation bei Lag "+lagOfMax+"
-		// entspricht "+maxCorr);
+		 System.out.println("maximale Korrelation bei Lag "+lagOfMax+
+		 "entspricht "+maxCorr);
 
 		// liefern Vielfache des Lags der maximalen Korrelation auch hohe
 		// Korrelationswerte?
-		// for(int i=1;i<10;i++){
-		// System.out.println("Korrelation bei "+i+"-fachen Lag");
-		// System.out.println("corrSaver[lagOfMax*"+ i+"] ="
-		// + " "+corrSaver[(lagOfMax*i)%corrSaver.length]);
-		// }
+		 for(int i=1;i<10;i++){
+		 System.out.println("Korrelation bei "+i+"-fachen Lag");
+		 System.out.println("corrSaver[lagOfMax*"+ i+"] ="
+		 + " "+corrSaver[(lagOfMax*i)%corrSaver.length]);
+		 }
 
 		return new CorrelationResult(lagOfMax, corrSaver);
 	}
@@ -168,9 +169,11 @@ public final class Autocorrelation {
 		// IBM_Transactions_S-MIEP_Trendlength1_Noise_ignored den Standardwert
 		// 24 für
 		// seasonalPeriod nutzen.
-		for (int k = 1; k < 6; k++) {
-			if (corrSaver[(lagOfMax * k) % corrSaver.length] <= 0.50) {
-
+		if (corrSaver[(lagOfMax) % corrSaver.length] <= 0.50) {
+			return false;
+		}
+		for (int k = 2; k < 6; k++) {
+			if (corrSaver[(lagOfMax * k) % corrSaver.length] <= 0.00) {
 				return false;
 			}
 		}
@@ -265,6 +268,7 @@ public final class Autocorrelation {
 		public int getMaxLag() {
 			return maxLag;
 		}
+
 
 	}
 }
